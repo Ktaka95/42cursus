@@ -10,19 +10,21 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-unsigned int	count_len(char	*str);
+#include <stddef.h>
 
-int	ft_strncmp(char	*s1, char	*s2, unsigned int	n)
+size_t	ft_strlen(const char	*s);
+
+int	ft_strncmp(const char	*s1, const char	*s2, size_t	n)
 {
-	unsigned int	i;
+	size_t			i;
 	int				ret;
 	unsigned int	len_s1;
 	unsigned int	len_s2;
 
 	i = 0;
 	ret = 0;
-	len_s1 = count_len(s1);
-	len_s2 = count_len(s2);
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
 	if (n == 0)
 		return (ret);
 	else
@@ -41,44 +43,42 @@ int	ft_strncmp(char	*s1, char	*s2, unsigned int	n)
 	return (ret);
 }
 
-unsigned int	count_len(char	*str)
+size_t	ft_strlen(const char	*s)
 {
-	unsigned int	j;
+	int	i;
 
-	j = 0;
-	while (str[j])
-		j++;
-	return (j);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
-/*
-#include <stdio.h>
-#include <string.h>
+// #include <stdio.h>
+// #include <string.h>
 
-int	main(void)
-{
-	char	str[] = "ABC";
+// int	main(void)
+// {
+// 	char	str[] = "ABC";
 
-	printf("Expected_Output:\n");
-	printf("ABC: ABD   = %d\n", strncmp(str, "ABC", 2));
-	printf("ABC: ABC   = %d\n", strncmp(str, "ABC", 3));
-	printf("ABC: AAA   = %d\n", strncmp(str, "ABC", 4));
-	printf("ABC: ABCD  = %d\n", strncmp(str, "", 0));
-	printf("ABC: AB    = %d\n", strncmp(str, "", 1));
-	printf("ABC: B     = %d\n", strncmp(str, "", 2));
-	printf("ABC: A     = %d\n", strncmp(str, "", 3));
+// 	printf("Expected_Output:\n");
+// 	printf("ABC: ABD   = %d\n", strncmp(str, "ABC", 2));
+// 	printf("ABC: ABC   = %d\n", strncmp(str, "ABC", 3));
+// 	printf("ABC: AAA   = %d\n", strncmp(str, "ABC", 4));
+// 	printf("ABC: ABCD  = %d\n", strncmp(str, "", 0));
+// 	printf("ABC: AB    = %d\n", strncmp(str, "", 1));
+// 	printf("ABC: B     = %d\n", strncmp(str, "", 2));
+// 	printf("ABC: A     = %d\n", strncmp(str, "", 3));
 
-	printf("---------------\n");
+// 	printf("---------------\n");
 
-	printf("Actual_Output:\n");
-	printf("ABC: ABD   = %d\n", ft_strncmp(str, "ABC", 2));
-	printf("ABC: ABC   = %d\n", ft_strncmp(str, "ABC", 3));
-	printf("ABC: AAA   = %d\n", ft_strncmp(str, "ABC", 4));
-	printf("ABC: ABCD  = %d\n", ft_strncmp(str, "", 0));
-	printf("ABC: AB    = %d\n", ft_strncmp(str, "", 1));
-	printf("ABC: B     = %d\n", ft_strncmp(str, "", 2));
-	printf("ABC: A     = %d\n", ft_strncmp(str, "", 3));
+// 	printf("Actual_Output:\n");
+// 	printf("ABC: ABD   = %d\n", ft_strncmp(str, "ABC", 2));
+// 	printf("ABC: ABC   = %d\n", ft_strncmp(str, "ABC", 3));
+// 	printf("ABC: AAA   = %d\n", ft_strncmp(str, "ABC", 4));
+// 	printf("ABC: ABCD  = %d\n", ft_strncmp(str, "", 0));
+// 	printf("ABC: AB    = %d\n", ft_strncmp(str, "", 1));
+// 	printf("ABC: B     = %d\n", ft_strncmp(str, "", 2));
+// 	printf("ABC: A     = %d\n", ft_strncmp(str, "", 3));
 
-	return (0);
-}
-*/
+// 	return (0);
+// }

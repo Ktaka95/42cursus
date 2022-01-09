@@ -11,25 +11,26 @@
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stddef.h>
 
-int		ft_strlen(char	*str);
+size_t	ft_strlen(const char	*s);
 
-char	*ft_strdup(char	*src)
+char	*ft_strdup(const char	*s1)
 {
 	int		i;
-	int		len_src;
+	int		len_s1;
 	char	*heap;
 
 	i = 0;
-	len_src = ft_strlen(src);
-	heap = (char *)malloc(sizeof(char) * (len_src + 1));
+	len_s1 = ft_strlen(s1);
+	heap = (char *)malloc(sizeof(char) * (len_s1 + 1));
 	if (heap == NULL)
 		return (NULL);
 	else
 	{
-		while (src[i])
+		while (s1[i])
 		{
-			heap[i] = src[i];
+			heap[i] = s1[i];
 			i++;
 		}
 		heap[i] = '\0';
@@ -37,42 +38,38 @@ char	*ft_strdup(char	*src)
 	return (heap);
 }
 
-int	ft_strlen(char	*str)
+size_t	ft_strlen(const char	*s)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
-	{
+	while (s[i])
 		i++;
-	}
 	return (i);
 }
 
-/*
-#include <stdio.h>
-#include <string.h>
+// #include <stdio.h>
+// #include <string.h>
 
-int	main(void)
-{
-	char	*p;
-	char	*q;
-	char	str1[] = "Hello, World";
-	char	str2[] = "Hello, World";
+// int	main(void)
+// {
+// 	char	*p;
+// 	char	*q;
+// 	char	str1[] = "Hello, World";
+// 	char	str2[] = "Hello, World";
 
-	p = strdup(str1);
-	q = ft_strdup(str2);
+// 	p = strdup(str1);
+// 	q = ft_strdup(str2);
 
-	str1[5] = '!';
-	str2[5] = '!';
+// 	str1[5] = '!';
+// 	str2[5] = '!';
 
-	printf("Expected_Output\n");
-	printf("%s\n",str1);
-	printf("%s\n",p);
-	printf("--------------------\n");
-	printf("Actual_Output\n");
-	printf("%s\n",str2);
-	printf("%s\n",q);
-	return (0);
-}
-*/
+// 	printf("Expected_Output\n");
+// 	printf("%s\n",str1);
+// 	printf("%s\n",p);
+// 	printf("--------------------\n");
+// 	printf("Actual_Output\n");
+// 	printf("%s\n",str2);
+// 	printf("%s\n",q);
+// 	return (0);
+// }

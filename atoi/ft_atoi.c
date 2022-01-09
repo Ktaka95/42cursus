@@ -10,15 +10,17 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int				count_len(char *str);
+#include <stddef.h>
 
-int				plus_minus_judge(char *str, int n);
+size_t			ft_strlen(const char	*s);
 
-int				int_changer(char chr);
+static int		plus_minus_judge(const char *str, int n);
 
-int	ft_atoi(char *str)
+static int		int_changer(char chr);
+
+int	ft_atoi(const char *str)
 {
-	int				i;
+	size_t			i;
 	int				plus_or_minus;
 	int				num;
 
@@ -28,7 +30,7 @@ int	ft_atoi(char *str)
 	while (str[i] == ' ')
 		i++;
 	plus_or_minus = plus_minus_judge(str, i);
-	while (i < count_len(str))
+	while (i < ft_strlen(str))
 	{
 		if (str[i] == '+' || str[i] == '-')
 		{
@@ -44,14 +46,14 @@ int	ft_atoi(char *str)
 	return (num * plus_or_minus);
 }
 
-int	count_len(char *str)
+size_t	ft_strlen(const char	*s)
 {
-	int	k;
+	int	i;
 
-	k = 0;
-	while (str[k])
-		k++;
-	return (k);
+	i = 0;
+	while (s[i])
+		i++;
+	return (i);
 }
 
 int	int_changer(char chr)
@@ -62,7 +64,7 @@ int	int_changer(char chr)
 	return (num_tmp);
 }
 
-int	plus_minus_judge(char *str, int n)
+int	plus_minus_judge(const char *str, int n)
 {
 	int	ret;
 
@@ -78,51 +80,49 @@ int	plus_minus_judge(char *str, int n)
 	return (ret);
 }
 
-/*
-#include <stdio.h>
-#include <stdlib.h>
+// #include <stdio.h>
+// #include <stdlib.h>
 
-int main(void)
-{
-	printf("%s => %d\n", "+123",	atoi("+123"));
-	printf("%s => %d\n", "+123",	ft_atoi("+123"));
-	printf("%s => %d\n", "-123",	atoi("-123"));
-	printf("%s => %d\n", "-123",	ft_atoi("-123"));
-	printf("%s => %d\n", "2147483647",	atoi("2147483647"));
-	printf("%s => %d\n", "2147483647",	ft_atoi("2147483647"));
-	printf("%s => %d\n", "-2147483648",	atoi("-2147483648"));
-	printf("%s => %d\n", "-2147483648",	ft_atoi("-2147483648"));
-	printf("%s => %d\n", "2147483648",	atoi("2147483648"));
-	printf("%s => %d\n", "2147483648",	ft_atoi("2147483648"));
-	printf("%s => %d\n", "-2147483649",	atoi("-2147483649"));
-	printf("%s => %d\n", "-2147483649",	ft_atoi("-2147483649"));
-	printf("%s => %d\n", "3.14",	atoi("3.14"));
-	printf("%s => %d\n", "3.14",	ft_atoi("3.14"));
-	printf("%s => %d\n", "XYZ",		atoi("XYZ"));
-	printf("%s => %d\n", "XYZ",		ft_atoi("XYZ"));
-	printf("%s => %d\n", "5G",		atoi("5G"));
-	printf("%s => %d\n", "5G",		ft_atoi("5G"));
-	printf("%s => %d\n", "G5",		atoi("G5"));
-	printf("%s => %d\n", "G5",		ft_atoi("G5"));
-	printf("%s => %d\n", "1 2 3",	atoi("1 2 3"));
-	printf("%s => %d\n", "1 2 3",	ft_atoi("1 2 3"));
-	printf("%s => %d\n", "    1",	atoi("    1"));
-	printf("%s => %d\n", "    1",	ft_atoi("    1"));
-	printf("%s => %d\n", "1,2,3",	atoi("1,2,3"));
-	printf("%s => %d\n", "1,2,3",	ft_atoi("1,2,3"));
-	printf("%s => %d\n", "-+123",	atoi("-+123"));
-	printf("%s => %d\n", "-+123",	ft_atoi("-+123"));
-	printf("%s => %d\n", "+-123",	atoi("+-123"));
-	printf("%s => %d\n", "+-123",	ft_atoi("+-123"));
-	printf("%s => %d\n", "     +123",	atoi("     +123"));
-	printf("%s => %d\n", "     +123",	ft_atoi("     +123"));
-	printf("%s => %d\n", "     +  123",	atoi("     +  123"));
-	printf("%s => %d\n", "     +  123",	ft_atoi("     +  123"));
-	printf("%s => %d\n", "     -123",	atoi("     -123"));
-	printf("%s => %d\n", "     -123",	ft_atoi("     -123"));
-	printf("%s => %d\n", "     -  123",	atoi("     -  123"));
-	printf("%s => %d\n", "     -  123",	ft_atoi("     -  123"));
+// int main(void)
+// {
+// 	printf("%s => %d\n", "+123",	atoi("+123"));
+// 	printf("%s => %d\n", "+123",	ft_atoi("+123"));
+// 	printf("%s => %d\n", "-123",	atoi("-123"));
+// 	printf("%s => %d\n", "-123",	ft_atoi("-123"));
+// 	printf("%s => %d\n", "2147483647",	atoi("2147483647"));
+// 	printf("%s => %d\n", "2147483647",	ft_atoi("2147483647"));
+// 	printf("%s => %d\n", "-2147483648",	atoi("-2147483648"));
+// 	printf("%s => %d\n", "-2147483648",	ft_atoi("-2147483648"));
+// 	printf("%s => %d\n", "2147483648",	atoi("2147483648"));
+// 	printf("%s => %d\n", "2147483648",	ft_atoi("2147483648"));
+// 	printf("%s => %d\n", "-2147483649",	atoi("-2147483649"));
+// 	printf("%s => %d\n", "-2147483649",	ft_atoi("-2147483649"));
+// 	printf("%s => %d\n", "3.14",	atoi("3.14"));
+// 	printf("%s => %d\n", "3.14",	ft_atoi("3.14"));
+// 	printf("%s => %d\n", "XYZ",		atoi("XYZ"));
+// 	printf("%s => %d\n", "XYZ",		ft_atoi("XYZ"));
+// 	printf("%s => %d\n", "5G",		atoi("5G"));
+// 	printf("%s => %d\n", "5G",		ft_atoi("5G"));
+// 	printf("%s => %d\n", "G5",		atoi("G5"));
+// 	printf("%s => %d\n", "G5",		ft_atoi("G5"));
+// 	printf("%s => %d\n", "1 2 3",	atoi("1 2 3"));
+// 	printf("%s => %d\n", "1 2 3",	ft_atoi("1 2 3"));
+// 	printf("%s => %d\n", "    1",	atoi("    1"));
+// 	printf("%s => %d\n", "    1",	ft_atoi("    1"));
+// 	printf("%s => %d\n", "1,2,3",	atoi("1,2,3"));
+// 	printf("%s => %d\n", "1,2,3",	ft_atoi("1,2,3"));
+// 	printf("%s => %d\n", "-+123",	atoi("-+123"));
+// 	printf("%s => %d\n", "-+123",	ft_atoi("-+123"));
+// 	printf("%s => %d\n", "+-123",	atoi("+-123"));
+// 	printf("%s => %d\n", "+-123",	ft_atoi("+-123"));
+// 	printf("%s => %d\n", "     +123",	atoi("     +123"));
+// 	printf("%s => %d\n", "     +123",	ft_atoi("     +123"));
+// 	printf("%s => %d\n", "     +  123",	atoi("     +  123"));
+// 	printf("%s => %d\n", "     +  123",	ft_atoi("     +  123"));
+// 	printf("%s => %d\n", "     -123",	atoi("     -123"));
+// 	printf("%s => %d\n", "     -123",	ft_atoi("     -123"));
+// 	printf("%s => %d\n", "     -  123",	atoi("     -  123"));
+// 	printf("%s => %d\n", "     -  123",	ft_atoi("     -  123"));
 
-	return 0;
-}
-*/
+// 	return 0;
+// }

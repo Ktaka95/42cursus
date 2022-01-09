@@ -10,40 +10,39 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char	*str)
+#include <stddef.h>
+
+size_t	ft_strlen(const char	*s)
 {
 	int	i;
 
 	i = 0;
-	while (str[i])
+	while (s[i])
 		i++;
 	return (i);
 }
 
-/*
-#include <stdio.h>
-#include <string.h>
+// #include <stdio.h>
+// #include <string.h>
 
+// int	main(void)
+// {
+// 	int	len;
+// 	int	ft_len;
+// 	char	s[] = "";
 
-int	main(void)
-{
-	int	len;
-	int	ft_len;
-	char	s[] = "";
+// 	len = strlen(s);
+// 	ft_len = ft_strlen(s);
 
-	len = strlen(s);
-	ft_len = ft_strlen(s);
+// 	printf("Expected_Output\n");
+// 	printf("\"%s\" is %d 文字\n", s, len);
+// 	printf("\"%s\" is %lu 文字\n", "hello world", strlen("hello world"));
 
-	printf("Expected_Output\n");
-	printf("\"%s\" is %d characters\n", s, len);
-	printf("\"%s\" is %lu characters\n", "hello world", strlen("hello world"));
+// 	printf("----------------------\n");
 
-	printf("----------------------\n");
+// 	printf("Actual_Output\n");
+// 	printf("\"%s\" is %d 文字\n", s, ft_len);
+// 	printf("\"%s\" is %zu 文字\n", "hello world", ft_strlen("hello world"));
 
-	printf("Actual_Output\n");
-	printf("\"%s\" is %d characters\n", s, ft_len);
-	printf("\"%s\" is %d characters\n", "hello world", ft_strlen("hello world"));
-
-	return 0;
-}
-*/
+// 	return 0;
+// }
