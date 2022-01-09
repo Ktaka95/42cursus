@@ -20,23 +20,29 @@ int	main(void)
 	int	i;
 
 	int	s1[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	char	s2[] = "ABCDEFGHIJK";
+	char	s2[] = "ABCDEFGHI";
 	int	s3[] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
-	char	s4[] = "ABCDEFGHIJK";
+	char	s4[] = "ABCDEFGHI";
 
-	bzero(s1, 1);
-	bzero(s2, 1);
-	ft_bzero(s3, 1);
-	ft_bzero(s4, 1);
+	bzero(s1, 10);
+	bzero(s2, 10);
+	ft_bzero(s3, 10);
+	ft_bzero(s4, 10);
 
 	printf("Expected_Output\n");
 	for (i = 0; i < 10; i++)
 		printf("%d, ", s1[i]);
-	printf("%s\n", s2);
+	printf("\n");
+	for (i = 0; i < 10; i++)
+		printf("%c, ", s2[i]);
+	printf("\n");
 	printf("---------------\n");
 	printf("Actual_Output\n");
 	for (i = 0; i < 10; i++)
 		printf("%d, ", s3[i]);
-	printf("%s\n", s4);
+	printf("\n");
+	for (i = 0; i < 10; i++)
+		printf("%c, ", s4[i]);
+	printf("\n");
 	return (0);
 }
