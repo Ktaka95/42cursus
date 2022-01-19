@@ -30,21 +30,18 @@ void	*ft_calloc(size_t count, size_t size)
 
 // int main(void)
 // {
-//    char *ptr;
-//    int i;
+// 	char *ptr;
+// 	int i;
 
-//    /* 500個のintサイズのメモリを確保 */
-//    ptr = (char *)ft_calloc(500,sizeof(char));
-//    if(ptr == NULL)
-//       printf("メモリが確保できません\n");
-
-//    for (i=0; i<500; i++) {
-//       printf("%d: %c,\n", i, *ptr);
-//       ptr++;
-//    }
-
-//    /* メモリの開放 */
-//    free(ptr);
-
-//    return 0;
+// 	ptr = (char *)ft_calloc(500, sizeof(char));
+// 	i = 0;
+// 	if(ptr == NULL)
+// 		printf("メモリが確保できません\n");
+// 	while (i < 500)
+// 	{
+// 		printf("%d: [%c]\n", i, ptr[i]);
+// 		i++;
+// 	}
+// 	free(ptr);
+// 	return 0;
 // }
