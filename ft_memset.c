@@ -15,15 +15,14 @@
 void	*ft_memset(void *b, int c, size_t len)
 {
 	size_t			i;
-	unsigned char	*void_to_unsigned_b;
+	unsigned char	*unsigned_b;
 
 	i = 0;
-	void_to_unsigned_b = (unsigned char *)b;
+	unsigned_b = (unsigned char *)b;
 	while (i < len)
 	{
-		*void_to_unsigned_b = c;
+		unsigned_b[i] = c;
 		i++;
-		void_to_unsigned_b++;
 	}
 	return (b);
 }
@@ -34,7 +33,7 @@ void	*ft_memset(void *b, int c, size_t len)
 // int	main(void)
 // {
 // 	int	str1[] = {1, 2, 3, 4, 5};
-// 	char	str2[] = "ABCDEFG";
+// 	char	str2[] = "AB\0CD\0EF\0G";
 // 	int	*p;
 // 	char	*q;
 // 	int	i;
@@ -50,9 +49,9 @@ void	*ft_memset(void *b, int c, size_t len)
 // 	}
 // 	printf("\n");
 // 	i = 0;
-// 	while (i < 7)
+// 	while (i < 10)
 // 	{
-// 		printf("%c", str2[i]);
+// 		printf("[%c]", str2[i]);
 // 		i++;
 // 		q++;
 // 	}
@@ -70,17 +69,17 @@ void	*ft_memset(void *b, int c, size_t len)
 // 	printf("\n");
 // 	q = str2;
 // 	i = 0;
-// 	memset(q, 0, 3);
-// 	while (i < 7)
+// 	memset(q, 0, 5);
+// 	while (i < 10)
 // 	{
-// 		printf("%c", str2[i]);
+// 		printf("[%c]", str2[i]);
 // 		i++;
 // 		p++;
 // 	}
 // 	printf("\n");
 // 	printf("---------------\n");
 // 	int	str3[] = {1, 2, 3, 4, 5};
-// 	char	str4[] = "ABCDEFG";
+// 	char	str4[] = "AB\0CD\0EF\0G";
 // 	int	*r;
 // 	char	*s;
 // 	r = str3;
@@ -95,9 +94,9 @@ void	*ft_memset(void *b, int c, size_t len)
 // 	}
 // 	printf("\n");
 // 	i = 0;
-// 	while (i < 7)
+// 	while (i < 10)
 // 	{
-// 		printf("%c", str4[i]);
+// 		printf("[%c]", str4[i]);
 // 		i++;
 // 		s++;
 // 	}
@@ -115,10 +114,10 @@ void	*ft_memset(void *b, int c, size_t len)
 // 	printf("\n");
 // 	s = str4;
 // 	i = 0;
-// 	ft_memset(s, 0, 3);
-// 	while (i < 7)
+// 	ft_memset(s, 0, 5);
+// 	while (i < 10)
 // 	{
-// 		printf("%c", str4[i]);
+// 		printf("[%c]", str4[i]);
 // 		i++;
 // 		s++;
 // 	}
