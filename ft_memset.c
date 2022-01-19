@@ -15,13 +15,13 @@
 void	*ft_memset(void *b, int c, size_t len)
 {
 	size_t			i;
-	unsigned char	*unsigned_b;
+	unsigned char	*unsigned_char_b;
 
 	i = 0;
-	unsigned_b = (unsigned char *)b;
+	unsigned_char_b = (unsigned char *)b;
 	while (i < len)
 	{
-		unsigned_b[i] = c;
+		unsigned_char_b[i] = c;
 		i++;
 	}
 	return (b);
@@ -122,5 +122,47 @@ void	*ft_memset(void *b, int c, size_t len)
 // 		s++;
 // 	}
 // 	printf("\n");
+// 	return (0);
+// }
+
+// #include <stdio.h>
+// #include <string.h>
+// #include <limits.h>
+
+// int main(void)
+// {
+// 	size_t n = INT_MAX;
+// 	n += 5;
+// 	size_t	i;
+
+// 	i = 0;
+	// char *str = malloc(sizeof(char) * n);
+	// if (str == NULL)
+	// 	printf("Err\n");
+	// else
+	// {
+	// 	ft_memset(str, 'a', n);
+	// 	while (i < n)
+	// 	{
+	// 		printf("%c", str[i]);
+	// 		i++;
+	// 	}
+	// }
+	// free(str);
+
+// 	int *arry = malloc(sizeof(int) * n);
+
+// 	if (arry == NULL)
+// 		printf("Err\n");
+// 	else
+// 	{
+// 		memset(arry, 0, n);
+// 		while (i < n)
+// 		{
+// 			printf("%d", arry[i]);
+// 			i++;
+// 		}
+// 	}
+// 	free(arry);
 // 	return (0);
 // }
