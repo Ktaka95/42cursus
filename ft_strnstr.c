@@ -12,59 +12,45 @@
 
 #include "libft.h"
 
+int	ft_strcmp(const char	*s1, const char	*s2);
+
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	size_t 	i;
-	char	*const_to_char_haystack;
-	int		j;
-	int		str_same_checker;
+	size_t	i;
+	char	*h;
+	char	*n;
 
-	i = len;
-	const_to_char_haystack = (char *)haystack;
-	j = 0;
-	str_same_checker = 1;
+	i = 0;
+	h = (char *)haystack;
+	n = (char *)needle;
 	if (ft_strlen(needle) == 0)
-		return (haystack);
-	if (ft_strlen(haystack) >= len)
-	{
-		while (i < ft_strlen(haystack))
-		{
-			const_to_char_haystack[i] = '\0';
-			i++;
-		}
-	while (*haystack)
-	{
-
-	}
-	}
-
-
-
-
-
-
-
-	if (str_same_checker == 0)
-		return (const_to_char_haystack);
+		return (h);
+	else if (ft_strlen(needle) > ft_strlen(haystack) || ft_strlen(needle) > len)
+		return (NULL);
 	else
-		return (0);
+	{
+		while (ft_strlen(h) > ft_strlen(n) && i < len)
+		{
+			if (ft_strncmp(h, n, ft_strlen(n)) == 0)
+				return (h);
+			else
+				h++;
+				i++;
+		}
+		return (NULL);
+	}
 }
 
-// char	*ft_strstr(const char *haystack, const char *needle)
-// {
+#include <string.h>
+#include <stdio.h>
 
-// }
-
-// #include <string.h>
-// #include <stdio.h>
-
-// int main(void)
-// {
-// 	char str[] = "abcdefghijklmnabcdefghijklmn", *p;
-
-// 	p = ft_strnstr(str, "c", 10);
-// 	printf("%s\n", p);
-
-// 	return 0;
-// }
+int main(void)
+{
+	char str[] = "abcdefghijklmnabcdefghijklmn";
+	char *p = str;
+	char str2[] = "hijk";
+	p = ft_strnstr(str, str2, 9);
+	printf("%s\n", p);
+	return 0;
+}
 
