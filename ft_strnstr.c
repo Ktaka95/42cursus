@@ -34,23 +34,27 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 			if (ft_strncmp(h, n, ft_strlen(n)) == 0)
 				return (h);
 			else
+			{
 				h++;
 				i++;
+			}
 		}
 		return (NULL);
 	}
 }
 
-#include <string.h>
-#include <stdio.h>
+// #include <string.h>
+// #include <stdio.h>
 
-int main(void)
-{
-	char str[] = "abcdefghijklmnabcdefghijklmn";
-	char *p = str;
-	char str2[] = "hijk";
-	p = ft_strnstr(str, str2, 9);
-	printf("%s\n", p);
-	return 0;
-}
-
+// int main(void)
+// {
+// 	char str[] = "abc";
+// 	char *p = str;
+// 	char *q = str;
+// 	char str2[] = "";
+// 	p = ft_strnstr(str, str2, 1);
+// 	q = strnstr(str, str2, 1);
+// 	printf("ft_strnstr: %s\n", p);
+// 	printf("strnstr: %s\n", p);
+// 	return 0;
+// }

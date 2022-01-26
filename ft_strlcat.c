@@ -10,12 +10,34 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <stddef.h>
+#include "libft.h"
 
-// size_t	ft_strlcat(char* restrict dst, const char* restrict src, size_t dstsize)
-// {
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
+{
+	size_t	dstlen;
+	size_t	i;
+	size_t	ret;
 
-// }
+	dstlen = ft_strlen(dst);
+	i = 0;
+	ret = ft_strlen(dst) + ft_strlen(src);
+	if (dst != NULL && src != NULL && dstsize == 0)
+		return (ft_strlen(src));
+	else if (dst != NULL && src != NULL && dstsize <= dstlen + 1)
+		return (ret);
+	else if (dst != NULL && src != NULL && dstsize > dstlen + 1)
+	{
+		while ((dstlen < sizeof dst - 1
+				|| dstlen < dstsize - 1) && src[i] != '\0')
+		{
+			dst[dstlen] = src[i];
+			dstlen++;
+			i++;
+		}
+		dst[dstlen] = '\0';
+	}
+	return (ret);
+}
 
 // #include <stdio.h>
 // #include <string.h>
@@ -23,72 +45,18 @@
 // int	main(void)
 // {
 // 	int	i;
-// 	int	j;
-// 	char s1[4] = {'-', '-', '-', '-'};
-// 	j = strlcat(s1, "abc", 0);
+// 	size_t	j;
+// 	char s1[5] = "ABCDE";
+// 	char s2[] = "abcdefgh";
+// 	j = ft_strlcat(s1, s2, 5);
 
 // 	i = 0;
 // 	while (s1[i])
 // 	{
-// 		printf("%c", s1[i]);
+// 		printf("%d: [%c]\n", i, s1[i]);
 // 		i++;
 // 	}
-// 	printf ("\n");
-// 	printf ("%c", s1[3]);
-// 	printf ("\n");
-// 	printf ("%c", s1[0]);
-// 	printf ("\n");
-// 	printf ("%d\n", j);
-
-// 	// char s11[4] = {'-', '-', '-', '-'};
-// 	// j = ft_strlcat(s11, "abc", 0);
-
-// 	// i = 0;
-// 	// while (s11[i])
-// 	// {
-// 	// 	printf("%c", s11[i]);
-// 	// 	i++;
-// 	// }
-// 	// printf ("\n");
-// 	// printf ("%c", s11[2]);
-// 	// printf ("\n");
-// 	// printf ("%c", s11[0]);
-// 	// printf ("\n");
-// 	// printf ("%d\n", j);
-
-// 	printf ("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n");
-
-// 	char s0[4] = {'-', '-', '-', '-'};
-// 	j = strlcat(s0, "abcdefg", 0);
-
-// 	i = 0;
-// 	while (s0[i])
-// 	{
-// 		printf("%c", s0[i]);
-// 		i++;
-// 	}
-// 	printf ("\n");
-// 	printf ("%c", s0[3]);
-// 	printf ("\n");
-// 	printf ("%c", s0[0]);
-// 	printf ("\n");
-// 	printf ("%d\n", j);
-
-// 	// char s22[4] = {'-', '-', '-', '-'};
-// 	// j = ft_strlcat(s22, "abcdefg", 0);
-
-// 	// i = 0;
-// 	// while (s22[i])
-// 	// {
-// 	// 	printf("%c", s22[i]);
-// 	// 	i++;
-// 	// }
-// 	// printf ("\n");
-// 	// printf ("%c", s22[2]);
-// 	// printf ("\n");
-// 	// printf ("%c", s22[0]);
-// 	// printf ("\n");
-// 	// printf ("%d\n", j);
-
+// 	printf("%d: [%c]\n", i, s1[i]);
+// 	printf ("\n%zu\n", j);
 // 	return (0);
 // }
