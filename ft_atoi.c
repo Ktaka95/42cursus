@@ -12,20 +12,22 @@
 
 #include "libft.h"
 
+int				ft_isspace(int c);
+
 static int		plus_minus_judge(const char *str, int n);
 
 static int		int_changer(char chr);
 
 int	ft_atoi(const char *str)
 {
-	size_t			i;
-	int				plus_or_minus;
-	int				num;
+	size_t		i;
+	size_t		plus_or_minus;
+	size_t		num;
 
 	i = 0;
 	plus_or_minus = 1;
 	num = 0;
-	while (str[i] == ' ')
+	while (ft_isspace(str[i]) == 1)
 		i++;
 	plus_or_minus = plus_minus_judge(str, i);
 	while (i < ft_strlen(str))
@@ -41,7 +43,15 @@ int	ft_atoi(const char *str)
 			break ;
 		i++;
 	}
-	return (num * plus_or_minus);
+	return ((int)num * plus_or_minus);
+}
+
+int	ft_isspace(int c)
+{
+	if (c == '\t' || c == '\n' || c == '\v'
+		|| c == '\f' || c == '\r' || c == ' ')
+		return (1);
+	return (0);
 }
 
 int	int_changer(char chr)
@@ -73,6 +83,9 @@ int	plus_minus_judge(const char *str, int n)
 
 // int main(void)
 // {
+// 	char	n[40] = "99999999999999999999999999";
+// 	char	n2[40] = "-99999999999999999999999999";
+
 // 	printf("%s => %d\n", "+123",	atoi("+123"));
 // 	printf("%s => %d\n", "+123",	ft_atoi("+123"));
 // 	printf("%s => %d\n", "-123",	atoi("-123"));
@@ -95,8 +108,8 @@ int	plus_minus_judge(const char *str, int n)
 // 	printf("%s => %d\n", "G5",		ft_atoi("G5"));
 // 	printf("%s => %d\n", "1 2 3",	atoi("1 2 3"));
 // 	printf("%s => %d\n", "1 2 3",	ft_atoi("1 2 3"));
-// 	printf("%s => %d\n", "    1",	atoi("    1"));
-// 	printf("%s => %d\n", "    1",	ft_atoi("    1"));
+// 	printf("%s => %d\n", "\t\v\f\r\n \f-06050",	atoi("\t\v\f\r\n \f-06050"));
+// 	printf("%s => %d\n", "\t\v\f\r\n \f-06050",	ft_atoi("\t\v\f\r\n \f-06050"));
 // 	printf("%s => %d\n", "1,2,3",	atoi("1,2,3"));
 // 	printf("%s => %d\n", "1,2,3",	ft_atoi("1,2,3"));
 // 	printf("%s => %d\n", "-+123",	atoi("-+123"));
@@ -111,6 +124,10 @@ int	plus_minus_judge(const char *str, int n)
 // 	printf("%s => %d\n", "     -123",	ft_atoi("     -123"));
 // 	printf("%s => %d\n", "     -  123",	atoi("     -  123"));
 // 	printf("%s => %d\n", "     -  123",	ft_atoi("     -  123"));
+// 	printf("%s => %d\n", n,	atoi(n));
+// 	printf("%s => %d\n", n,	ft_atoi(n));
+// 	printf("%s => %d\n", n2,	atoi(n2));
+// 	printf("%s => %d\n", n2,	ft_atoi(n2));
 
 // 	return 0;
 // }

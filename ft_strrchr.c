@@ -14,22 +14,24 @@
 
 char	*ft_strrchr(const char *s, int c)
 {
-	char	*const_to_char_s;
+	char	*str;
 	int		i;
 
-	const_to_char_s = (char *)s;
+	str = (char *)s;
 	i = 0;
-	while (*const_to_char_s)
+	while (*str)
 	{
 		i++;
-		const_to_char_s++;
+		str++;
 	}
-	const_to_char_s--;
+	if (c == 0)
+		return (str);
+	str--;
 	while (i > 0)
 	{
-		if (*const_to_char_s == c)
-			return (const_to_char_s);
-		const_to_char_s--;
+		if (*str == c)
+			return (str);
+		str--;
 		i--;
 	}
 	return (0);
@@ -43,11 +45,7 @@ char	*ft_strrchr(const char *s, int c)
 // 	char str[] = "1abcdefghijklmn12abcdefghijklmn2", *p;
 // 	int c;
 
-// 	printf("検索文字を入力してください。");
-// 	c = getchar();
-
-// 	p = strchr(str, c);
-// 	printf("%s\n", p);
+// 	c = '\0';
 // 	p = ft_strrchr(str, c);
 // 	printf("%s\n", p);
 
