@@ -17,7 +17,7 @@ int	ft_isascii(int c)
 	int	ret;
 
 	ret = 0;
-	if (0 <= c && c <= 128)
+	if (0 <= c && c <= 127)
 		ret = 1;
 	return (ret);
 }
@@ -30,20 +30,20 @@ int	ft_isascii(int c)
 // 	int	i;
 // 	int	j;
 
-	// i = 0;
-	// while (i < 128)
-	// {
-	// 	j = isascii(i);
-	// 	printf("%d %d\n", i, j);
-	// 	i++;
-	// }
-	// i = 2147483647;
-	// j = isascii(i);
-	// printf("%d %d\n", i, j);
-	// i = -2147483648;
-	// j = isascii(i);
-	// printf("%d %d\n", i, j);
-	// printf("------------------------------\n");
+// 	i = 0;
+// 	while (i < 128)
+// 	{
+// 		j = isascii(i);
+// 		printf("%d %d\n", i, j);
+// 		i++;
+// 	}
+// 	i = 2147483647;
+// 	j = isascii(i);
+// 	printf("%d %d\n", i, j);
+// 	i = -2147483648;
+// 	j = isascii(i);
+// 	printf("%d %d\n", i, j);
+// 	printf("------------------------------\n");
 // 	i = 0;
 // 	while (i < 128)
 // 	{

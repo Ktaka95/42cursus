@@ -14,16 +14,25 @@
 
 char	*ft_strchr(const char *s, int c)
 {
-	char	*const_to_char_s;
+	char	*str;
 
-	const_to_char_s = (char *)s;
-	while (*const_to_char_s)
+	str = (char *)s;
+	if (c == 0)
 	{
-		if (*const_to_char_s == c)
-			return (const_to_char_s);
-		const_to_char_s++;
+		while (*str != '\0')
+			str++;
+		return (str);
 	}
-	return (0);
+	else
+	{
+		while (*str != '\0')
+		{
+			if (*str == c)
+				return (str);
+			str++;
+		}
+	}
+	return (NULL);
 }
 
 // #include <string.h>
@@ -34,9 +43,7 @@ char	*ft_strchr(const char *s, int c)
 // 	char str[] = "abcdefghijklmnopqrstuvwxyz", *p;
 // 	int c;
 
-// 	printf("検索文字を入力してください。");
-// 	c = getchar();
-
+// 	c = '\0';
 // 	p = ft_strchr(str, c);
 // 	printf("%s\n", p);
 
