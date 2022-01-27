@@ -1,34 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/27 23:45:00 by ktaka             #+#    #+#             */
-/*   Updated: 2022/01/27 23:45:11 by ktaka            ###   ########.fr       */
+/*   Created: 2022/01/28 00:44:44 by ktaka             #+#    #+#             */
+/*   Updated: 2022/01/28 00:44:47 by ktaka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putstr_fd(char *s, int fd)
+void	ft_putnbr_fd(int n, int fd)
 {
-	size_t	i;
+	long int	tmp;
+	char		c;
 
-	i = 0;
-	if (s == NULL)
-		return ;
-	while (s[i] != '\0')
+	tmp = n;
+	if (tmp < 0)
 	{
-		ft_putchar_fd(s[i], fd);
-		i++;
+		tmp = tmp * -1;
+		ft_putchar_fd('-', fd);
+	}
+	if (tmp == 0)
+		ft_putchar_fd('0', fd);
+	else if (tmp < 10)
+	{
+		c = tmp + '0';
+		ft_putchar_fd(c, fd);
+	}
+	else
+	{
+		ft_putnbr_fd(tmp / 10, fd);
+		ft_putnbr_fd(tmp % 10, fd);
 	}
 }
-
-// int main(void)
-// {
-// 	char	*s = NULL;
-// 	ft_putstr_fd(s, 1);
-// 	return (0);
-// }
