@@ -60,3 +60,58 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 // 	printf ("\n%zu\n", j);
 // 	return (0);
 // }
+
+// #include <stdio.h>
+// #include <string.h>
+
+// int main(void)
+// {
+// 	char	*src = "aaa";
+// 	char	dst1[10];
+// 	char	dst2[10];
+// 	int		ret1;
+// 	int		ret2;
+
+// 	printf("dst1, dst2にBをセット\n");
+// 	printf("%lu\n", sizeof(dst1));
+// 	memset(dst1, 'B', sizeof(dst1));
+// 	memset(dst2, 'B', sizeof(dst2));
+// 	printf("%s\n%s\n", dst1, dst2);
+
+// 	printf("%lu\n", strlen(dst1));
+// 	printf("%lu\n", strlen(dst2));
+// 	printf("%zu\n", ft_strlen(dst1));
+// 	printf("%zu\n", ft_strlen(dst2));
+
+// 	strlcat(dst1, src, 10);
+// 	printf("%s\n", dst1);
+// 	printf("%lu\n", strlen(dst1));
+// 	printf("%lu\n", ft_strlen(dst1));
+// 	strlcat(dst1, src, 10);
+// 	printf("%s\n", dst1);
+// 	printf("%lu\n", strlen(dst1));
+// 	printf("%lu\n", ft_strlen(dst1));
+// 	ret1 = strlcat(dst1, src, 10);
+// 	printf("%lu\n", strlen(dst1));
+// 	printf("%lu\n", ft_strlen(dst1));
+// 	printf("%lu\n", strlen(src));
+// 	printf("%lu\n", ft_strlen(src));
+
+// 	ft_strlcat(dst2, src, 10);
+// 	printf("%s\n", dst2);
+// 	printf("%lu\n", strlen(dst2));
+// 	printf("%lu\n", ft_strlen(dst2));
+// 	ft_strlcat(dst2, src, 10);
+// 	printf("%s\n", dst2);
+// 	printf("%lu\n", strlen(dst2));
+// 	printf("%lu\n", ft_strlen(dst2));
+// 	ret2 = ft_strlcat(dst2, src, 10);
+// 	printf("%lu\n", strlen(dst2));
+// 	printf("%lu\n", ft_strlen(dst2));
+// 	printf("%lu\n", strlen(src));
+// 	printf("%lu\n", ft_strlen(src));
+
+// 	printf("%d\n%d\n", ret1, ret2);
+
+// 	return (0);
+// }

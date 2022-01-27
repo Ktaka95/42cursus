@@ -16,24 +16,24 @@ int	ft_strncmp(const char	*s1, const char	*s2, size_t	n)
 {
 	size_t			i;
 	int				ret;
-	size_t		len_s1;
-	size_t		len_s2;
+	unsigned char	*str1;
+	unsigned char	*str2;
 
 	i = 0;
 	ret = 0;
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
+	str1 = (unsigned char *) s1;
+	str2 = (unsigned char *) s2;
 	if (n == 0)
 		return (ret);
 	else
 	{
-		while (i < n && (i <= len_s1 || i <= len_s2))
+		while (i < n && (i <= ft_strlen(s1) || i <= ft_strlen(s2)))
 		{
-			if (s1[i] == s2[i])
+			if (str1[i] == str2[i])
 				i++;
 			else
 			{
-				ret = s1[i] - s2[i];
+				ret = str1[i] - str2[i];
 				break ;
 			}
 		}
@@ -47,6 +47,8 @@ int	ft_strncmp(const char	*s1, const char	*s2, size_t	n)
 // int	main(void)
 // {
 // 	char	str[] = "ABC";
+// 	char	*s1 = "\200";
+// 	char	*s2 = "\0";
 
 // 	printf("Expected_Output:\n");
 // 	printf("ABC: ABD   = %d\n", strncmp(str, "ABC", 2));
@@ -56,6 +58,7 @@ int	ft_strncmp(const char	*s1, const char	*s2, size_t	n)
 // 	printf("ABC: AB    = %d\n", strncmp(str, "", 1));
 // 	printf("ABC: B     = %d\n", strncmp(str, "", 2));
 // 	printf("ABC: A     = %d\n", strncmp(str, "", 3));
+// 	printf("%s: %s     = %d\n", s1, s2, strncmp(s1, s2, 1));
 
 // 	printf("---------------\n");
 
@@ -67,6 +70,7 @@ int	ft_strncmp(const char	*s1, const char	*s2, size_t	n)
 // 	printf("ABC: AB    = %d\n", ft_strncmp(str, "", 1));
 // 	printf("ABC: B     = %d\n", ft_strncmp(str, "", 2));
 // 	printf("ABC: A     = %d\n", ft_strncmp(str, "", 3));
+// 	printf("%s: %s     = %d\n", s1, s2, ft_strncmp(s1, s2, 1));
 
 // 	return (0);
 // }

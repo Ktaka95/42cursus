@@ -1,53 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/06 15:59:03 by ktaka             #+#    #+#             */
-/*   Updated: 2022/01/06 15:59:04 by ktaka            ###   ########.fr       */
+/*   Created: 2022/01/27 23:45:00 by ktaka             #+#    #+#             */
+/*   Updated: 2022/01/27 23:45:11 by ktaka            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strrchr(const char *s, int c)
+void	ft_putstr_fd(char *s, int fd)
 {
-	char	*str;
 	size_t	i;
 
-	str = (char *)s;
 	i = 0;
-	while (*str != '\0')
+	while (s[i] != '\0')
 	{
+		ft_putchar_fd(s[i], fd);
 		i++;
-		str++;
 	}
-	if (c == 0)
-		return (str);
-	str--;
-	while (i > 0)
-	{
-		if (*str == c)
-			return (str);
-		str--;
-		i--;
-	}
-	return (NULL);
 }
 
-// #include <string.h>
-// #include <stdio.h>
-
-// int main(void)
-// {
-// 	char str[] = "1abcdefghijklmn12abcdefghijklmn2", *p;
-// 	int c;
-
-// 	c = '\0';
-// 	p = ft_strrchr(str, c);
-// 	printf("%s\n", p);
-
-// 	return 0;
-// }
+int main(void)
+{
+	char	*s = NULL;
+	ft_putstr_fd(s, 1);
+	return (0);
+}
