@@ -18,7 +18,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t	i;
 
 	i = 0;
-	if (s == NULL || len < 1 || start > ft_strlen(s))
+	if (s == NULL || len == 0 || start > ft_strlen(s))
 		return (ft_strdup(""));
 	else
 	{
@@ -42,16 +42,16 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 
 // int main(void)
 // {
-// 	char	*main_s = NULL;
+// 	char	*main_s = "abcdef";
 // 	char	*sub_s = NULL;
-// 	// int		i = 0;
-// 	sub_s = ft_substr(main_s, 0, 12);
-// 	// while (sub_s[i] != '\0')
-// 	// {
-// 	// 	printf("%d: [%c]\n", i, sub_s[i]);
-// 	// 	i++;
-// 	// }
-// 	// printf("%d: [%c]\n", i, sub_s[i]);
-// 	printf("%s\n", sub_s);
+// 	int		i = 0;
+// 	sub_s = ft_substr(main_s, 0, 5);
+// 	while (sub_s[i] != '\0')
+// 	{
+// 		printf("%d: [%c]\n", i, sub_s[i]);
+// 		i++;
+// 	}
+// 	printf("%d: [%c]\n", i, sub_s[i]);
+// 	// printf("%s\n", sub_s);
 // 	return(0);
 // }
