@@ -16,7 +16,9 @@ int main(void)
 	i = ft_atoi(s);                    //  0           //
 	printf("%d\n", i);
 	printf("\n整数オーバーフロー・アンダーフロー（int型の範囲外）\n");
-	s = "2147483648";
+	printf("%d\n", INT_MAX);
+	printf("%d\n", INT_MIN);
+	s = "6442450945";
 	printf("引数[%s]: atoi→ ", s);
 	i = atoi(s);           // -2147483648  //
 	printf("%d\n", i);
@@ -36,7 +38,8 @@ int main(void)
 
 
 	printf("\n整数オーバーフロー・アンダーフロー（unsigned int型の範囲外）\n");
-	s = "4294967296";
+	printf("%u\n", UINT_MAX);
+	s = "4294967295";
 	printf("引数[%s]: atoi→ ", s);
 	i = atoi(s);           //  0           //
 	printf("%d\n", i);
@@ -45,7 +48,7 @@ int main(void)
 	i = ft_atoi(s);           //  0           //
 	printf("%d\n", i);
 
-	s = "-4294967297";
+	s = "-6442450946";
 	printf("引数[%s]: atoi→ ", s);
 	i = atoi(s);           //  1           //
 	printf("%d\n", i);
@@ -56,7 +59,10 @@ int main(void)
 
 
 	printf("\n整数オーバーフロー・アンダーフロー（long型の範囲外）\n");
-	s = "9223372036854775808";
+	printf("%ld\n", LONG_MAX);
+	printf("%ld\n", LONG_MIN);
+
+	s = "9223372036854775809";
 	printf("引数[%s]: atoi→ ", s);
 	i = atoi(s);  // -1           //
 	printf("%d\n", i);
@@ -65,7 +71,7 @@ int main(void)
 	i = ft_atoi(s);  // -1           //
 	printf("%d\n", i);
 
-	s = "-9223372036854775809";
+	s = "-9223372036854775810";
 	printf("引数[%s]: atoi→ ", s);
 	i = atoi(s); //  0           //
 	printf("%d\n", i);
