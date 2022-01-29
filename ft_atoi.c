@@ -20,9 +20,9 @@ static int		int_changer(char chr);
 
 int	ft_atoi(const char *str)
 {
-	size_t		i;
-	size_t		plus_or_minus;
-	size_t		num;
+	size_t			i;
+	int				plus_or_minus;
+	unsigned int	num;
 
 	i = 0;
 	plus_or_minus = 1;
