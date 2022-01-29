@@ -57,17 +57,14 @@ char	*ft_itoa_if_argument_plus(int n)
 	if (ret == NULL)
 		return (NULL);
 	while (i < digit_cnt - 1)
-	{
-		ret++;
 		i++;
-	}
 	while (i > 0)
 	{
 		ret[i] = n % 10 + '0';
 		n /= 10;
 		i--;
 	}
-	ret[0] = n + '0';
+	ret[i] = n + '0';
 	return (ret);
 }
 
@@ -85,28 +82,49 @@ char		*ft_itoa_if_argument_minus(int n)
 		return (NULL);
 	num = n * -1;
 	while (i < digit_cnt)
-	{
-		ret++;
 		i++;
-	}
 	while (i > 0)
 	{
 		ret[i] = num % 10 + '0';
 		num /= 10;
 		i--;
 	}
-	ret[0] = '-';
+	ret[i] = '-';
 	return (ret);
 }
 
-// #include <stdio.h>
+#include <stdio.h>
+#include <limits.h>
 
-// int main(void)
-// {
-// 	int	n = -2147483648;
-// 	char	*c = ft_itoa(n);
-// 	int	d = digit_check(n);
+int main(void)
+{
+	// int	n = INT_MIN;
+	// char	*num = NULL;
+	// int		i = 0;
+	// while (n <= INT_MAX)
+	// {
+	// 	num = ft_itoa(n);
+	// 	i = atoi(num);
+	// 	if (i != n)
+	// 	{
+	// 		printf("STOP: %d\nitoa=%d\n", n, i);
+	// 		break;
+	// 	}
+	// 	else
+	// 		printf("%d\n", n);
+	// 	n++;
+	// }
+	int	n = -123;
+	// int	r = 0;
+	// while (n <= -10)
+	// {
+	// 	r = n % 10;
+	// 	n /= 10;
+	// 	printf("%d\n%d\n", r, n);
+	// }
 
-// 	printf("%d\n%s\n", d, c);
-// 	return (0);
-// }
+	char	*c = NULL;
+	c = ft_itoa(n);
+	printf("%s\n", c);
+	return (0);
+}
