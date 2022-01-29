@@ -37,7 +37,7 @@ size_t	digit_check(int n)
 		num *= -1;
 	if (0 <= num && num <= 9)
 		return (cnt);
-	while (num > 10)
+	while (num >= 10)
 	{
 		num /= 10;
 		cnt++;
@@ -98,30 +98,30 @@ char	*ft_itoa_if_argument_minus(int n)
 
 // int main(void)
 // {
-// 	// int	n = INT_MIN;
-// 	// char	*num = NULL;
-// 	// int		i = 0;
-// 	// while (n <= INT_MAX)
-// 	// {
-// 	// 	num = ft_itoa(n);
-// 	// 	i = atoi(num);
-// 	// 	if (i != n)
-// 	// 	{
-// 	// 		printf("STOP: %d\nitoa=%d\n", n, i);
-// 	// 		break;
-// 	// 	}
-// 	// 	else
-// 	// 		printf("%d\n", n);
-// 	// 	n++;
-// 	// }
-// 	int	n = -123;
-// 	// int	r = 0;
-// 	// while (n <= -10)
-// 	// {
-// 	// 	r = n % 10;
-// 	// 	n /= 10;
-// 	// 	printf("%d\n%d\n", r, n);
-// 	// }
+// // 	// int	n = INT_MIN;
+// // 	// char	*num = NULL;
+// // 	// int		i = 0;
+// // 	// while (n <= INT_MAX)
+// // 	// {
+// // 	// 	num = ft_itoa(n);
+// // 	// 	i = atoi(num);
+// // 	// 	if (i != n)
+// // 	// 	{
+// // 	// 		printf("STOP: %d\nitoa=%d\n", n, i);
+// // 	// 		break;
+// // 	// 	}
+// // 	// 	else
+// // 	// 		printf("%d\n", n);
+// // 	// 	n++;
+// // 	// }
+// 	int	n = 10;
+// // 	// int	r = 0;
+// // 	// while (n <= -10)
+// // 	// {
+// // 	// 	r = n % 10;
+// // 	// 	n /= 10;
+// // 	// 	printf("%d\n%d\n", r, n);
+// // 	// }
 
 // 	char	*c = NULL;
 // 	c = ft_itoa(n);
