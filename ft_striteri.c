@@ -10,38 +10,48 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "libft.h"
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	unsigned int	i;
+	size_t			original_s_len;
 
 	i = 0;
-	while (s[i] != '\0')
+	original_s_len = 0;
+	if (s == NULL || f == NULL)
+		return ;
+	else
 	{
-		f(i, s);
-		i++;
-		s++;
+		original_s_len = ft_strlen(s);
+		while (i < original_s_len)
+		{
+			f(i, s);
+			i++;
+			s++;
+		}
 	}
 }
 
 // #include <stdio.h>
 // #include <string.h>
 
-// void			f_striter(char *s) { *s = 'F'; }
+// void	f_striteri(unsigned i, char *s)
+// {
+// 	*s = i + '0';
+// }
 
 // int main(void)
 // {
 // 	char	b[] = "override this !";
 // 	char	b2[0xF0];
 // 	size_t	size = strlen(b);
-// 	int	i;
 
-// 	i = 0;
 // 	for (size_t i = 0; i < size; i++)
-// 		f_striter(b2 + i);
+// 		f_striteri(i, b2 + i);
 // 	b2[size] = 0;
-// 	ft_striteri(b, f_striter);
-// 	i = strcmp(b, b2);
-// 	printf("%s, %s, %d\n", b, b2, i);
+// 	ft_striteri(b, f_striteri);
+// 	printf("%s\n%s\n", b, b2);
+
 // }
