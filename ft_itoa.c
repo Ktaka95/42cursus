@@ -18,7 +18,7 @@ static char		*ft_itoa_if_argument_plus(int n);
 
 static char		*ft_itoa_if_argument_minus(int n);
 
-char *ft_itoa(int n)
+char	*ft_itoa(int n)
 {
 	if (n >= 0)
 		return (ft_itoa_if_argument_plus(n));
@@ -68,11 +68,11 @@ char	*ft_itoa_if_argument_plus(int n)
 	return (ret);
 }
 
-char		*ft_itoa_if_argument_minus(int n)
+char	*ft_itoa_if_argument_minus(int n)
 {
-	size_t		digit_cnt;
-	size_t		i;
-	char		*ret;
+	size_t			digit_cnt;
+	size_t			i;
+	char			*ret;
 	unsigned int	num;
 
 	digit_cnt = digit_check(n);
@@ -93,38 +93,38 @@ char		*ft_itoa_if_argument_minus(int n)
 	return (ret);
 }
 
-#include <stdio.h>
-#include <limits.h>
+// #include <stdio.h>
+// #include <limits.h>
 
-int main(void)
-{
-	// int	n = INT_MIN;
-	// char	*num = NULL;
-	// int		i = 0;
-	// while (n <= INT_MAX)
-	// {
-	// 	num = ft_itoa(n);
-	// 	i = atoi(num);
-	// 	if (i != n)
-	// 	{
-	// 		printf("STOP: %d\nitoa=%d\n", n, i);
-	// 		break;
-	// 	}
-	// 	else
-	// 		printf("%d\n", n);
-	// 	n++;
-	// }
-	int	n = -123;
-	// int	r = 0;
-	// while (n <= -10)
-	// {
-	// 	r = n % 10;
-	// 	n /= 10;
-	// 	printf("%d\n%d\n", r, n);
-	// }
+// int main(void)
+// {
+// 	// int	n = INT_MIN;
+// 	// char	*num = NULL;
+// 	// int		i = 0;
+// 	// while (n <= INT_MAX)
+// 	// {
+// 	// 	num = ft_itoa(n);
+// 	// 	i = atoi(num);
+// 	// 	if (i != n)
+// 	// 	{
+// 	// 		printf("STOP: %d\nitoa=%d\n", n, i);
+// 	// 		break;
+// 	// 	}
+// 	// 	else
+// 	// 		printf("%d\n", n);
+// 	// 	n++;
+// 	// }
+// 	int	n = -123;
+// 	// int	r = 0;
+// 	// while (n <= -10)
+// 	// {
+// 	// 	r = n % 10;
+// 	// 	n /= 10;
+// 	// 	printf("%d\n%d\n", r, n);
+// 	// }
 
-	char	*c = NULL;
-	c = ft_itoa(n);
-	printf("%s\n", c);
-	return (0);
-}
+// 	char	*c = NULL;
+// 	c = ft_itoa(n);
+// 	printf("%s\n", c);
+// 	return (0);
+// }
