@@ -12,72 +12,21 @@
 
 #include "libft.h"
 
-static size_t	digit_check(int	n);
+static size_t	digit_check(int n);
+
+static char		*ft_itoa_if_argument_plus(int n);
+
+static char		*ft_itoa_if_argument_minus(int n);
 
 char *ft_itoa(int n)
 {
-	size_t		digit_cnt;
-	// int			plus_or_minus;
-	long int	num;
-	char		*ret;
-	size_t		i;
-
-	digit_cnt = 0;
-	// plus_or_minus = 0;
-	num = n;
-	i = 0;
-	// if (num < 0)
-	// {
-	// 	num *= -1;
-	// 	plus_or_minus += 1;
-	// }
-	digit_cnt = digit_check(num);
-	ret = ft_calloc(digit_cnt + 1, sizeof(char));
-	// if (plus_or_minus == 1)
-	// 	ret[0] = '-';
-	while (i < digit_cnt - 1)
-	{
-		ret++;
-		i++;
-	}
-	while (i > 0)
-	{
-		ret[i] = num % 10 + '0';
-		num /= 10;
-		i--;
-	}
-	ret[0] = num + '0';
-	return (ret);
+	if (n >= 0)
+		return (ft_itoa_if_argument_plus(n));
+	else
+		return (ft_itoa_if_argument_minus(n));
 }
-	// long int	tmp;
-	// char		*ret;
 
-	// tmp = n;
-	// ret = ft_calloc( ,sizeof(int));
-	// if (ret == NULL)
-	// 	return (NULL);
-	// else
-
-	// if (tmp < 0)
-	// {
-	// 	tmp = tmp * -1;
-	// 	('-', fd);
-	// }
-	// if (tmp == 0)
-	// 	ft_putchar_fd('0', fd);
-	// else if (tmp < 10)
-	// {
-	// 	c = tmp + '0';
-	// 	ft_putchar_fd(c, fd);
-	// }
-	// else
-	// {
-	// 	ft_putnbr_fd(tmp / 10, fd);
-	// 	ft_putnbr_fd(tmp % 10, fd);
-	// }
-// }
-
-size_t	digit_check(int	n)
+size_t	digit_check(int n)
 {
 	size_t		cnt;
 	long int	num;
@@ -96,13 +45,68 @@ size_t	digit_check(int	n)
 	return (cnt);
 }
 
-#include <stdio.h>
-
-int main(void)
+char	*ft_itoa_if_argument_plus(int n)
 {
-	int	n = 2147483647;
-	char	*c = ft_itoa(n);
+	size_t		digit_cnt;
+	size_t		i;
+	char		*ret;
 
-	printf("%s\n", c);
-	return (0);
+	digit_cnt = digit_check(n);
+	i = 0;
+	ret = ft_calloc(digit_cnt + 1, sizeof(char));
+	if (ret == NULL)
+		return (NULL);
+	while (i < digit_cnt - 1)
+	{
+		ret++;
+		i++;
+	}
+	while (i > 0)
+	{
+		ret[i] = n % 10 + '0';
+		n /= 10;
+		i--;
+	}
+	ret[0] = n + '0';
+	return (ret);
 }
+
+char		*ft_itoa_if_argument_minus(int n)
+{
+	size_t		digit_cnt;
+	size_t		i;
+	char		*ret;
+	unsigned int	num;
+
+	digit_cnt = digit_check(n);
+	i = 0;
+	ret = ft_calloc(digit_cnt + 2, sizeof(char));
+	if (ret == NULL)
+		return (NULL);
+	num = n * -1;
+	while (i < digit_cnt)
+	{
+		ret++;
+		i++;
+	}
+	while (i > 0)
+	{
+		ret[i] = num % 10 + '0';
+		num /= 10;
+		i--;
+	}
+	ret[0] = '-';
+	return (ret);
+}
+
+// #include <stdio.h>
+
+// int main(void)
+// {
+// 	int	n = -2147483648;
+// 	char	*c = ft_itoa(n);
+// 	int	d = digit_check(n);
+
+// 	printf("%d\n%s\n", d, c);
+// 	return (0);
+// }
