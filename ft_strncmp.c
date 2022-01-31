@@ -46,31 +46,47 @@ int	ft_strncmp(const char	*s1, const char	*s2, size_t	n)
 
 // int	main(void)
 // {
-// 	char	str[] = "ABC";
-// 	char	*s1 = "\200";
-// 	char	*s2 = "\0";
+// 	// char	str[] = "ABC";
+// 	// char	*s1 = "\200";
+// 	// char	*s2 = "\0";
 
 // 	printf("Expected_Output:\n");
-// 	printf("ABC: ABD   = %d\n", strncmp(str, "ABC", 2));
-// 	printf("ABC: ABC   = %d\n", strncmp(str, "ABC", 3));
-// 	printf("ABC: AAA   = %d\n", strncmp(str, "ABC", 4));
-// 	printf("ABC: ABCD  = %d\n", strncmp(str, "", 0));
-// 	printf("ABC: AB    = %d\n", strncmp(str, "", 1));
-// 	printf("ABC: B     = %d\n", strncmp(str, "", 2));
-// 	printf("ABC: A     = %d\n", strncmp(str, "", 3));
-// 	printf("%s: %s     = %d\n", s1, s2, strncmp(s1, s2, 1));
-
+// 	// printf("ABC: ABD   = %d\n", strncmp(str, "ABC", 2));
+// 	// printf("ABC: ABC   = %d\n", strncmp(str, "ABC", 3));
+// 	// printf("ABC: AAA   = %d\n", strncmp(str, "ABC", 4));
+// 	// printf("ABC: ABCD  = %d\n", strncmp(str, "", 0));
+// 	// printf("ABC: AB    = %d\n", strncmp(str, "", 1));
+// 	// printf("ABC: B     = %d\n", strncmp(str, "", 2));
+// 	// printf("ABC: A     = %d\n", strncmp(str, "", 3));
+// 	// printf("%s: %s     = %d\n", s1, s2, strncmp(s1, s2, 1));
+// 	int	i = 2;
+// 	// char	vacant[] = "";
+// 	printf("%d文字比較: %d\n", i, strncmp("\0ABCDE", "", i));
+// 	// while (i > 0)
+// 	// {
+// 	// 	if (vacant[i] == '\0')
+// 	// 		printf("%d: null\n", i);
+// 	// 	i--;
+// 	// }
+// 	// while (i < 3)
+// 	// {
+// 	// 	printf("%d: %c", i, vacant[i]);
+// 	// 	if (vacant[i] == '\0')
+// 	// 		printf("null\n");
+// 	// 	i++;
+// 	// }
 // 	printf("---------------\n");
 
 // 	printf("Actual_Output:\n");
-// 	printf("ABC: ABD   = %d\n", ft_strncmp(str, "ABC", 2));
-// 	printf("ABC: ABC   = %d\n", ft_strncmp(str, "ABC", 3));
-// 	printf("ABC: AAA   = %d\n", ft_strncmp(str, "ABC", 4));
-// 	printf("ABC: ABCD  = %d\n", ft_strncmp(str, "", 0));
-// 	printf("ABC: AB    = %d\n", ft_strncmp(str, "", 1));
-// 	printf("ABC: B     = %d\n", ft_strncmp(str, "", 2));
-// 	printf("ABC: A     = %d\n", ft_strncmp(str, "", 3));
-// 	printf("%s: %s     = %d\n", s1, s2, ft_strncmp(s1, s2, 1));
+// 	// printf("ABC: ABD   = %d\n", ft_strncmp(str, "ABC", 2));
+// 	// printf("ABC: ABC   = %d\n", ft_strncmp(str, "ABC", 3));
+// 	// printf("ABC: AAA   = %d\n", ft_strncmp(str, "ABC", 4));
+// 	// printf("ABC: ABCD  = %d\n", ft_strncmp(str, "", 0));
+// 	// printf("ABC: AB    = %d\n", ft_strncmp(str, "", 1));
+// 	// printf("ABC: B     = %d\n", ft_strncmp(str, "", 2));
+// 	// printf("ABC: A     = %d\n", ft_strncmp(str, "", 3));
+// 	// printf("%s: %s     = %d\n", s1, s2, ft_strncmp(s1, s2, 1));
+// 	// printf("%d\n", ft_strncmp("", "", 3));
 
 // 	return (0);
 // }
