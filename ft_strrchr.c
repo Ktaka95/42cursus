@@ -18,36 +18,40 @@ char	*ft_strrchr(const char *s, int c)
 	size_t	i;
 
 	str = (char *)s;
-	i = 0;
-	while (*str != '\0')
-	{
-		i++;
-		str++;
-	}
-	if (c == 0)
+	i = ft_strlen(str);
+	if (i == 0 && c != '\0')
+		return (NULL);
+	else if (i == 0 && c == '\0')
 		return (str);
-	str--;
-	while (i > 0)
+	else
 	{
-		if (*str == c)
-			return (str);
-		str--;
-		i--;
+		while (i > 0 && str[i] != c)
+			i--;
+		if (str[i] == c)
+			return (str + i);
+		return (NULL);
 	}
-	return (NULL);
 }
 
-// #include <string.h>
-// #include <stdio.h>
+#include <string.h>
+#include <stdio.h>
 
-// int main(void)
-// {
-// 	char str[] = "1abcdefghijklmn12abcdefghijklmn2", *p;
-// 	int c;
+int main(void)
+{
+	// char str[] = "", *p;
+	// int c;
 
-// 	c = '\0';
-// 	p = ft_strrchr(str, c);
-// 	printf("%s\n", p);
+	// c = '\0';
+	// p = ft_strrchr(str, c);
+	// printf("%s\n", p);
 
-// 	return 0;
-// }
+	char	*s = "";
+	char	*ret = NULL;
+
+	printf("%p, %p\n", s, ret);
+	ret = ft_strrchr(s, 'A');
+	printf("%s, %s\n", s, ret);
+	printf("%p, %p\n", s, ret);
+
+	return 0;
+}
