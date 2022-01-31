@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 static char	*ft_top_trim(char const *s1, char const *set);
 
@@ -92,56 +93,58 @@ char	*ft_end_trim(char const *s1, char const *set)
 	return (ret);
 }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int main(void)
-{
-// 	// char	s1[] = "ABCDECFCFGF";
-// 	// char	*s2 = NULL;
-// 	// size_t	i;
-// 	// size_t	i = 0;
-// 	// size_t	j = 0;
-// 	// size_t	k = 0;
-// 	// size_t	l = 0;
+// int main(void)
+// {
+// // 	// char	s1[] = "ABCDECFCFGF";
+// // 	// char	*s2 = NULL;
+// // 	// size_t	i;
+// // 	// size_t	i = 0;
+// // 	// size_t	j = 0;
+// // 	// size_t	k = 0;
+// // 	// size_t	l = 0;
 
-// 	// s2 = ft_strtrim(s1, "CF");
-// 	// i = 0;
-// 	// while (s2[i] != '\0')
-// 	// {
-// 	// 	if (s2[i] != '\0')
-// 	// 		printf("%zu: [%c]\n", i, s2[i]);
-// 	// 	else if (s2[i] == '\0')
-// 	// 		printf("%zu: ['\\0']\n", i);
-// 	// 	i++;
-// 	// }
-// 	// if (s2[i] != '\0')
-// 	// 	printf("%zu: [%c]\n", i, s2[i]);
-// 	// else if (s2[i] == '\0')
-// 	// 	printf("%zu: ['\\0']\n", i);
-// 	// char	*s1 = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ";
-// 	// char	*s2 = "Hello \t  Please\n Trim me !";
-	char	*s1 = NULL;
-	char	*s2 = "ABCDE";
-	char	*ret;
+// // 	// s2 = ft_strtrim(s1, "CF");
+// // 	// i = 0;
+// // 	// while (s2[i] != '\0')
+// // 	// {
+// // 	// 	if (s2[i] != '\0')
+// // 	// 		printf("%zu: [%c]\n", i, s2[i]);
+// // 	// 	else if (s2[i] == '\0')
+// // 	// 		printf("%zu: ['\\0']\n", i);
+// // 	// 	i++;
+// // 	// }
+// // 	// if (s2[i] != '\0')
+// // 	// 	printf("%zu: [%c]\n", i, s2[i]);
+// // 	// else if (s2[i] == '\0')
+// // 	// 	printf("%zu: ['\\0']\n", i);
+// // 	// char	*s1 = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ";
+// // 	// char	*s2 = "Hello \t  Please\n Trim me !";
+// 	char	*s1 = "ABC";
+// 	char	*s2 = NULL;
+// 	char	*ret;
 
-	ret = ft_top_trim(s1, s2);
-	if (ret == NULL)
-		printf("null\n");
-// 	printf("-----------------\n");
-// 	// int	ret = 0;
-// 	// ret = ft_strncmp(ret1, s2, 100);
-// 	// printf("%d\n", ret);
-// 	// i = ft_top_trim(s1, " \n\t");
-// 	// j = ft_top_trim(s2, " \n\t");
-// 	// while (*s1 != '\0')
-// 	// 	s1++;
-// 	// s1--;
-// 	// while (*s2 != '\0')
-// 	// 	s2++;
-// 	// s2--;
-// 	// k = ft_end_trim(s1, " \n\t");
-// 	// l = ft_end_trim(s2, " \n\t");
-// 	// printf("%zu, %zu, %zu, %zu\n", i, j, k, l);
+// 	ret = ft_strtrim(s1, s2);
+// 	if (ret == NULL)
+// 		printf("null\n");
+// 	else
+// 		printf("%s\n", ret);
+// // 	printf("-----------------\n");
+// // 	// int	ret = 0;
+// // 	// ret = ft_strncmp(ret1, s2, 100);
+// // 	// printf("%d\n", ret);
+// // 	// i = ft_top_trim(s1, " \n\t");
+// // 	// j = ft_top_trim(s2, " \n\t");
+// // 	// while (*s1 != '\0')
+// // 	// 	s1++;
+// // 	// s1--;
+// // 	// while (*s2 != '\0')
+// // 	// 	s2++;
+// // 	// s2--;
+// // 	// k = ft_end_trim(s1, " \n\t");
+// // 	// l = ft_end_trim(s2, " \n\t");
+// // 	// printf("%zu, %zu, %zu, %zu\n", i, j, k, l);
 
-	return (0);
-}
+// 	return (0);
+// }
