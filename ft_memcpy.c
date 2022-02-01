@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -11,23 +11,23 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 void	*ft_memcpy(void *dst, const void *src, size_t n)
 {
-	unsigned char	*unsigned_char_dst;
-	unsigned char	*unsigned_char_src;
+	unsigned char	*d;
+	unsigned char	*s;
 
-	unsigned_char_dst = (unsigned char *)dst;
-	unsigned_char_src = (unsigned char *)src;
 	if (dst == NULL && src == NULL)
 		return (NULL);
-	else
+	else if (n == 0)
+		return (dst);
+	d = (unsigned char *)dst;
+	s = (unsigned char *)src;
+	while (n > 0)
 	{
-		while (n > 0)
-		{
-			unsigned_char_dst[n - 1] = unsigned_char_src[n - 1];
-			n--;
-		}
+		d[n - 1] = s[n - 1];
+		n--;
 	}
 	return (dst);
 }
@@ -36,88 +36,140 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 // #include <stdlib.h>
 // #include <string.h>
 
-// int main(void) {
-// 	char buffer11[10];	/* 重複しない領域用1 */
-// 	char buffer22[10];	/* 重複しない領域用2 */
-// 	char buffer33[20];	/* 重複する領域用 */
-// 	char buffer1[10];	/* 重複しない領域用1 */
-// 	char buffer2[10];	/* 重複しない領域用2 */
-// 	char buffer3[20];	/* 重複する領域用 */
+// int main(void)
+// {
+// 	int i = 0;
+// 	int j = 0;
+// 	int k = 0;
+// 	char *dst_null = NULL;
+// 	char *src_null = NULL;
+// 	char *dst_null2 = NULL;
+// 	char *dst_null3 = NULL;
+// 	char dst_size3[6] = "abc\0d";
+// 	char dst_size4[10] = "abc\0d\0efg";
+// 	// char *dst_null4 = NULL;
+// 	char src_abcde[] = "AB\0CDE\0";
+// 	char dst_abcde[] = "abcdefgh";
+// 	char dst_abcde2[] = "abcdefgh";
+// 	// char dst_abcde3[] = "abcdefgh";
+// 	// char dst_abcde4[] = "abcdefgh";
+// 	// char dst_abcde6[] = "abc\0def\0gh";
+// 	// char dst_abcde7[] = "abcdefgh";
+// 	// char src_abcde2[] = "AB\0CD\0E";
+// 	// char dst_abcde5[] = "abcde";
 
-// 	/* 重複しない領域へのcopy */
-// 	char * restrict s11 = buffer11;
-// 	char * restrict s22 = buffer22;
-// 	char * restrict s1 = buffer1;
-// 	char * restrict s2 = buffer2;
-// 	memset(s22, '2', sizeof(buffer22));
-// 	memset(s2, '2', sizeof(buffer2));
+// 	printf("コピー前のdst文字列、アドレス→%s, %p\n", dst_null, dst_null);
+// 	ft_memcpy(dst_null, src_null, 0);
+// 	printf("dstnullにsrcnullを0バイトコピー\nコピー後の文字列→%s\nコピー後のアドレス→%p\n\n",dst_null, dst_null);
 
-// 	/* s22 -> s11へ5バイト分コピー */
-// 	memset(s11, '1', sizeof(buffer11));
-// 	memset(s1, '1', sizeof(buffer1));
-// 	fprintf(stdout, "before memcpy s11[%.10s]\n", s11);
-// 	fprintf(stdout, "before memcpy s22[%.10s]\n", s22);
-// 	fprintf(stdout, ">after memcpy s11[%.10s]\n", (char*)memcpy(s11, s22, 5));
-// 	fprintf(stdout, "before ft_memcpy s1[%.10s]\n", s1);
-// 	fprintf(stdout, "before ft_memcpy s2[%.10s]\n", s2);
-// 	fprintf(stdout, ">after ft_memcpy s1[%.10s]\n", (char*)ft_memcpy(s1, s2, 5));
+// 	printf("コピー前のdst文字列、アドレス→%s, %p\n", dst_null2, dst_null2);
+// 	ft_memcpy(dst_null2, src_null, 5);
+// 	printf("dstnullにsrcnullを5バイトコピー\nコピー後の文字列→%s\nコピー後のアドレス→%p\n\n",dst_null2, dst_null2);
 
-// 	memset(s11, '1', sizeof(buffer11));
-// 	memset(s1, '1', sizeof(buffer1));
+// 	printf("コピー前のdst文字列、アドレス→%s, %p\n", dst_null3, dst_null3);
+// 	ft_memcpy(dst_null3, src_abcde, 0);
+// 	printf("dstnullにABCDEを0バイトコピー\nコピー後の文字列→%s\nコピー後のアドレス→%p\n\n",dst_null3, dst_null3);
 
-// 	/* 重複する領域へのcopy その１ */
-// 	s11 = &buffer33[0];
-// 	s22 = &buffer33[1];
-// 	s1 = &buffer3[0];
-// 	s2 = &buffer3[1];
+// 	printf("コピー前のdst文字列、アドレス→%s, %p\n", dst_abcde, dst_abcde);
+// 	ft_memcpy(dst_abcde, src_null, 0);
+// 	printf("abcdeにsrcnullを0バイトコピー\nコピー後の文字列→%s\nコピー後のアドレス→%p\n\n",dst_abcde, dst_abcde);
 
-// 	fprintf(stdout, "\n\n");
+// 	printf("コピー前のdst文字列、アドレス→%s, %p\n", dst_abcde2, dst_abcde2);
+// 	ft_memcpy(dst_abcde2, src_abcde, 3);
+// 	printf("abcdeにABCDEを3バイトコピー\nコピー後の文字列→%s\nコピー後のアドレス→%p\n\n",dst_abcde2, dst_abcde2);
 
-// 	/* s22 -> s11へ15バイト分コピー */
-// 	memset(&buffer33[0], '1', 10);
-// 	memset(&buffer33[10], '2', 10);
-// 	memset(&buffer3[0], '1', 10);
-// 	memset(&buffer3[10], '2', 10);
-// 	fprintf(stdout, "before memcpy buffer33[%.20s]\n", buffer33);
-// 	fprintf(stdout, "before memcpy s11[%.15s]\n", s11);
-// 	fprintf(stdout, "before memcpy s22[%.15s]\n", s22);
-// 	fprintf(stdout, ">after memcpy s11[%.15s]\n", (char*)memcpy(s11, s22, 15));
-// 	fprintf(stdout, "before ft_memcpy buffer3[%.20s]\n", buffer3);
-// 	fprintf(stdout, "before ft_memcpy s1[%.15s]\n", s1);
-// 	fprintf(stdout, "before ft_memcpy s2[%.15s]\n", s2);
-// 	fprintf(stdout, ">after ft_memcpy s1[%.15s]\n", (char*)ft_memcpy(s1, s2, 15));
+// 	printf("dst_sizeのサイズ→%lu\n", sizeof(dst_size3));
+// 	printf("コピー前のdst文字列、アドレス→%s, %p\n", dst_size3, dst_size3);
+// 	printf("%sに%sを6バイトコピー\n", dst_size3, src_abcde);
+// 	ft_memcpy(dst_size3, src_abcde, 6);
+// 	printf("コピー後の文字列→%s\nコピー後のアドレス→%p\n\n", dst_size3, dst_size3);
+// 	while (i < 6)
+// 	{
+// 		if (dst_size3[i] == '\0')
+// 			printf("%d: ['\\0']\n", i);
+// 		else
+// 			printf("%d: [%c]\n", i, dst_size3[i]);
+// 		i++;
+// 	}
 
-// 	memset(&buffer33[0], '1', 10);
-// 	memset(&buffer33[10], '2', 10);
-// 	memset(&buffer3[0], '1', 10);
-// 	memset(&buffer3[10], '2', 10);
+// 	printf("\ndst_sizeのサイズ→%lu\n", sizeof(dst_size4));
+// 	printf("コピー前のdst文字列、アドレス→%s, %p\n", dst_size4, dst_size4);
+// 	printf("%sに%sを10バイトコピー\n", dst_size4, src_abcde);
+// 	ft_memcpy(dst_size4, src_abcde, 10);
+// 	printf("コピー後の文字列→%s\nコピー後のアドレス→%p\n\n", dst_size4, dst_size4);
+// 	while (j < 10)
+// 	{
+// 		if (dst_size4[j] == '\0')
+// 			printf("%d: ['\\0']\n", j);
+// 		else
+// 			printf("%d: [%c]\n", j, dst_size4[j]);
+// 		j++;
+// 	}
 
-// 	/* 重複する領域へのcopy その２ */
-// 	s11 = &buffer33[1];
-// 	s22 = &buffer33[0];
-// 	s1 = &buffer3[1];
-// 	s2 = &buffer3[0];
-
-// 	fprintf(stdout, "\n\n");
-
-// 	/* s22 -> s11へ15バイト分コピー */
-// 	memset(&buffer33[0], '1', 10);
-// 	memset(&buffer33[10], '2', 10);
-// 	memset(&buffer3[0], '1', 10);
-// 	memset(&buffer3[10], '2', 10);
-// 	fprintf(stdout, "before memcpy buffer33[%.20s]\n", buffer33);
-// 	fprintf(stdout, "before memcpy s11[%.15s]\n", s11);
-// 	fprintf(stdout, "before memcpy s22[%.15s]\n", s22);
-// 	fprintf(stdout, ">after memcpy s11[%.15s]\n", (char*)memcpy(s11, s22, 15));
-// 	fprintf(stdout, "before ft_memcpy buffer3[%.20s]\n", buffer3);
-// 	fprintf(stdout, "before ft_memcpy s1[%.15s]\n", s1);
-// 	fprintf(stdout, "before ft_memcpy s2[%.15s]\n", s2);
-// 	fprintf(stdout, ">after ft_memcpy s1[%.15s]\n", (char*)ft_memcpy(s1, s2, 15));
-
-// 	memset(&buffer33[0], '1', 10);
-// 	memset(&buffer33[10], '2', 10);
-// 	memset(&buffer3[0], '1', 10);
-// 	memset(&buffer3[10], '2', 10);
-
-// 	return(0);
+// 	printf("\n------------\n");
+// 	char src[] = "test basic";
+// 	char dst[22];
+// 	while (k < 22)
+// 	{
+// 		if (dst[k] == '\0')
+// 			printf("%d: ['\\0']\n", k);
+// 		else
+// 			printf("%d: [%c]\n", k, dst[k]);
+// 		k++;
+// 	}
+// 	k = 0;
+// 	while (k < 22)
+// 	{
+// 		if (src[k] == '\0')
+// 			printf("%d: ['\\0']\n", k);
+// 		else
+// 			printf("%d: [%c]\n", k, src[k]);
+// 		k++;
+// 	}
+// 	ft_memcpy(dst, src, 22);
+// 	k = 0;
+// 	while (k < 22)
+// 	{
+// 		if (dst[k] == '\0')
+// 			printf("%d: ['\\0']\n", k);
+// 		else
+// 			printf("%d: [%c]\n", k, dst[k]);
+// 		k++;
+// 	}
+// 	printf("done\n");
+// 	// memcpy(dst_null2,src_null,5);
+// 	// printf("dstnullにsrcnullを5バイトコピー\nコピー後の文字列→%s\n\n",dst_null2);
+// 	// memcpy(dst_null3,src_abcde,0);
+// 	// printf("dstnullにABCDEを0バイトコピー\nコピー後の文字列→%s\n\n",dst_null3);
+// 	// memcpy(dst_abcde,src_null,0);
+// 	// printf("abcdeにNULLを0バイトコピー\nコピー後の文字列→%s\n\n",dst_abcde);
+// 	// memcpy(dst_abcde3,src_abcde,0);
+// 	// printf("abcdeにABCDEを0バイトコピー\nコピー後の文字列→%s\n\n",dst_abcde3);
+// 	// memcpy(dst_abcde4,src_abcde,5);
+// 	// printf("abcdeにABCDEを5バイトコピー\nコピー後の文字列→%s\n\n",dst_abcde4);
+// 	// memcpy(dst_abcde6,src_abcde,5);
+// 	// printf("abc0def0ghにABCDEを5バイトコピー\nコピー後の文字列→");
+// 	// while (i < 10)
+// 	// {
+// 	// 	printf("[%c]", dst_abcde6[i]);
+// 	// 	i++;
+// 	// }
+// 	// printf("\n\n");
+// 	// memcpy(dst_abcde7,src_abcde2,5);
+// 	// printf("abcdefghにAB0CD0Eを5バイトコピー\nコピー後の文字列→");
+// 	// while (j < 8)
+// 	// {
+// 	// 	printf("[%c]", dst_abcde7[j]);
+// 	// 	j++;
+// 	// }
+// 	// printf("\n\n");
+// 	// printf("/////////以下セグフォ/////////\n");
+// 	// memcpy(dst_null4,src_abcde,5);
+// 	// printf("dstnullにABCDEを5バイトコピー\nコピー後の文字列→%s\n\n",dst_null4);
+// 	// memcpy(dst_abcde2,src_null,5);
+// 	// printf("abcdeにNULLを5バイトコピー\nコピー後の文字列→%s\n\n",dst_abcde2);
+// 	// memcpy(dst_abcde5,src_abcde,10);
+// 	// printf("abcdeにABCDEを10バイトコピー\nコピー後の文字列→%s\n\n",dst_abcde5);
+// 	// 常にoverflowするため、コンパイル不可
+// 	return 0;
 // }

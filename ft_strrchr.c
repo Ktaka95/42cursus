@@ -33,25 +33,25 @@ char	*ft_strrchr(const char *s, int c)
 	}
 }
 
-#include <string.h>
-#include <stdio.h>
+// #include <string.h>
+// #include <stdio.h>
 
-int main(void)
-{
-	// char str[] = "", *p;
-	// int c;
+// int main(void)
+// {
+// 	// char str[] = "", *p;
+// 	// int c;
 
-	// c = '\0';
-	// p = ft_strrchr(str, c);
-	// printf("%s\n", p);
+// 	// c = '\0';
+// 	// p = ft_strrchr(str, c);
+// 	// printf("%s\n", p);
 
-	char	*s = "";
-	char	*ret = NULL;
+// 	char	*s = "";
+// 	char	*ret = NULL;
 
-	printf("%p, %p\n", s, ret);
-	ret = ft_strrchr(s, 'A');
-	printf("%s, %s\n", s, ret);
-	printf("%p, %p\n", s, ret);
+// 	printf("%p, %p\n", s, ret);
+// 	ret = ft_strrchr(s, 'A');
+// 	printf("%s, %s\n", s, ret);
+// 	printf("%p, %p\n", s, ret);
 
-	return 0;
-}
+// 	return 0;
+// }
