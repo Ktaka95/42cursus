@@ -12,49 +12,52 @@
 
 #include "libft.h"
 
-int	ft_strcmp(const char	*s1, const char	*s2);
-
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
+	size_t	j;
+	size_t	k;
 	char	*h;
 	char	*n;
 
+	if (haystack == NULL && needle != NULL && len == 0)
+		return (NULL);
 	i = 0;
 	h = (char *)haystack;
 	n = (char *)needle;
-	if (ft_strlen(needle) == 0)
+	if (ft_strlen(needle) == 0 || len == 0)
 		return (h);
-	else if (ft_strlen(needle) > ft_strlen(haystack) || ft_strlen(needle) > len)
+	else if (ft_strlen(needle) > ft_strlen(haystack) || len < ft_strlen(needle))
 		return (NULL);
-	else
+	while (i + ft_strlen(needle) - 1 < len)
 	{
-		while (ft_strlen(h) > ft_strlen(n) && i < len)
+		j = i;
+		k = 0;
+		while (h[j] == n[k])
 		{
-			if (ft_strncmp(h, n, ft_strlen(n)) == 0)
-				return (h);
-			else
-			{
-				h++;
-				i++;
-			}
+			j++;
+			k++;
 		}
-		return (NULL);
+		if (k == ft_strlen(n))
+			return (h + i);
+		i++;
 	}
+	return (NULL);
 }
 
-// #include <string.h>
-// #include <stdio.h>
+#include <string.h>
+#include <stdio.h>
 
-// int main(void)
-// {
-// 	char str[] = "abc";
-// 	char *p = str;
-// 	char *q = str;
-// 	char str2[] = "";
-// 	p = ft_strnstr(str, str2, 1);
-// 	q = strnstr(str, str2, 1);
-// 	printf("ft_strnstr: %s\n", p);
-// 	printf("strnstr: %s\n", p);
-// 	return 0;
-// }
+int main(void)
+{
+	char *str = "abc";
+	char *p = str;
+	char *q = str;
+	char *str2 = "";
+	printf("str, p, qのアドレス→%p, %p, %p\n", str, p, q);
+	p = ft_strnstr(str, str2, 100);
+	q = strnstr(str, str2, 100);
+	printf("ft_strnstr→%s: %s\n%p, %p\n", str, p, str, p);
+	printf("strnstr→%s: %s\n%p, %p\n", str, q, str, q);
+	return 0;
+}
