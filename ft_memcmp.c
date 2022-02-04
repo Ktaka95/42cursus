@@ -77,7 +77,7 @@ int main(void)
 	memcmp_normal_case(normal_case, normal_case2);
 	including_null_case1(including_null1, including_null2);
 	including_null_case2(including_null3, including_null4);
-	printf("/////以下セグフォ/////\n");
+	printf("/////Below case results segmentation fault/////\n");
 	printf("len != 0 && (s1 == NULL || s2 == NULL)\n");
 	// ft_memcmp(null1, null2, 1);
 	// memcmp(null1, null2, 1);
@@ -91,7 +91,7 @@ void	memcmp_len_0_case1(char *s1, char *s2)
 	int		i = 0;
 
 	printf("\n/////len_0_case1/////\n");
-	printf("\"\": %s→%d文字比較\n\n", s2, i);
+	printf("\"\": %s→%dbyte cmp\n\n", s2, i);
 	ft_ret = ft_memcmp(s1, s2, i);
 	ori_ret = memcmp(s1, s2, i);
 	printf("ori_ret\tft_ret\n%d\t%d\n", ori_ret, ft_ret);
@@ -108,7 +108,7 @@ void	memcmp_len_0_case2(char *s1, char *s2)
 	int		i = 0;
 
 	printf("\n/////len_0_case2/////\n");
-	printf("%s: \"\"→%d文字比較\n\n", s1, i);
+	printf("%s: \"\"→%dbyte cmp\n\n", s1, i);
 	ft_ret = ft_memcmp(s1, s2, i);
 	ori_ret = memcmp(s1, s2, i);
 	printf("ori_ret\tft_ret\n%d\t%d\n", ori_ret, ft_ret);
@@ -125,7 +125,7 @@ void	memcmp_len_0_casenull(char *s1, char *s2)
 	int		i = 0;
 
 	printf("\n/////len_0_casenull/////\n");
-	printf("%s: %s→%d文字比較\n\n", s1, s2, i);
+	printf("%s: %s→%dbyte cmp\n\n", s1, s2, i);
 	ft_ret = ft_memcmp(s1, s2, i);
 	ori_ret = memcmp(s1, s2, i);
 	printf("ori_ret\tft_ret\n%d\t%d\n", ori_ret, ft_ret);
@@ -146,7 +146,7 @@ void	memcmp_normal_case(char *s1, char *s2)
 	int		_ = 0;
 
 	printf("\n/////normal_case/////\n");
-	printf("%s: %s→%d文字比較\n\n", s1, s2, i);
+	printf("%s: %s→%dbyte cmp\n\n", s1, s2, i);
 	printf("Index:\t");
 	for (_ = 0; _ < i; _++)
 		printf("%d\t", _);
@@ -179,7 +179,7 @@ void	including_null_case1(char *s1, char *s2)
 	int		_ = 0;
 
 	printf("\n/////including_null_case1/////\n");
-	printf("\\0a\\0b\\0c1: \\0a\\0b\\0c1→%d文字比較\n\n", i);
+	printf("\\0a\\0b\\0c1: \\0a\\0b\\0c1→%dbyte cmp\n\n", i);
 	printf("Index:\t\t");
 	for (_ = 0; _ < i; _++)
 		printf("%d\t", _);
@@ -212,7 +212,7 @@ void	including_null_case2(char *s1, char *s2)
 	int		_ = 0;
 
 	printf("\n/////including_null_case2/////\n");
-	printf("\\0a\\0b\\0c1: \\0a\\0b\\0c1→%d文字比較\n\n", i);
+	printf("\\0a\\0b\\0c1: \\0a\\0b\\0c1→%dbyte cmp\n\n", i);
 	printf("Index:\t\t");
 	for (_ = 0; _ < i; _++)
 		printf("%d\t", _);
