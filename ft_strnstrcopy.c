@@ -48,19 +48,19 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	return (NULL);
 }
 
-// #include <string.h>
-// #include <stdio.h>
+#include <string.h>
+#include <stdio.h>
 
-// int main(void)
-// {
-// 	char *str = NULL;
-// 	char *p = str;
-// 	char *q = str;
-// 	char *str2 = "abc";
-// 	printf("str, p, qのアドレス→%p, %p, %p\n", str, p, q);
-// 	p = ft_strnstr(str, str2, 1);
-// 	q = strnstr(str, str2, 1);
-// 	printf("ft_strnstr→%s: %s\n%p, %p\n", str, p, str, p);
-// 	printf("strnstr→%s: %s\n%p, %p\n", str, q, str, q);
-// 	return 0;
-// }
+int main(void)
+{
+	char *str = NULL;
+	char *p = str;
+	char *q = str;
+	char *str2 = "abc";
+	printf("str, p, qのアドレス→%p, %p, %p\n", str, p, q);
+	p = ft_strnstr(str, str2, 1);
+	q = strnstr(str, str2, 1);
+	printf("ft_strnstr→%s: %s\n%p, %p\n", str, p, str, p);
+	printf("strnstr→%s: %s\n%p, %p\n", str, q, str, q);
+	return 0;
+}
