@@ -14,104 +14,208 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	size_t	dstlen;
 	size_t	i;
+	size_t	j;
 	size_t	ret;
 
-	dstlen = ft_strlen(dst);
-	i = 0;
-	ret = ft_strlen(dst) + ft_strlen(src);
-	if (dst != NULL && src != NULL && dstsize == 0)
+	if (src != NULL && dstsize == 0)
 		return (ft_strlen(src));
-	else if (dst != NULL && src != NULL && dstsize <= dstlen + 1)
-		return (ret);
-	else if (dst != NULL && src != NULL && dstsize > dstlen + 1)
+	i = 0;
+	j = ft_strlen(dst);
+	ret = ft_strlen(dst) + ft_strlen(src);
+	if (dstsize < ft_strlen(dst) + 1)
+		return (dstsize + ft_strlen(src));
+	else
 	{
-		while ((dstlen < sizeof dst - 1
-				|| dstlen < dstsize - 1) && src[i] != '\0')
+		while (j < dstsize - 1 && src[i] != '\0')
 		{
-			dst[dstlen] = src[i];
-			dstlen++;
+			dst[j] = src[i];
+			j++;
 			i++;
 		}
-		dst[dstlen] = '\0';
+		dst[j] = '\0';
 	}
 	return (ret);
 }
 
 // #include <stdio.h>
+// #include <stdlib.h>
 // #include <string.h>
 
-// int	main(void)
-// {
-// 	int	i;
-// 	size_t	j;
-// 	char s1[5] = "ABCDE";
-// 	char s2[] = "abcdefgh";
-// 	j = ft_strlcat(s1, s2, 5);
+// static void	strlcat_dst_null_case(char *s1, char *s2);
 
-// 	i = 0;
-// 	while (s1[i])
-// 	{
-// 		printf("%d: [%c]\n", i, s1[i]);
-// 		i++;
-// 	}
-// 	printf("%d: [%c]\n", i, s1[i]);
-// 	printf ("\n%zu\n", j);
-// 	return (0);
-// }
+// static void	strlcat_dstsize_lt_dstplus1(char *s1, char *s2);
 
-// #include <stdio.h>
-// #include <string.h>
+// static void	strlcat_dstsize_lt_dstplussrcplus1(char *s1, char *s2);
+
+// static void	strlcat_dstsize_ge_dstplussrcplus1(char *s1, char *s2);
+
+// static void	strlcat_middle_null(char *s1, char *s2);
 
 // int main(void)
 // {
-// 	char	*src = "aaa";
-// 	char	dst1[10];
-// 	char	dst2[10];
-// 	int		ret1;
-// 	int		ret2;
+// 	char	*dst_null = NULL;
+// 	char	dst_abcdefgh[] = "abcdefgh";
+// 	char	dst_abcdefgh2[] = "abcdefgh";
+// 	char	dst_abcdefgh3[] = "abcdefgh";
+// 	char	dst_middle_null[] = "abcd\0efg";
+// 	char	src_abcde[] = "ABCDE";
+// 	char	src_middle_null[] = "AB\0CDE";
 
-// 	printf("dst1, dst2にBをセット\n");
-// 	printf("%lu\n", sizeof(dst1));
-// 	memset(dst1, 'B', sizeof(dst1));
-// 	memset(dst2, 'B', sizeof(dst2));
-// 	printf("%s\n%s\n", dst1, dst2);
+// 	strlcat_dst_null_case(dst_null, src_abcde);
+// 	strlcat_dstsize_lt_dstplus1(dst_abcdefgh, src_abcde);
+// 	strlcat_dstsize_lt_dstplussrcplus1(dst_abcdefgh2, src_abcde);
+// 	strlcat_dstsize_ge_dstplussrcplus1(dst_abcdefgh3, src_abcde);
+// 	strlcat_middle_null(dst_middle_null, src_middle_null);
+// 	return 0;
+// }
 
-// 	printf("%lu\n", strlen(dst1));
-// 	printf("%lu\n", strlen(dst2));
-// 	printf("%zu\n", ft_strlen(dst1));
-// 	printf("%zu\n", ft_strlen(dst2));
+// void	strlcat_dst_null_case(char *s1, char *s2)
+// {
+// 	int		or_ret = 0;
+// 	int		ft_ret = 0;
+// 	int		dstsize = 0;
+// 	printf("\n/////dst_null_case/////\n");
+// 	printf("<before_strlcat>\n");
+// 	printf("dst:\t\t%s\n", s1);
+// 	printf("src:\t\t%s\ndstsize:\t%d\n", s2, dstsize);
+// 	or_ret = strlcat(s1, s2, dstsize);
+// 	ft_ret = ft_strlcat(s1, s2, dstsize);
+// 	printf("<after_strlcat>\n");
+// 	printf("dst:\t\t%s\n", s1);
+// 	printf("///return///\nor_ret: %d\nft_ret: %d\n", or_ret, ft_ret);
+// 	if (ft_ret == or_ret)
+// 		printf("\nOK :)\n\n");
+// 	else
+// 		printf("\nNG :(\n\n");
+// }
 
-// 	strlcat(dst1, src, 10);
-// 	printf("%s\n", dst1);
-// 	printf("%lu\n", strlen(dst1));
-// 	printf("%lu\n", ft_strlen(dst1));
-// 	strlcat(dst1, src, 10);
-// 	printf("%s\n", dst1);
-// 	printf("%lu\n", strlen(dst1));
-// 	printf("%lu\n", ft_strlen(dst1));
-// 	ret1 = strlcat(dst1, src, 10);
-// 	printf("%lu\n", strlen(dst1));
-// 	printf("%lu\n", ft_strlen(dst1));
-// 	printf("%lu\n", strlen(src));
-// 	printf("%lu\n", ft_strlen(src));
+// void	strlcat_dstsize_lt_dstplus1(char *s1, char *s2)
+// {
+// 	int		or_ret = 0;
+// 	int		ft_ret = 0;
+// 	size_t	dstsize = 0;
+// 	printf("\n/////dstsize_lt_dstplus1/////\n");
+// 	while (dstsize < strlen(s1) + 1)
+// 	{
+// 		printf("<before_strlcat>\n");
+// 		char	*or_dst = strdup(s1);
+// 		char	*ft_dst = strdup(s1);
+// 		printf("or_dst:\t\t%s\n", or_dst);
+// 		printf("ft_dst:\t\t%s\n", ft_dst);
+// 		printf("src:\t\t%s\ndstsize:\t%zu\n", s2, dstsize);
+// 		or_ret = strlcat(or_dst, s2, dstsize);
+// 		ft_ret = ft_strlcat(ft_dst, s2, dstsize);
+// 		printf("<after_strlcat>\n");
+// 		printf("or_dst:\t\t%s\n", or_dst);
+// 		printf("ft_dst:\t\t%s\n", ft_dst);
+// 		if (strcmp(or_dst, ft_dst) == 0)
+// 		printf("or_dst == ft_dst :)\n");
+// 		else
+// 		printf("or_dst != ft_dst :(\n");
+// 		printf("///return///\nor_ret: %d\nft_ret: %d\n", or_ret, ft_ret);
+// 		if (ft_ret == or_ret)
+// 			printf("\nOK :)\n\n");
+// 		else
+// 			printf("\nNG :(\n\n");
+// 		dstsize++;
+// 	}
+// }
 
-// 	ft_strlcat(dst2, src, 10);
-// 	printf("%s\n", dst2);
-// 	printf("%lu\n", strlen(dst2));
-// 	printf("%lu\n", ft_strlen(dst2));
-// 	ft_strlcat(dst2, src, 10);
-// 	printf("%s\n", dst2);
-// 	printf("%lu\n", strlen(dst2));
-// 	printf("%lu\n", ft_strlen(dst2));
-// 	ret2 = ft_strlcat(dst2, src, 10);
-// 	printf("%lu\n", strlen(dst2));
-// 	printf("%lu\n", ft_strlen(dst2));
-// 	printf("%lu\n", strlen(src));
-// 	printf("%lu\n", ft_strlen(src));
+// void	strlcat_dstsize_lt_dstplussrcplus1(char *s1, char *s2)
+// {
+// 	int		or_ret = 0;
+// 	int		ft_ret = 0;
+// 	size_t	dstsize = strlen(s1) + 1;
+// 	printf("\n/////dstsize_lt_dstplussrcplus1/////\n");
+// 	while (dstsize < strlen(s1) + strlen(s2) + 1)
+// 	{
+// 		printf("<before_strlcat>\n");
+// 		char	*or_dst = strdup(s1);
+// 		char	*ft_dst = strdup(s1);
+// 		printf("or_dst:\t\t%s\n", or_dst);
+// 		printf("ft_dst:\t\t%s\n", ft_dst);
+// 		printf("src:\t\t%s\ndstsize:\t%zu\n", s2, dstsize);
+// 		or_ret = strlcat(or_dst, s2, dstsize);
+// 		ft_ret = ft_strlcat(ft_dst, s2, dstsize);
+// 		printf("<after_strlcat>\n");
+// 		printf("or_dst:\t\t%s\n", or_dst);
+// 		printf("ft_dst:\t\t%s\n", ft_dst);
+// 		if (strcmp(or_dst, ft_dst) == 0)
+// 			printf("or_dst == ft_dst :)\n");
+// 		else
+// 			printf("or_dst != ft_dst :(\n");
+// 		printf("///return///\nor_ret: %d\nft_ret: %d\n", or_ret, ft_ret);
+// 		if (ft_ret == or_ret)
+// 			printf("\nOK :)\n\n");
+// 		else
+// 			printf("\nNG :(\n\n");
+// 		dstsize++;
+// 	}
+// }
 
-// 	printf("%d\n%d\n", ret1, ret2);
+// void	strlcat_dstsize_ge_dstplussrcplus1(char *s1, char *s2)
+// {
+// 	int		or_ret = 0;
+// 	int		ft_ret = 0;
+// 	size_t	dstsize = strlen(s1) + strlen(s2) + 1;
+// 	int		i = 0;
+// 	printf("\n/////dstsize_ge_dstplussrcplus1/////\n");
+// 	while (i < 3)
+// 	{
+// 		printf("<before_strlcat>\n");
+// 		char	*or_dst = strdup(s1);
+// 		char	*ft_dst = strdup(s1);
+// 		printf("or_dst:\t\t%s\n", or_dst);
+// 		printf("ft_dst:\t\t%s\n", ft_dst);
+// 		printf("src:\t\t%s\ndstsize:\t%zu\n", s2, dstsize);
+// 		or_ret = strlcat(or_dst, s2, dstsize);
+// 		ft_ret = ft_strlcat(ft_dst, s2, dstsize);
+// 		printf("<after_strlcat>\n");
+// 		printf("or_dst:\t\t%s\n", or_dst);
+// 		printf("ft_dst:\t\t%s\n", ft_dst);
+// 		if (strcmp(or_dst, ft_dst) == 0)
+// 			printf("or_dst == ft_dst :)\n");
+// 		else
+// 			printf("or_dst != ft_dst :(\n");
+// 		printf("///return///\nor_ret: %d\nft_ret: %d\n", or_ret, ft_ret);
+// 		if (ft_ret == or_ret)
+// 			printf("\nOK :)\n\n");
+// 		else
+// 			printf("\nNG :(\n\n");
+// 		dstsize++;
+// 		i++;
+// 	}
+// }
 
-// 	return (0);
+// void	strlcat_middle_null(char *s1, char *s2)
+// {
+// 	int		or_ret = 0;
+// 	int		ft_ret = 0;
+// 	size_t	dstsize = 0;
+// 	printf("\n/////middle_null/////\n");
+// 	while (dstsize < strlen(s1) + strlen(s2) + 4)
+// 	{
+// 		printf("<before_strlcat>\n");
+// 		char	*or_dst = strdup(s1);
+// 		char	*ft_dst = strdup(s1);
+// 		printf("or_dst:\t\tabcd\\0efg\n");
+// 		printf("ft_dst:\t\tabcd\\0efg\n");
+// 		printf("src:\t\tAB\\0CDE\ndstsize:\t%zu\n", dstsize);
+// 		or_ret = strlcat(or_dst, s2, dstsize);
+// 		ft_ret = ft_strlcat(ft_dst, s2, dstsize);
+// 		printf("<after_strlcat>\n");
+// 		printf("or_dst:\t\t%s\n", or_dst);
+// 		printf("ft_dst:\t\t%s\n", ft_dst);
+// 		if (strcmp(or_dst, ft_dst) == 0)
+// 			printf("or_dst == ft_dst :)\n");
+// 		else
+// 			printf("or_dst != ft_dst :(\n");
+// 		printf("///return///\nor_ret: %d\nft_ret: %d\n", or_ret, ft_ret);
+// 		if (ft_ret == or_ret)
+// 			printf("\nOK :)\n\n");
+// 		else
+// 			printf("\nNG :(\n\n");
+// 		dstsize++;
+// 	}
 // }
