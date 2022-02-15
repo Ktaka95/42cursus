@@ -6,7 +6,7 @@
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 15:26:53 by ktaka             #+#    #+#             */
-/*   Updated: 2022/01/05 15:26:56 by ktaka            ###   ########.fr       */
+/*   Updated: 2022/02/16 00:46:40 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,40 +23,31 @@ int	ft_isalnum(int c)
 	return (ret);
 }
 
-// #include <ctype.h>
-// #include <stdio.h>
+/*
+#include <stdio.h>
+#include <ctype.h>
 
-// int main(void)
-// {
-// 	int	i;
-// 	int	j;
+int main(void)
+{
+	int	i = 0;
+	int	ori = 0;
+	int	ft = 0;
 
-	// i = 0;
-	// while (i < 128)
-	// {
-	// 	j = isalnum(i);
-	// 	printf("%d %d\n", i, j);
-	// 	i++;
-	// }
-	// i = 2147483647;
-	// j = isalnum(i);
-	// printf("%d %d\n", i, j);
-	// i = -2147483648;
-	// j = isalnum(i);
-	// printf("%d %d\n", i, j);
-	// printf("------------------------------\n");
-// 	i = 0;
-// 	while (i < 128)
-// 	{
-// 		j = ft_isalnum(i);
-// 		printf("%d %d\n", i, j);
-// 		i++;
-// 	}
-// 	i = 2147483647;
-// 	j = ft_isalnum(i);
-// 	printf("%d %d\n", i, j);
-// 	i = -2147483648;
-// 	j = ft_isalnum(i);
-// 	printf("%d %d\n", i, j);
-// 	return (0);
-// }
+	printf("ascii:\tisalnum\t:\tft_isalnum\n");
+	while (i < 128)
+	{
+		ori = isalnum(i);
+		ft = ft_isalnum(i);
+		if (ori == ft)
+			printf("[%d]:\t%d\t:\t%d\n", i, ori, ft);
+		else
+		{
+			printf("NG :(\n");
+			return(0);
+		}
+		i++;
+	}
+	printf("OK :)\n");
+	return (0);
+}
+*/
