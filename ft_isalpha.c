@@ -25,7 +25,6 @@ int	ft_isalpha(int c)
 /*
 #include <stdio.h>
 #include <ctype.h>
-#include <limits.h>
 
 int main(void)
 {

@@ -22,40 +22,31 @@ int	ft_isdigit(int c)
 	return (ret);
 }
 
-// #include <ctype.h>
-// #include <stdio.h>
 
-// int main(void)
-// {
-// 	int	i;
-// 	int	j;
+#include <stdio.h>
+#include <ctype.h>
+#include <limits.h>
 
-	// i = 0;
-	// while (i < 128)
-	// {
-	// 	j = isdigit(i);
-	// 	printf("%d %d\n", i, j);
-	// 	i++;
-	// }
-	// i = 2147483647;
-	// j = isdigit(i);
-	// printf("%d %d\n", i, j);
-	// i = -2147483648;
-	// j = isdigit(i);
-	// printf("%d %d\n", i, j);
-	// printf("------------------------------\n");
-// 	i = 0;
-// 	while (i < 128)
-// 	{
-// 		j = ft_isdigit(i);
-// 		printf("%d %d\n", i, j);
-// 		i++;
-// 	}
-// 	i = 2147483647;
-// 	j = ft_isdigit(i);
-// 	printf("%d %d\n", i, j);
-// 	i = -2147483648;
-// 	j = ft_isdigit(i);
-// 	printf("%d %d\n", i, j);
-// 	return (0);
-// }
+int main(void)
+{
+	int	i = 0;
+	int	ori = 0;
+	int	ft = 0;
+
+	printf("ascii:\tisalpha\t:\tft_isalpha\n");
+	while (i < 128)
+	{
+		ori = isalpha(i);
+		ft = ft_isalpha(i);
+		if (ori == ft)
+			printf("[%d]:\t%d\t:\t%d\n", i, ori, ft);
+		else
+		{
+			printf("NG :(\n");
+			return(0);
+		}
+		i++;
+	}
+	return (0);
+}
+
