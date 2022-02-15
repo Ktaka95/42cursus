@@ -46,6 +46,7 @@ int main(void)
 		}
 		i++;
 	}
+	printf("OK :)\n");
 	return (0);
 }
 */

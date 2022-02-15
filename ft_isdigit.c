@@ -25,7 +25,6 @@ int	ft_isdigit(int c)
 
 #include <stdio.h>
 #include <ctype.h>
-#include <limits.h>
 
 int main(void)
 {
@@ -33,11 +32,11 @@ int main(void)
 	int	ori = 0;
 	int	ft = 0;
 
-	printf("ascii:\tisalpha\t:\tft_isalpha\n");
+	printf("ascii:\tisdigit\t:\tft_isdigit\n");
 	while (i < 128)
 	{
-		ori = isalpha(i);
-		ft = ft_isalpha(i);
+		ori = isdigit(i);
+		ft = ft_isdigit(i);
 		if (ori == ft)
 			printf("[%d]:\t%d\t:\t%d\n", i, ori, ft);
 		else
