@@ -24,25 +24,40 @@ size_t	ft_strlen(const char	*s)
 
 // #include <stdio.h>
 // #include <string.h>
+// #include <limits.h>
+// #include <math.h>
 
 // int	main(void)
 // {
-// 	int	len;
-// 	int	ft_len;
-// 	char	s[] = "";
+// 	size_t	ori = 0;
+// 	size_t	ft = 0;
+// 	char	*str = calloc(INT_MAX, sizeof(char));
+// 	int		i = 0;
+// 	size_t	pow_ten = 0;
 
-// 	len = strlen(s);
-// 	ft_len = ft_strlen(s);
-
-// 	printf("Expected_Output\n");
-// 	printf("\"%s\" is %d 文字\n", s, len);
-// 	printf("\"%s\" is %lu 文字\n", "hello world", strlen("hello world"));
-
-// 	printf("----------------------\n");
-
-// 	printf("Actual_Output\n");
-// 	printf("\"%s\" is %d 文字\n", s, ft_len);
-// 	printf("\"%s\" is %zu 文字\n", "hello world", ft_strlen("hello world"));
-
-// 	return 0;
+// 	printf("len:\tstrlen\t:\tft_strlen\n");
+// 	while (i < INT_MAX)
+// 	{
+// 		pow_ten = pow(10, i);
+// 		if (pow_ten > INT_MAX)
+// 			pow_ten = INT_MAX;
+// 		str = memset(str, 'a', pow_ten);
+// 		ori = strlen(str);
+// 		ft = strlen(str);
+// 		if (ori == ft)
+// 			printf("[%zu]:\t%zu\t:\t%zu\n", pow_ten, ori, ft);
+// 		else
+// 		{
+// 			printf("NG :(\n");
+// 			return(0);
+// 		}
+// 		if (pow_ten == INT_MAX)
+// 			break;
+// 		i++;
+// 	}
+// 	printf("OK :)\n");
+// 	//////以下セグフォ///////
+// 	// ori = strlen(NULL);
+// 	// ft = strlen(NULL);
+// 	return (0);
 // }
