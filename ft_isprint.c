@@ -22,40 +22,31 @@ int	ft_isprint(int c)
 	return (ret);
 }
 
-// #include <stdio.h>
-// #include <ctype.h>
+/*
+#include <stdio.h>
+#include <ctype.h>
 
-// int main(void)
-// {
-// 	int	i;
-// 	int	j;
+int main(void)
+{
+	int	i = 0;
+	int	ori = 0;
+	int	ft = 0;
 
-	// i = 0;
-	// while (i < 128)
-	// {
-	// 	j = isprint(i);
-	// 	printf("%d %d\n", i, j);
-	// 	i++;
-	// }
-	// i = 2147483647;
-	// j = isprint(i);
-	// printf("%d %d\n", i, j);
-	// i = -2147483648;
-	// j = isprint(i);
-	// printf("%d %d\n", i, j);
-	// printf("------------------------------\n");
-// 	i = 0;
-// 	while (i < 128)
-// 	{
-// 		j = ft_isprint(i);
-// 		printf("%d %d\n", i, j);
-// 		i++;
-// 	}
-// 	i = 2147483647;
-// 	j = ft_isprint(i);
-// 	printf("%d %d\n", i, j);
-// 	i = -2147483648;
-// 	j = ft_isprint(i);
-// 	printf("%d %d\n", i, j);
-// 	return (0);
-// }
+	printf("ascii:\tisprint\t:\tft_isprint\n");
+	while (i < 128)
+	{
+		ori = isprint(i);
+		ft = ft_isprint(i);
+		if (ori == ft)
+			printf("[%d]:\t%d\t:\t%d\n", i, ori, ft);
+		else
+		{
+			printf("NG :(\n");
+			return(0);
+		}
+		i++;
+	}
+	printf("OK :)\n");
+	return (0);
+}
+*/
