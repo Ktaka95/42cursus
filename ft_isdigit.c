@@ -22,7 +22,7 @@ int	ft_isdigit(int c)
 	return (ret);
 }
 
-
+/*
 #include <stdio.h>
 #include <ctype.h>
 
@@ -46,6 +46,7 @@ int main(void)
 		}
 		i++;
 	}
+	printf("OK :)\n");
 	return (0);
 }
-
+*/
