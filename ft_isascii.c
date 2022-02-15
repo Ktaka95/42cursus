@@ -22,40 +22,31 @@ int	ft_isascii(int c)
 	return (ret);
 }
 
-// #include <ctype.h>
-// #include <stdio.h>
+/*
+#include <stdio.h>
+#include <ctype.h>
 
-// int main(void)
-// {
-// 	int	i;
-// 	int	j;
+int main(void)
+{
+	int	i = 0;
+	int	ori = 0;
+	int	ft = 0;
 
-// 	i = 0;
-// 	while (i < 128)
-// 	{
-// 		j = isascii(i);
-// 		printf("%d %d\n", i, j);
-// 		i++;
-// 	}
-// 	i = 2147483647;
-// 	j = isascii(i);
-// 	printf("%d %d\n", i, j);
-// 	i = -2147483648;
-// 	j = isascii(i);
-// 	printf("%d %d\n", i, j);
-// 	printf("------------------------------\n");
-// 	i = 0;
-// 	while (i < 128)
-// 	{
-// 		j = ft_isascii(i);
-// 		printf("%d %d\n", i, j);
-// 		i++;
-// 	}
-// 	i = 2147483647;
-// 	j = ft_isascii(i);
-// 	printf("%d %d\n", i, j);
-// 	i = -2147483648;
-// 	j = ft_isascii(i);
-// 	printf("%d %d\n", i, j);
-// 	return (0);
-// }
+	printf("ascii:\tisascii\t:\tft_isascii\n");
+	while (i < 128)
+	{
+		ori = isascii(i);
+		ft = ft_isascii(i);
+		if (ori == ft)
+			printf("[%d]:\t%d\t:\t%d\n", i, ori, ft);
+		else
+		{
+			printf("NG :(\n");
+			return(0);
+		}
+		i++;
+	}
+	printf("OK :)\n");
+	return (0);
+}
+*/
