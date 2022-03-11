@@ -12,33 +12,49 @@
 
 #include "libft.h"
 
-// static size_t	ft_split_cnt(char const *s, char c);
+// static size_t	ft_split_start(char const *s, char c);
+
+// static size_t	ft_split_end(char const *s, char c, size_t n);
 
 // char	**ft_split(char const *s, char c)
 // {
-// }
-
-// size_t	ft_split_cnt(char const *s, char c)
-// {
 // 	size_t	i;
-// 	size_t	split_cnt;
-// 	char	*trim_s;
+// 	size_t	start;
+// 	size_t	end;
 
 // 	i = 0;
-// 	split_cnt = 1;
-// 	trim_s = &c;
-// 	trim_s = ft_strtrim(s, trim_s);
-// 	while (trim_s[i] != '\0')
+// 	j = 0;
+// 	k = 0;
+// 	while (s[i] != '\0')
 // 	{
-// 		if (trim_s[i] == c)
-// 		{
-// 			while (trim_s[i] == c)
-// 				i++;
-// 			split_cnt += 1;
-// 		}
-// 		i++;
+// 		while (s[i] == c)
+// 			i++;
+// 		start = i;
+// 		while (s[i] != c)
+// 			i++;
+// 		end = i - 1;
 // 	}
-// 	return (split_cnt);
+
+// }
+
+// size_t	ft_split_start(char const *s, char c)
+// {
+// 	size_t	i;
+
+// 	i = 0;
+// 	if (s[i] != c)
+// 		i++;
+// 	return (i);
+// }
+
+// size_t	ft_split_end(char const *s, char c, size_t n)
+// {
+// 	size_t	i;
+
+// 	i = n;
+// 	if (s[n] != c)
+// 		i++;
+// 	return (i);
 // }
 
 // #include <stdio.h>

@@ -56,10 +56,10 @@ static void	strlcat_middle_null(char *s1, char *s2);
 int main(void)
 {
 	char	*dst_null = NULL;
-	char	dst_abcdefgh[] = "abcdefgh";
-	char	dst_abcdefgh2[] = "abcdefgh";
-	char	dst_abcdefgh3[] = "abcdefgh";
-	char	dst_middle_null[] = "abcd\0efg";
+	char	dst_abcdefgh[30] = "abcdefgh";
+	char	dst_abcdefgh2[30] = "abcdefgh";
+	char	dst_abcdefgh3[30] = "abcdefgh";
+	char	dst_middle_null[30] = "abcd\0efg";
 	char	src_abcde[] = "ABCDE";
 	char	src_middle_null[] = "AB\0CDE";
 
