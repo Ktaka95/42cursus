@@ -22,26 +22,46 @@ void	*ft_calloc(size_t count, size_t size)
 	if (heap == NULL)
 		return (NULL);
 	else
+	{
 		ft_bzero(heap, count * size);
-	return (heap);
+		return (heap);
+	}
 }
 
-// #include <stdio.h>
+/*
+#include <stdio.h>
+#include <stdlib.h>
 
-// int main(void)
-// {
-// 	char *ptr;
-// 	int i;
+int	main(void)
+{
+	char	*ptr1;
+	char	*ptr2;
+	size_t	count;
+	size_t	i = 0;
 
-// 	ptr = (char *)ft_calloc(500, sizeof(char));
-// 	i = 0;
-// 	if(ptr == NULL)
-// 		printf("メモリが確保できません\n");
-// 	while (i < 500)
-// 	{
-// 		printf("%d: [%c]\n", i, ptr[i]);
-// 		i++;
-// 	}
-// 	free(ptr);
-// 	return 0;
-// }
+	count = 10;
+
+	ptr1 = calloc(count, sizeof(char));
+	ptr2 = ft_calloc(count, sizeof(char));
+	if (ptr1 == NULL)
+		printf("calloc: メモリが確保できません\n");
+	if (ptr2 == NULL)
+	{
+		printf("ft_calloc: メモリが確保できません\n");
+		return (0);
+	}
+	while (i < count)
+	{
+		if (ptr2[i] == 0)
+			printf("index %zu: [\\0]\n", i);
+		else
+		{
+			printf("NG :(\n");
+			break;
+		}
+		i++;
+	}
+	printf("OK :)\n");
+	return (0);
+}
+*/
