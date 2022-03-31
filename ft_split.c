@@ -11,6 +11,9 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
+
+static size_t	ft_split_count(char const *s, char c);
 
 // static size_t	ft_split_start(char const *s, char c);
 
@@ -57,14 +60,40 @@
 // 	return (i);
 // }
 
-// #include <stdio.h>
+size_t	ft_split_count(char const *s, char c)
+{
+	size_t	i;
+	size_t	len;
+	size_t	count;
 
-// int main(void)
-// {
-// 	char	s1[] = "bAAbbbBBBbbbbbCCCbDbbbEb";
-// 	size_t	ret = 0;
+	i = 0;
+	len = 0;
+	count = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == c)
+		{
+			if (len > 0)
+				count++;
+			len = 0;
+		}
+		else
+			len++;
+		i++;
+	}
+	if (len > 0)
+		count++;
+	return (count);
+}
 
-// 	ret = ft_split_cnt(s1, 'b');
-// 	printf("%zu\n", ret);
-// 	return (0);
-// }
+#include <stdio.h>
+
+int main(void)
+{
+	char	s1[] = "AbbBbbbCbD";
+	size_t	ret = 0;
+
+	ret = ft_split_count(s1, 'b');
+	printf("%zu\n", ret);
+	return (0);
+}
