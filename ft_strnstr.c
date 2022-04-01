@@ -23,9 +23,9 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 	i = 0;
 	h = (char *)haystack;
 	n = (char *)needle;
-	if (ft_strlen(needle) == 0 || len == 0)
+	if (ft_strlen(needle) == 0)
 		return (h);
-	else if (ft_strlen(needle) > ft_strlen(haystack) || len < ft_strlen(needle))
+	else if (ft_strlen(needle) > ft_strlen(haystack) || len < ft_strlen(needle) || len == 0)
 		return (NULL);
 	while (i + ft_strlen(needle) - 1 < len)
 	{
@@ -53,14 +53,14 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 
 // int main(void)
 // {
-// 	char *str = NULL;
-// 	char *p = str;
-// 	char *q = str;
+// 	char *str = "abc";
+// 	char *p = NULL;
+// 	char *q = NULL;
 // 	char *str2 = "abc";
 // 	printf("str, p, qのアドレス→%p, %p, %p\n", str, p, q);
-// 	p = ft_strnstr(str, str2, 1);
-// 	q = strnstr(str, str2, 1);
-// 	printf("ft_strnstr→%s: %s\n%p, %p\n", str, p, str, p);
-// 	printf("strnstr→%s: %s\n%p, %p\n", str, q, str, q);
+// 	p = strnstr(str, str2, 0);
+// 	printf("strnstr→%s: %s\n%p, %p\n", str, p, str, p);
+// 	q = ft_strnstr(str, str2, 0);
+// 	printf("ft_strnstr→%s: %s\n%p, %p\n", str, q, str, q);
 // 	return 0;
 // }
