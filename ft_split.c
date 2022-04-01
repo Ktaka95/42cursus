@@ -70,11 +70,11 @@ size_t	ft_split_count(char const *s, char c)
 
 // int main(void)
 // {
-// 	char	s1[] = "split  ||this|for|me||||!|";
+// 	char	s1[] = "your split does not segfault/return null when null parameter is sent";
 // 	char**	ret = NULL;
 // 	size_t	i = 0;
 
-// 	ret = ft_split(s1, '|');
+// 	ret = ft_split(s1, ' ');
 // 	while (ret[i] != '\0')
 // 	{
 // 		printf("%s\n", ret[i]);
