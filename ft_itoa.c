@@ -93,38 +93,45 @@ char	*ft_itoa_if_argument_minus(int n)
 	return (ret);
 }
 
-// #include <stdio.h>
-// #include <limits.h>
+/*
+#include <stdio.h>
+#include <limits.h>
 
-// int main(void)
-// {
-// // 	// int	n = INT_MIN;
-// // 	// char	*num = NULL;
-// // 	// int		i = 0;
-// // 	// while (n <= INT_MAX)
-// // 	// {
-// // 	// 	num = ft_itoa(n);
-// // 	// 	i = atoi(num);
-// // 	// 	if (i != n)
-// // 	// 	{
-// // 	// 		printf("STOP: %d\nitoa=%d\n", n, i);
-// // 	// 		break;
-// // 	// 	}
-// // 	// 	else
-// // 	// 		printf("%d\n", n);
-// // 	// 	n++;
-// // 	// }
-// 	int	n = 10;
-// // 	// int	r = 0;
-// // 	// while (n <= -10)
-// // 	// {
-// // 	// 	r = n % 10;
-// // 	// 	n /= 10;
-// // 	// 	printf("%d\n%d\n", r, n);
-// // 	// }
-
-// 	char	*c = NULL;
-// 	c = ft_itoa(n);
-// 	printf("%s\n", c);
-// 	return (0);
-// }
+int main(void)
+{
+	int	min = INT_MIN;
+	int	max = INT_MAX;
+	char	*num = NULL;
+	int		i;
+	printf("///case1\tnum < 0///\n");
+	while (min < 0)
+	{
+		num = ft_itoa(min);
+		i = atoi(num);
+		if (i != min)
+		{
+			printf("NG:( n=%d\titoa=%d\n", min, i);
+			exit (0);
+		}
+		else
+			printf("%d\n", min);
+		min /= 10;
+	}
+	printf("\n///case2\tnum > 0///\n");
+	while (max > 0)
+	{
+		num = ft_itoa(max);
+		i = atoi(num);
+		if (i != max)
+		{
+			printf("NG:( n=%d\titoa=%d\n", max, i);
+			exit (0);
+		}
+		else
+			printf("%d\n", max);
+		max /= 10;
+	}
+	printf("\nOK :)\n");
+	return (0);
+}
+*/
