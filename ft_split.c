@@ -21,7 +21,7 @@ char	**ft_split(char const *s, char c)
 	size_t			j;
 	unsigned int	start;
 
-	ret = ft_calloc(ft_split_count(s, c), sizeof(char *));
+	ret = ft_calloc((ft_split_count(s, c) + 1), sizeof(char *));
 	if (ret == NULL)
 		return (NULL);
 	i = 0;
@@ -36,6 +36,7 @@ char	**ft_split(char const *s, char c)
 		if (i > start)
 			ret[j++] = ft_substr(s, start, i - start);
 	}
+	ret[j] = NULL;
 	return (ret);
 }
 
@@ -69,12 +70,12 @@ size_t	ft_split_count(char const *s, char c)
 
 // int main(void)
 // {
-// 	char	s1[] = "AbbBbbbCbDbbb";
+// 	char	s1[] = "split  ||this|for|me||||!|";
 // 	char**	ret = NULL;
 // 	size_t	i = 0;
 
-// 	ret = ft_split(s1, 'b');
-// 	while (i < 10)
+// 	ret = ft_split(s1, '|');
+// 	while (ret[i] != '\0')
 // 	{
 // 		printf("%s\n", ret[i]);
 // 		i++;
