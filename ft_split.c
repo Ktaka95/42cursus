@@ -11,54 +11,33 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static size_t	ft_split_count(char const *s, char c);
 
-// static size_t	ft_split_start(char const *s, char c);
+char	**ft_split(char const *s, char c)
+{
+	char			**ret;
+	size_t			i;
+	size_t			j;
+	unsigned int	start;
 
-// static size_t	ft_split_end(char const *s, char c, size_t n);
-
-// char	**ft_split(char const *s, char c)
-// {
-// 	size_t	i;
-// 	size_t	start;
-// 	size_t	end;
-
-// 	i = 0;
-// 	j = 0;
-// 	k = 0;
-// 	while (s[i] != '\0')
-// 	{
-// 		while (s[i] == c)
-// 			i++;
-// 		start = i;
-// 		while (s[i] != c)
-// 			i++;
-// 		end = i - 1;
-// 	}
-
-// }
-
-// size_t	ft_split_start(char const *s, char c)
-// {
-// 	size_t	i;
-
-// 	i = 0;
-// 	if (s[i] != c)
-// 		i++;
-// 	return (i);
-// }
-
-// size_t	ft_split_end(char const *s, char c, size_t n)
-// {
-// 	size_t	i;
-
-// 	i = n;
-// 	if (s[n] != c)
-// 		i++;
-// 	return (i);
-// }
+	ret = ft_calloc(ft_split_count(s, c), sizeof(char *));
+	if (ret == NULL)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s[i] != '\0')
+	{
+		while (s[i] == c)
+			i++;
+		start = i;
+		while (s[i] != c && s[i] != '\0')
+			i++;
+		if (i > start)
+			ret[j++] = ft_substr(s, start, i - start);
+	}
+	return (ret);
+}
 
 size_t	ft_split_count(char const *s, char c)
 {
@@ -86,14 +65,19 @@ size_t	ft_split_count(char const *s, char c)
 	return (count);
 }
 
-#include <stdio.h>
+// #include <stdio.h>
 
-int main(void)
-{
-	char	s1[] = "AbbBbbbCbD";
-	size_t	ret = 0;
+// int main(void)
+// {
+// 	char	s1[] = "AbbBbbbCbDbbb";
+// 	char**	ret = NULL;
+// 	size_t	i = 0;
 
-	ret = ft_split_count(s1, 'b');
-	printf("%zu\n", ret);
-	return (0);
-}
+// 	ret = ft_split(s1, 'b');
+// 	while (i < 10)
+// 	{
+// 		printf("%s\n", ret[i]);
+// 		i++;
+// 	}
+// 	return (0);
+// }
