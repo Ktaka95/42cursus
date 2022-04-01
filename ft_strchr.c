@@ -40,12 +40,25 @@ char	*ft_strchr(const char *s, int c)
 
 // int main(void)
 // {
-// 	char str[] = "abcdefghijklmnopqrstuvwxyz", *p;
-// 	int c;
+// 	char	str[] = "abcdefghijklmnopqrstuvdwxyz", *p1, *p2;
+// 	int		c = 'd';
+// 	int		i = 0;
 
-// 	c = '\0';
-// 	p = ft_strchr(str, c);
-// 	printf("%s\n", p);
-
+// 	while (i < INT_MAX)
+// 	{
+// 		p1 = strchr(str, c + i);
+// 		p2 = ft_strchr(str, c + i);
+// 		if (p1 == NULL && p2 == NULL)
+// 			printf("NULL, %d\n", i);
+// 		else
+// 			if (strcmp(p1, p2) == 0)
+// 				printf("OK, %d\n", i);
+// 			else
+// 			{
+// 				printf("%d, NG :(\n", i);
+// 				exit (0);
+// 			}
+// 		i += 128;
+// 	}
 // 	return 0;
 // }
