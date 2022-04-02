@@ -26,8 +26,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 	ret = (char *)s1;
 	if (ret == NULL || set == NULL)
 		return (NULL);
-	else if (ft_strlen(ret) == 0)
-		return (ret);
 	start = ft_start_trim_count(ret, set);
 	end = ft_end_trim_count(ret, set);
 	ret = ft_substr(ret, start, ft_strlen(ret) - start - end);
@@ -95,8 +93,8 @@ size_t	ft_end_trim_count(char *s1, char const *set)
 // // 	// 	printf("%zu: ['\\0']\n", i);
 // // 	// char	*s1 = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ";
 // // 	// char	*s2 = "Hello \t  Please\n Trim me !";
-// 	char	*s1 = "aabcABCDEFGaabccaacbca";
-// 	char	*s2 = "abc";
+// 	char	*s1 = "";
+// 	char	*s2 = "123";
 // 	char	*ret;
 // 	size_t	start;
 // 	size_t	end;
