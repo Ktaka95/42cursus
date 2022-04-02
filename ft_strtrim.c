@@ -13,82 +13,58 @@
 #include "libft.h"
 #include <stdio.h>
 
-static char	*ft_top_trim(char const *s1, char const *set);
+static size_t	ft_start_trim_count(char *s1, char const *set);
 
-static char	*ft_end_trim(char const *s1, char const *set);
+static size_t	ft_end_trim_count(char *s1, char const *set);
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*top_trimed;
-	char	*end_trimed;
+	char	*ret;
+	size_t	start;
+	size_t	end;
 
-	if (s1 == NULL || set == NULL)
+	ret = (char *)s1;
+	if (ret == NULL || set == NULL)
 		return (NULL);
-	else if (ft_strlen(s1) == 0)
-		return ((char *)s1);
-	top_trimed = ft_top_trim(s1, set);
-	if (top_trimed == NULL)
-		return (NULL);
-	else if (ft_strlen(top_trimed) == 0)
-		return (top_trimed);
-	else
-		end_trimed = ft_end_trim(top_trimed, set);
-	return (end_trimed);
+	else if (ft_strlen(ret) == 0)
+		return (ret);
+	start = ft_start_trim_count(ret, set);
+	end = ft_end_trim_count(ret, set);
+	ret = ft_substr(ret, start, ft_strlen(ret) - start - end);
+	return (ret);
 }
 
-char	*ft_top_trim(char const *s1, char const *set)
+size_t	ft_start_trim_count(char *s1, char const *set)
 {
 	size_t	i;
-	size_t	cnt;
-	char	*ret;
+	size_t	count;
 
 	i = 0;
-	cnt = 0;
-	while (i < ft_strlen(s1))
+	count = 0;
+	while (s1[i] != '\0')
 	{
 		if (ft_strchr(set, s1[i]) != NULL)
-			cnt++;
+			count++;
 		else
 			break ;
 		i++;
 	}
-	ret = ft_calloc(ft_strlen(s1) - cnt + 1, sizeof(char));
-	if (ret == NULL)
-		return (NULL);
-	cnt = 0;
-	while (s1[i] != '\0')
-	{
-		ret[cnt] = s1[i];
-		i++;
-		cnt++;
-	}
-	return (ret);
+	return (count);
 }
 
-char	*ft_end_trim(char const *s1, char const *set)
+size_t	ft_end_trim_count(char *s1, char const *set)
 {
 	size_t	i;
-	size_t	cnt;
-	size_t	alloc_len;
-	char	*ret;
+	size_t	count;
 
-	i = 0;
-	cnt = 0;
-	alloc_len = 0;
-	while (s1[i] != '\0')
-		i++;
-	i--;
+	i = ft_strlen(s1) - 1;
+	count = 0;
 	while (ft_strchr(set, s1[i]) != NULL)
 	{
 		i--;
-		cnt++;
+		count++;
 	}
-	alloc_len = ft_strlen(s1) - cnt + 1;
-	ret = ft_calloc(alloc_len, sizeof(char));
-	if (ret == NULL)
-		return (NULL);
-	ft_strlcpy(ret, s1, alloc_len);
-	return (ret);
+	return (count);
 }
 
 // #include <stdio.h>
@@ -119,29 +95,33 @@ char	*ft_end_trim(char const *s1, char const *set)
 // // 	// 	printf("%zu: ['\\0']\n", i);
 // // 	// char	*s1 = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ";
 // // 	// char	*s2 = "Hello \t  Please\n Trim me !";
-// 	char	*s1 = "ABC";
-// 	char	*s2 = NULL;
+// 	char	*s1 = "aabcABCDEFGaabccaacbca";
+// 	char	*s2 = "abc";
 // 	char	*ret;
+// 	size_t	start;
+// 	size_t	end;
 
+// 	start = ft_start_trim_count(s1, s2);
+// 	end = ft_end_trim_count(s1, s2);
 // 	ret = ft_strtrim(s1, s2);
 // 	if (ret == NULL)
 // 		printf("null\n");
 // 	else
-// 		printf("%s\n", ret);
+// 		printf("%zu, %zu, %s\n", start, end, ret);
 // // 	printf("-----------------\n");
 // // 	// int	ret = 0;
 // // 	// ret = ft_strncmp(ret1, s2, 100);
 // // 	// printf("%d\n", ret);
-// // 	// i = ft_top_trim(s1, " \n\t");
-// // 	// j = ft_top_trim(s2, " \n\t");
+// // 	// i = ft_start_trim_count(s1, " \n\t");
+// // 	// j = ft_start_trim_count(s2, " \n\t");
 // // 	// while (*s1 != '\0')
 // // 	// 	s1++;
 // // 	// s1--;
 // // 	// while (*s2 != '\0')
 // // 	// 	s2++;
 // // 	// s2--;
-// // 	// k = ft_end_trim(s1, " \n\t");
-// // 	// l = ft_end_trim(s2, " \n\t");
+// // 	// k = ft_end_trim_count(s1, " \n\t");
+// // 	// l = ft_end_trim_count(s2, " \n\t");
 // // 	// printf("%zu, %zu, %zu, %zu\n", i, j, k, l);
 
 // 	return (0);
