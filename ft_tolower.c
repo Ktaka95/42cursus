@@ -35,7 +35,7 @@ int	main(void)
 			exit (0);
 		}
 		else
-			printf("ascii %d: %c =>\tOK\n", c, (char)c);
+			printf("ascii %d: %c => %c\tOK\n", c, (char)c, (char)(ft_tolower(c)));
 		c++;
 	}
 	printf("OK :)\n");
