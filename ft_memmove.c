@@ -36,7 +36,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	return (dst);
 }
 
-
+/*
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -74,14 +74,14 @@ void	test1_normal_case(void)
 	char	src[] = "ABCDEFG";
 	size_t	size = 3;
 
-	printf("///test1_normal_case///\n
-		dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
+	printf("///test1_normal_case///\n\
+dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
 	printf("before memmove: dst =>\t%s\n", ori_dst);
 	memmove(ori_dst, src, size);
 	ft_memmove(ft_dst, src, size);
 	if (strcmp(ori_dst, ft_dst) == 0)
-		printf("after ori_memmove =>\t%s\n
-			after ft_memmove =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
+		printf("after ori_memmove =>\t%s\n\
+after ft_memmove =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
 	else
 	{
 		printf("NG :(\n");
@@ -97,14 +97,14 @@ void	test2_dstnull_srcnull_size0_case(void)
 	char	*src = NULL;
 	size_t	size = 0;
 
-	printf("///test2_dstnull_srcnull_size0_case///\n
-		dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
+	printf("///test2_dstnull_srcnull_size0_case///\n\
+dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
 	printf("before memmove: dst =>\t%s\n", ori_dst);
 	memmove(ori_dst, src, size);
 	ft_memmove(ft_dst, src, size);
 	if (ori_dst == NULL && ft_dst == NULL)
-		printf("after ori_memmove =>\t%s\n
-			after ft_memmove =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
+		printf("after ori_memmove =>\t%s\n\
+after ft_memmove =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
 	else
 	{
 		printf("NG :(\n");
@@ -120,14 +120,14 @@ void	test3_dstnull_srcnull_sizenot0_case(void)
 	char	*src = NULL;
 	size_t	size = 5;
 
-	printf("///test3_dstnull_srcnull_sizenot0_case///\n
-		dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
+	printf("///test3_dstnull_srcnull_sizenot0_case///\n\
+dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
 	printf("before memmove: dst =>\t%s\n", ori_dst);
 	memmove(ori_dst, src, size);
 	ft_memmove(ft_dst, src, size);
 	if (ori_dst == NULL && ft_dst == NULL)
-		printf("after ori_memmove =>\t%s\n
-			after ft_memmove =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
+		printf("after ori_memmove =>\t%s\n\
+after ft_memmove =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
 	else
 	{
 		printf("NG :(\n");
@@ -143,14 +143,14 @@ void	test4_dstnull_size0_case(void)
 	char	src[] = "ABCDEFG";
 	size_t	size = 0;
 
-	printf("///test4_dstnull_size0_case///\n
-		dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
+	printf("///test4_dstnull_size0_case///\n\
+dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
 	printf("before memmove: dst =>\t%s\n", ori_dst);
 	memmove(ori_dst, src, size);
 	ft_memmove(ft_dst, src, size);
 	if (ori_dst == NULL && ft_dst == NULL)
-		printf("after ori_memmove =>\t%s\n
-			after ft_memmove =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
+		printf("after ori_memmove =>\t%s\n\
+after ft_memmove =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
 	else
 	{
 		printf("NG :(\n");
@@ -166,14 +166,14 @@ void	test5_srcnull_size0_case(void)
 	char	*src = NULL;
 	size_t	size = 0;
 
-	printf("///test5_srcnull_size0_case///\n
-		dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
+	printf("///test5_srcnull_size0_case///\n\
+dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
 	printf("before memmove: dst =>\t%s\n", ori_dst);
 	memmove(ori_dst, src, size);
 	ft_memmove(ft_dst, src, size);
 	if (strcmp(ori_dst, ft_dst) == 0)
-		printf("after ori_memmove =>\t%s\n
-			after ft_memmove =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
+		printf("after ori_memmove =>\t%s\n\
+after ft_memmove =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
 	else
 	{
 		printf("NG :(\n");
@@ -189,14 +189,14 @@ void	test6_dst_include_0_case(void)
 	char	*src = "ABCDEFG";
 	size_t	size = 5;
 
-	printf("///test6_dst_include_0_case///\n
-		dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
+	printf("///test6_dst_include_0_case///\n\
+dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
 	printf("before memmove: dst =>\t%s\n", ori_dst);
 	memmove(ori_dst, src, size);
 	ft_memmove(ft_dst, src, size);
 	if (memcmp(ori_dst, ft_dst, 5) == 0)
-		printf("after ori_memmove =>\t%s\n
-			after ft_memmove =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
+		printf("after ori_memmove =>\t%s\n\
+after ft_memmove =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
 	else
 	{
 		printf("NG :(\n");
@@ -212,14 +212,14 @@ void	test7_src_include_0_case(void)
 	char	*src = "ABC\0DEFG";
 	size_t	size = 5;
 
-	printf("///test7_src_include_0_case///\n
-		dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
+	printf("///test7_src_include_0_case///\n\
+dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
 	printf("before memmove: dst =>\t%s\n", ori_dst);
 	memmove(ori_dst, src, size);
 	ft_memmove(ft_dst, src, size);
 	if (memcmp(ori_dst, ft_dst, 5) == 0)
-		printf("after ori_memmove =>\t%s\n
-			after ft_memmove =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
+		printf("after ori_memmove =>\t%s\n\
+after ft_memmove =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
 	else
 	{
 		printf("NG :(\n");
@@ -238,14 +238,14 @@ void	test8_dst_overlap_case(void)
 	ori_dst = &src[2];
 	ft_dst = &src[2];
 
-	printf("///test8_dst_overlap_case///\n
-		dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
+	printf("///test8_dst_overlap_case///\n\
+dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
 	printf("before memmove: dst =>\t%s\n", ori_dst);
 	memmove(ori_dst, src, size);
 	ft_memmove(ft_dst, src, size);
 	if (strcmp(ori_dst, ft_dst) == 0)
-		printf("after ori_memmove =>\t%s\n
-			after ft_memmove =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
+		printf("after ori_memmove =>\t%s\n\
+after ft_memmove =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
 	else
 	{
 		printf("NG :(\n");
@@ -265,14 +265,14 @@ void	test9_dst_overlap_case2(void)
 	ori_src = &ori_dst[2];
 	ft_src = &ft_dst[2];
 
-	printf("///test9_dst_overlap_case2///\n
-		dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, ori_src, size);
+	printf("///test9_dst_overlap_case2///\n\
+dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, ori_src, size);
 	printf("before memmove: dst =>\t%s\n", ori_dst);
 	memmove(ori_dst, ori_src, size);
 	ft_memmove(ft_dst, ft_src, size);
 	if (strcmp(ori_dst, ft_dst) == 0)
-		printf("after ori_memmove =>\t%s\n
-			after ft_memmove =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
+		printf("after ori_memmove =>\t%s\n\
+after ft_memmove =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
 	else
 	{
 		printf("NG :(\n");
@@ -287,9 +287,11 @@ void	test10_segv_case(void)
 	char	src[] = "ABCDEFG";
 	size_t	size = 10;
 
+	printf("///test10_following_case_segv///\n");
 	ft_memmove(NULL, src, size);
 	ft_memmove(dst, NULL, size);
 	ft_memmove(dst, src, size); //size > dst_size
 
 	return ;
 }
+*/
