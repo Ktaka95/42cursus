@@ -71,13 +71,13 @@ void	test1_normal_case(void)
 	char	src[] = "ABCDEFG";
 	size_t	size = 3;
 
-	printf("///test1_normal_case///\n
+	printf("///test1_normal_case///\n\
 		dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
 	printf("before memcpy: dst =>\t%s\n", ori_dst);
 	memcpy(ori_dst, src, size);
 	ft_memcpy(ft_dst, src, size);
 	if (strcmp(ori_dst, ft_dst) == 0)
-		printf("after ori_memcpy =>\t%s\n
+		printf("after ori_memcpy =>\t%s\n\
 			after ft_memcpy =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
 	else
 	{
@@ -94,13 +94,13 @@ void	test2_dstnull_srcnull_size0_case(void)
 	char	*src = NULL;
 	size_t	size = 0;
 
-	printf("///test2_dstnull_srcnull_size0_case///\n
+	printf("///test2_dstnull_srcnull_size0_case///\n\
 		dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
 	printf("before memcpy: dst =>\t%s\n", ori_dst);
 	memcpy(ori_dst, src, size);
 	ft_memcpy(ft_dst, src, size);
 	if (ori_dst == NULL && ft_dst == NULL)
-		printf("after ori_memcpy =>\t%s\n
+		printf("after ori_memcpy =>\t%s\n\
 			after ft_memcpy =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
 	else
 	{
@@ -117,13 +117,13 @@ void	test3_dstnull_srcnull_sizenot0_case(void)
 	char	*src = NULL;
 	size_t	size = 5;
 
-	printf("///test3_dstnull_srcnull_sizenot0_case///\n
+	printf("///test3_dstnull_srcnull_sizenot0_case///\n\
 		dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
 	printf("before memcpy: dst =>\t%s\n", ori_dst);
 	memcpy(ori_dst, src, size);
 	ft_memcpy(ft_dst, src, size);
 	if (ori_dst == NULL && ft_dst == NULL)
-		printf("after ori_memcpy =>\t%s\n
+		printf("after ori_memcpy =>\t%s\n\
 			after ft_memcpy =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
 	else
 	{
@@ -140,13 +140,13 @@ void	test4_dstnull_size0_case(void)
 	char	src[] = "ABCDEFG";
 	size_t	size = 0;
 
-	printf("///test4_dstnull_size0_case///\n
+	printf("///test4_dstnull_size0_case///\n\
 		dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
 	printf("before memcpy: dst =>\t%s\n", ori_dst);
 	memcpy(ori_dst, src, size);
 	ft_memcpy(ft_dst, src, size);
 	if (ori_dst == NULL && ft_dst == NULL)
-		printf("after ori_memcpy =>\t%s\n
+		printf("after ori_memcpy =>\t%s\n\
 			after ft_memcpy =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
 	else
 	{
@@ -163,13 +163,13 @@ void	test5_srcnull_size0_case(void)
 	char	*src = NULL;
 	size_t	size = 0;
 
-	printf("///test5_srcnull_size0_case///\n
+	printf("///test5_srcnull_size0_case///\n\
 		dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
 	printf("before memcpy: dst =>\t%s\n", ori_dst);
 	memcpy(ori_dst, src, size);
 	ft_memcpy(ft_dst, src, size);
 	if (strcmp(ori_dst, ft_dst) == 0)
-		printf("after ori_memcpy =>\t%s\n
+		printf("after ori_memcpy =>\t%s\n\
 			after ft_memcpy =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
 	else
 	{
@@ -186,13 +186,13 @@ void	test6_dst_include_0_case(void)
 	char	*src = "ABCDEFG";
 	size_t	size = 5;
 
-	printf("///test6_dst_include_0_case///\n
+	printf("///test6_dst_include_0_case///\n\
 		dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
 	printf("before memcpy: dst =>\t%s\n", ori_dst);
 	memcpy(ori_dst, src, size);
 	ft_memcpy(ft_dst, src, size);
 	if (memcmp(ori_dst, ft_dst, 5) == 0)
-		printf("after ori_memcpy =>\t%s\n
+		printf("after ori_memcpy =>\t%s\n\
 			after ft_memcpy =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
 	else
 	{
@@ -209,13 +209,13 @@ void	test7_src_include_0_case(void)
 	char	*src = "ABC\0DEFG";
 	size_t	size = 5;
 
-	printf("///test7_src_include_0_case///\n
+	printf("///test7_src_include_0_case///\n\
 		dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
 	printf("before memcpy: dst =>\t%s\n", ori_dst);
 	memcpy(ori_dst, src, size);
 	ft_memcpy(ft_dst, src, size);
 	if (memcmp(ori_dst, ft_dst, 5) == 0)
-		printf("after ori_memcpy =>\t%s\n
+		printf("after ori_memcpy =>\t%s\n\
 			after ft_memcpy =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
 	else
 	{
@@ -237,13 +237,13 @@ void	test8_dst_overlap_case(void)
 	ft_dst = &src[2];
 	// memmove_dst = &src[2];
 
-	printf("///test8_dst_overlap_case///\n
+	printf("///test8_dst_overlap_case///\n\
 		dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, src, size);
 	printf("before memcpy: dst =>\t%s\n", ori_dst);
 	memcpy(ori_dst, src, size);
 	ft_memcpy(ft_dst, src, size);
 	if (strcmp(ori_dst, ft_dst) == 0)
-		printf("after ori_memcpy =>\t%s\n
+		printf("after ori_memcpy =>\t%s\n\
 			after ft_memcpy =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
 	else
 	{
@@ -268,13 +268,13 @@ void	test9_dst_overlap_case2(void)
 	ft_src = &ft_dst[2];
 	// memmove_src = &memmove_dst[2];
 
-	printf("///test9_dst_overlap_case2///\n
+	printf("///test9_dst_overlap_case2///\n\
 		dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, ori_src, size);
 	printf("before memcpy: dst =>\t%s\n", ori_dst);
 	memcpy(ori_dst, ori_src, size);
 	ft_memcpy(ft_dst, ft_src, size);
 	if (strcmp(ori_dst, ft_dst) == 0)
-		printf("after ori_memcpy =>\t%s\n
+		printf("after ori_memcpy =>\t%s\n\
 			after ft_memcpy =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
 	else
 	{
