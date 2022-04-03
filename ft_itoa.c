@@ -99,37 +99,22 @@ char	*ft_itoa_if_argument_minus(int n)
 
 int main(void)
 {
-	int	min = INT_MIN;
-	int	max = INT_MAX;
+	int	n = INT_MIN;
 	char	*num = NULL;
-	int		i;
-	printf("///case1\tnum < 0///\n");
-	while (min < 0)
+	int		check;
+
+	while (n < INT_MAX)
 	{
-		num = ft_itoa(min);
-		i = atoi(num);
-		if (i != min)
+		num = ft_itoa(n);
+		check = atoi(num);
+		if (check == n)
+			printf("%d: OK\n", n);
+		else
 		{
-			printf("NG:( n=%d\titoa=%d\n", min, i);
+			printf("NG :(\n");
 			exit (0);
 		}
-		else
-			printf("%d\n", min);
-		min /= 10;
-	}
-	printf("\n///case2\tnum > 0///\n");
-	while (max > 0)
-	{
-		num = ft_itoa(max);
-		i = atoi(num);
-		if (i != max)
-		{
-			printf("NG:( n=%d\titoa=%d\n", max, i);
-			exit (0);
-		}
-		else
-			printf("%d\n", max);
-		max /= 10;
+		n += 13107;
 	}
 	printf("\nOK :)\n");
 	return (0);
