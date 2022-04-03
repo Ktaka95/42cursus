@@ -61,10 +61,10 @@ char	*ft_strnstr_body(char *h, char *n, size_t len)
 
 // int main(void)
 // {
-// 	char *str = "abbbcdefg";
+// 	char *str = NULL;
 // 	char *p = NULL;
 // 	char *q = NULL;
-// 	char *str2 = "bbc";
+// 	char *str2 = "";
 // 	printf("str, p, qのアドレス→%p, %p, %p\n", str, p, q);
 // 	p = strnstr(str, str2, 20);
 // 	printf("strnstr→%s: %s\n%p, %p\n", str, p, str, p);
