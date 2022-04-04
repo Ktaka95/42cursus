@@ -42,13 +42,13 @@ void	ft_putnbr_fd(int n, int fd)
 #include <unistd.h>
 
 void	test1_INT_MIN_to_0_case(void);
-void	test2_0_to_INT_MAX_case(void);
+void	test2_1_to_INT_MAX_case(void);
 
 int	main(void)
 {
 	test1_INT_MIN_to_0_case();
-	sleep(10);
-	test2_0_to_INT_MAX_case();
+	sleep(5);
+	test2_1_to_INT_MAX_case();
 	return (0);
 }
 
@@ -57,7 +57,9 @@ void	test1_INT_MIN_to_0_case(void)
 	int	n = INT_MIN;
 	int	fd = 1;
 
-	while (n < 0)
+	printf("///test1_INT_MIN_to_0///\n");
+	sleep(2);
+	while (n <= 0)
 	{
 		while (fd < 3)
 		{
@@ -66,25 +68,20 @@ void	test1_INT_MIN_to_0_case(void)
 			fd++;
 		}
 		fd = 1;
-		n += 8192;
 		if (n == 0)
-		{
-			while (fd < 3)
-			{
-				ft_putnbr_fd(n, fd);
-				printf("\n");
-				fd++;
-			}
-		}
+			break ;
+		n += 8192;
 	}
 }
 
-void	test2_0_to_INT_MAX_case(void)
+void	test2_1_to_INT_MAX_case(void)
 {
 	int	n = 1;
 	int	fd = 1;
 
-	while (n < INT_MAX)
+	printf("\n///test2_1_to_INT_MAX///\n");
+	sleep(2);
+	while (n <= INT_MAX)
 	{
 		while (fd < 3)
 		{
@@ -93,16 +90,9 @@ void	test2_0_to_INT_MAX_case(void)
 			fd++;
 		}
 		fd = 1;
-		n += 11627;
 		if (n == INT_MAX)
-		{
-			while (fd < 3)
-			{
-				ft_putnbr_fd(n, fd);
-				printf("\n");
-				fd++;
-			}
-		}
+			break ;
+		n += 11627;
 	}
 }
 */
