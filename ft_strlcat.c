@@ -76,6 +76,7 @@ void	strlcat_dst_null_case(char *s1, char *s2)
 	int		or_ret = 0;
 	int		ft_ret = 0;
 	int		dstsize = 0;
+
 	printf("\n/////dst_null_case/////\n");
 	printf("<before_strlcat>\n");
 	printf("dst:\t\t%s\n", s1);
@@ -96,12 +97,15 @@ void	strlcat_dstsize_lt_dstplus1(char *s1, char *s2)
 	int		or_ret = 0;
 	int		ft_ret = 0;
 	size_t	dstsize = 0;
+	char	*or_dst = NULL;
+	char	*ft_dst = NULL;
+
 	printf("\n/////dstsize_lt_dstplus1/////\n");
 	while (dstsize < strlen(s1) + 1)
 	{
 		printf("<before_strlcat>\n");
-		char	*or_dst = strdup(s1);
-		char	*ft_dst = strdup(s1);
+		or_dst = strdup(s1);
+		ft_dst = strdup(s1);
 		printf("or_dst:\t\t%s\n", or_dst);
 		printf("ft_dst:\t\t%s\n", ft_dst);
 		printf("src:\t\t%s\ndstsize:\t%zu\n", s2, dstsize);
@@ -128,12 +132,15 @@ void	strlcat_dstsize_lt_dstplussrcplus1(char *s1, char *s2)
 	int		or_ret = 0;
 	int		ft_ret = 0;
 	size_t	dstsize = strlen(s1) + 1;
+	char	*or_dst = NULL;
+	char	*ft_dst = NULL;
+
 	printf("\n/////dstsize_lt_dstplussrcplus1/////\n");
 	while (dstsize < strlen(s1) + strlen(s2) + 1)
 	{
 		printf("<before_strlcat>\n");
-		char	*or_dst = strdup(s1);
-		char	*ft_dst = strdup(s1);
+		or_dst = strdup(s1);
+		ft_dst = strdup(s1);
 		printf("or_dst:\t\t%s\n", or_dst);
 		printf("ft_dst:\t\t%s\n", ft_dst);
 		printf("src:\t\t%s\ndstsize:\t%zu\n", s2, dstsize);
@@ -161,12 +168,15 @@ void	strlcat_dstsize_ge_dstplussrcplus1(char *s1, char *s2)
 	int		ft_ret = 0;
 	size_t	dstsize = strlen(s1) + strlen(s2) + 1;
 	int		i = 0;
+	char	*or_dst = NULL;
+	char	*ft_dst = NULL;
+
 	printf("\n/////dstsize_ge_dstplussrcplus1/////\n");
 	while (i < 3)
 	{
 		printf("<before_strlcat>\n");
-		char	*or_dst = strdup(s1);
-		char	*ft_dst = strdup(s1);
+		or_dst = strdup(s1);
+		ft_dst = strdup(s1);
 		printf("or_dst:\t\t%s\n", or_dst);
 		printf("ft_dst:\t\t%s\n", ft_dst);
 		printf("src:\t\t%s\ndstsize:\t%zu\n", s2, dstsize);
@@ -194,12 +204,15 @@ void	strlcat_middle_null(char *s1, char *s2)
 	int		or_ret = 0;
 	int		ft_ret = 0;
 	size_t	dstsize = 0;
+	char	*or_dst = NULL;
+	char	*ft_dst = NULL;
+
 	printf("\n/////middle_null/////\n");
 	while (dstsize < strlen(s1) + strlen(s2) + 4)
 	{
 		printf("<before_strlcat>\n");
-		char	*or_dst = strdup(s1);
-		char	*ft_dst = strdup(s1);
+		or_dst = strdup(s1);
+		ft_dst = strdup(s1);
 		printf("or_dst:\t\tabcd\\0efg\n");
 		printf("ft_dst:\t\tabcd\\0efg\n");
 		printf("src:\t\tAB\\0CDE\ndstsize:\t%zu\n", dstsize);
