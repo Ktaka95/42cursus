@@ -26,9 +26,25 @@ void	ft_putstr_fd(char *s, int fd)
 	}
 }
 
-// int main(void)
-// {
-// 	char	*s = NULL;
-// 	ft_putstr_fd(s, 1);
-// 	return (0);
-// }
+/*
+#include <stdio.h>
+int	main(void)
+{
+	char	*normal = "Hello, 42 world!";
+	char	*empty = "";
+	char	*null = NULL;
+	int		fd = 1;
+
+	while (fd < 3)
+	{
+		ft_putstr_fd(normal, fd);
+		printf("\n");
+		ft_putstr_fd(empty, fd);
+		printf("\n");
+		ft_putstr_fd(null, fd);
+		printf("\n");
+		fd++;
+	}
+	return (0);
+}
+*/
