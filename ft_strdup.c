@@ -15,18 +15,16 @@
 
 char	*ft_strdup(const char	*s1)
 {
-	int		i;
-	int		len_s1;
+	size_t	i;
 	char	*heap;
 
 	i = 0;
-	len_s1 = ft_strlen(s1);
-	heap = (char *)malloc(sizeof(char) * (len_s1 + 1));
+	heap = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
 	if (heap == NULL)
 		return (NULL);
 	else
 	{
-		while (s1[i])
+		while (s1[i] != '\0')
 		{
 			heap[i] = s1[i];
 			i++;
@@ -36,28 +34,96 @@ char	*ft_strdup(const char	*s1)
 	return (heap);
 }
 
-// #include <stdio.h>
-// #include <string.h>
+/*
+#include <stdio.h>
+#include <string.h>
 
-// int	main(void)
-// {
-// 	char	*p;
-// 	char	*q;
-// 	char	str1[] = "Hello, World";
-// 	char	str2[] = "Hello, World";
+void	test1_normal_case(void);
+void	test2_empty_case(void);
+void	test3_SEGV_case(void);
 
-// 	p = strdup(str1);
-// 	q = ft_strdup(str2);
+int	main(void)
+{
+	test1_normal_case();
+	test2_empty_case();
+	test3_SEGV_case();
+	return (0);
+}
 
-// 	str1[5] = '!';
-// 	str2[5] = '!';
+void	test1_normal_case(void)
+{
+	char	*str = "Hello, 42 world!";
+	char	*ori_dup = strdup(str);
+	char	*ft_dup = ft_strdup(str);
 
-// 	printf("Expected_Output\n");
-// 	printf("%s\n",str1);
-// 	printf("%s\n",p);
-// 	printf("--------------------\n");
-// 	printf("Actual_Output\n");
-// 	printf("%s\n",str2);
-// 	printf("%s\n",q);
-// 	return (0);
-// }
+	printf("///test1_normal_case///\n");
+	printf("---before strdup---\n");
+	printf("ori_str:\t%s\naddress:\t%p\n", str, str);
+	if (strcmp(ori_dup, ft_dup) == 0)
+	{
+		printf("---after strdup---\n");
+		printf("ori_dup:\t%p\n", ori_dup);
+		printf("ft_dup:\t\t%p\n", ft_dup);
+		printf("OK :)\n");
+	}
+	else
+	{
+		printf("NG :(\n");
+		exit (0);
+	}
+	return ;
+}
+
+void	test2_empty_case(void)
+{
+	char	*str = "";
+	char	*ori_dup = strdup(str);
+	char	*ft_dup = ft_strdup(str);
+
+	printf("\n///test2_empty_case///\n");
+	printf("---before strdup---\n");
+	printf("ori_str:\t%s\naddress:\t%p\n", str, str);
+	if (strcmp(ori_dup, ft_dup) == 0)
+	{
+		printf("---after strdup---\n");
+		printf("ori_dup:\t%p\n", ori_dup);
+		printf("ft_dup:\t\t%p\n", ft_dup);
+		printf("OK :)\n");
+	}
+	else
+	{
+		printf("NG :(\n");
+		exit (0);
+	}
+	return ;
+}
+
+void	test3_SEGV_case(void)
+{
+	size_t	len = SIZE_MAX;
+	char	*str = NULL;
+	char	*ori_dup;
+	char	*ft_dup;
+
+	printf("\n///test3_SEGV_case///\n");
+	str = calloc(len, sizeof(char));
+	memset(str, 'a', len);
+	ori_dup = strdup(str);
+	ft_dup = ft_strdup(str);
+	printf("---before strdup---\n");
+	printf("ori_str:\t%s\naddress:\t%p\n", str, str);
+	if (strcmp(ori_dup, ft_dup) == 0)
+	{
+		printf("---after strdup---\n");
+		printf("ori_dup:\t%p\n", ori_dup);
+		printf("ft_dup:\t\t%p\n", ft_dup);
+		printf("OK :)\n");
+	}
+	else
+	{
+		printf("NG :(\n");
+		exit (0);
+	}
+	return ;
+}
+*/
