@@ -111,7 +111,7 @@ void	test3_SEGV_case(void)
 	ori_dup = strdup(str);
 	ft_dup = ft_strdup(str);
 	printf("---before strdup---\n");
-	printf("ori_str:\t%s\naddress:\t%p\n", str, str);
+	printf("ori_str:\t%zu\naddress:\t%p\n", strlen(str), str);
 	if (strcmp(ori_dup, ft_dup) == 0)
 	{
 		printf("---after strdup---\n");

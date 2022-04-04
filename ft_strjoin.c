@@ -39,22 +39,145 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	return (joined_str);
 }
 
-// #include <stdio.h>
+/*
+#include <string.h>
+#include <stdio.h>
 
-// int main(void)
-// {
-// 	char	s1[] = "ABCDEFG";
-// 	char	*s2 = NULL;
-// 	char	*s3 = NULL;
-// 	// size_t	i = 0;
+void	test1_normal_case(void);
+void	test2_s1_empty_case(void);
+void	test3_s2_empty_case(void);
+void	test4_s1_null_case(void);
+void	test5_s2_null_case(void);
+void	test6_both_null_case(void);
+void	test7_str_toolong_case(void);
 
-// 	s3 = ft_strjoin(s1, s2);
-// 	printf("%s\n", s3);
-// 	// while (s3[i] != '\0')
-// 	// {
-// 	// 	printf("%zu: [%c]\n", i, s3[i]);
-// 	// 	i++;
-// 	// }
-// 	// printf("%zu: [%c]\n", i, s3[i]);
-// 	return (0);
-// }
+int main(void)
+{
+	test1_normal_case();
+	test2_s1_empty_case();
+	test3_s2_empty_case();
+	test4_s1_null_case();
+	test5_s2_null_case();
+	test6_both_null_case();
+	test7_str_toolong_case();
+
+	return (0);
+}
+
+void	test1_normal_case(void)
+{
+	char	*s1 = "Hello, ";
+	char	*s2 = "42 wolrd!";
+	char	*ret = NULL;
+
+	printf("///test1_normal_case///\n");
+	printf("---before_join---\n");
+	printf("s1: %s\ns2: %s\n", s1, s2);
+	ret = ft_strjoin(s1, s2);
+	printf("---after_join---\n");
+	printf("%s\n", ret);
+
+	return ;
+}
+
+void	test2_s1_empty_case(void)
+{
+	char	*s1 = "";
+	char	*s2 = "42 wolrd!";
+	char	*ret = NULL;
+
+	printf("\n///test2_s1_empty_case///\n");
+	printf("---before_join---\n");
+	printf("s1: %s\ns2: %s\n", s1, s2);
+	ret = ft_strjoin(s1, s2);
+	printf("---after_join---\n");
+	printf("%s\n", ret);
+
+	return ;
+}
+
+void	test3_s2_empty_case(void)
+{
+	char	*s1 = "Hello, ";
+	char	*s2 = "";
+	char	*ret = NULL;
+
+	printf("\n///test3_s2_empty_case///\n");
+	printf("---before_join---\n");
+	printf("s1: %s\ns2: %s\n", s1, s2);
+	ret = ft_strjoin(s1, s2);
+	printf("---after_join---\n");
+	printf("%s\n", ret);
+
+	return ;
+}
+
+void	test4_s1_null_case(void)
+{
+	char	*s1 = NULL;
+	char	*s2 = "42 wolrd!";
+	char	*ret = NULL;
+
+	printf("\n///test4_s1_null_case///\n");
+	printf("---before_join---\n");
+	printf("s1: %s\ns2: %s\n", s1, s2);
+	ret = ft_strjoin(s1, s2);
+	printf("---after_join---\n");
+	printf("%s\n", ret);
+
+	return ;
+}
+
+void	test5_s2_null_case(void)
+{
+	char	*s1 = "Hello, ";
+	char	*s2 = NULL;
+	char	*ret = NULL;
+
+	printf("\n///test5_s2_null_case///\n");
+	printf("---before_join---\n");
+	printf("s1: %s\ns2: %s\n", s1, s2);
+	ret = ft_strjoin(s1, s2);
+	printf("---after_join---\n");
+	printf("%s\n", ret);
+
+	return ;
+}
+
+void	test6_both_null_case(void)
+{
+	char	*s1 = NULL;
+	char	*s2 = NULL;
+	char	*ret = NULL;
+
+	printf("\n///test6_both_null_case///\n");
+	printf("---before_join---\n");
+	printf("s1: %s\ns2: %s\n", s1, s2);
+	ret = ft_strjoin(s1, s2);
+	printf("---after_join---\n");
+	printf("%s\n", ret);
+
+	return ;
+}
+
+void	test7_str_toolong_case(void)
+{
+	size_t	len = LONG_MAX;
+	char	*s1 = NULL;
+	char	*s2 = NULL;
+	char	*ret = NULL;
+
+	printf("\n///test7_str_toolong_case///\n");
+	s1 = calloc(len, sizeof(char));
+	s2 = calloc(len, sizeof(char));
+	memset(s1, 'a', len);
+	memset(s2, 'b', len);
+	printf("---before_join---\n");
+	printf("s1: %zu\ns2: %zu\n", strlen(s1), strlen(s2));
+	ret = ft_strjoin(s1, s2);
+	printf("---after_join---\n");
+	printf("%zu\n", strlen(ret));
+
+	return ;
+}
+*/

@@ -10,22 +10,20 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdio.h>
 #include "libft.h"
 
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	unsigned int	i;
-	size_t			original_s_len;
+	size_t			len;
 
 	i = 0;
-	original_s_len = 0;
 	if (s == NULL || f == NULL)
 		return ;
 	else
 	{
-		original_s_len = ft_strlen(s);
-		while (i < original_s_len)
+		len = ft_strlen(s);
+		while (i < len)
 		{
 			f(i, s);
 			i++;
@@ -34,24 +32,70 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 	}
 }
 
-// #include <stdio.h>
-// #include <string.h>
+/*
+#include <stdio.h>
 
-// void	f_striteri(unsigned i, char *s)
-// {
-// 	*s = i + '0';
-// }
+void	ori_func(unsigned i, char *s);
+void	test1_empty_case(void);
+void	test2_1character_case(void);
+void	test3_normal_case(void);
+void	test4_null_case(void);
 
-// int main(void)
-// {
-// 	char	b[] = "override this !";
-// 	char	b2[0xF0];
-// 	size_t	size = strlen(b);
+int main(void)
+{
+	test1_empty_case();
+	test2_1character_case();
+	test3_normal_case();
+	test4_null_case();
+	return (0);
+}
 
-// 	for (size_t i = 0; i < size; i++)
-// 		f_striteri(i, b2 + i);
-// 	b2[size] = 0;
-// 	ft_striteri(b, f_striteri);
-// 	printf("%s\n%s\n", b, b2);
+void	ori_func(unsigned i, char *s)
+{
+	*s = i + '0';
+}
 
-// }
+void	test1_empty_case(void)
+{
+	char	str[] = "";
+
+	printf("///test1_empty_case///\n");
+	printf("---before striteri---\nstr: %s\n", str);
+	ft_striteri(str, ori_func);
+	printf("---after_striteri---\nstr: %s\n", str);
+	return ;
+}
+
+void	test2_1character_case(void)
+{
+	char	str[] = "a";
+
+	printf("\n///test2_1character_case///\n");
+	printf("---before striteri---\nstr: %s\n", str);
+	ft_striteri(str, ori_func);
+	printf("---after_striteri---\nstr: %s\n", str);
+	return ;
+}
+
+void	test3_normal_case(void)
+{
+	char	str[] = "abcdefghij";
+
+	printf("\n///test3_normal_case///\n");
+	printf("---before striteri---\nstr: %s\n", str);
+	ft_striteri(str, ori_func);
+	printf("---after_striteri---\nstr: %s\n", str);
+	return ;
+}
+
+void	test4_null_case(void)
+{
+	char	*str = NULL;
+
+	printf("\n///test4_null_case///\n");
+	printf("---before striteri---\nstr: %s\n", str);
+	ft_striteri(str, ori_func);
+	printf("---after_striteri---\nstr: %s\n", str);
+	return ;
+}
+*/
