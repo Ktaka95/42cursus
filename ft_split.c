@@ -23,7 +23,7 @@ char	**ft_split(char const *s, char c)
 	size_t			j;
 	unsigned int	start;
 
-	ret = ft_calloc((ft_split_count(s, c) + 1), sizeof(char *));
+	ret = (char **)malloc(sizeof(char *) * (ft_split_count(s, c) + 1));
 	if (ret == NULL)
 		return (NULL);
 	i = 0;
@@ -56,8 +56,6 @@ size_t	ft_split_count(char const *s, char c)
 	i = 0;
 	len = 0;
 	count = 0;
-	if (s == NULL)
-		return (0);
 	while (s[i] != '\0')
 	{
 		if (s[i] == c)
@@ -80,7 +78,7 @@ char	**ft_split_free(char **ret, size_t n)
 	size_t	i;
 
 	i = 0;
-	while (i < n && ret[i] != NULL)
+	while (i < n)
 	{
 		free(ret[i]);
 		i++;
