@@ -34,36 +34,44 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	return (ret_s);
 }
 
-// char	test_toupper(unsigned int i, char c)
-// {
-// 	i = 32;
-// 	if ('a' <= c && c <= 'z')
-// 		c -= i;
-// 	return (c);
-// }
+/*
+#include <stdio.h>
+#include <string.h>
 
-// #include <stdio.h>
-// #include <string.h>
+char	test_toupper(unsigned int i, char c)
+{
+	i = 32;
+	if ('a' <= c && c <= 'z')
+		c -= i;
+	return (c);
+}
 
-// int main(void)
-// {
-// 	char	*s1_basic = "abcdefg";
-// 	char	*s1_null = NULL;
-// 	char	(* testtoupper)(unsigned int, char);
-// 	char	*s2_basic;
-// 	char	*s2_null;
-// 	size_t	i = 0;
+int main(void)
+{
+	char	*s1_basic = "abcdefg";
+	char	*s1_null = NULL;
+	char	(* testtoupper)(unsigned int, char);
+	char	*s2_basic;
+	char	*s2_null;
+	size_t	i = 0;
 
-// 	testtoupper = test_toupper;
-// 	s2_basic = ft_strmapi(s1_basic, testtoupper);
-// 	while (s2_basic[i] != '\0')
-// 	{
-// 		printf("%zu: [%c]\n", i, s2_basic[i]);
-// 		i++;
-// 	}
-// 	if (s2_basic[i] == '\0')
-// 		printf("%zu: [\\'0']\n", i);
-// 	s2_null = ft_strmapi(s1_null, testtoupper);
-// 	printf("%s\n", s2_null);
-// 	return (0);
-// }
+	testtoupper = test_toupper;
+	s2_basic = ft_strmapi(s1_basic, testtoupper);
+	printf("///test1_normal_case///\n");
+	printf("before strmapi: abcdefg\n");
+	printf("after strmapi:\n");
+	printf("index:\tchar\n");
+	while (s2_basic[i] != '\0')
+	{
+		printf("%zu:\t[%c]\n", i, s2_basic[i]);
+		i++;
+	}
+	if (s2_basic[i] == '\0')
+		printf("%zu:\t[\\'0']\n\n", i);
+	printf("///test2_null_case///\n");
+	printf("before strmapi: %s\n", s1_null);
+	s2_null = ft_strmapi(s1_null, testtoupper);
+	printf("after strmapi: %s\n", s2_null);
+	return (0);
+}
+*/
