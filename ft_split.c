@@ -14,8 +14,6 @@
 
 static size_t	ft_split_count(char const *s, char c);
 
-static char	*ft_substr_free(char const *s, unsigned int start, size_t len);
-
 static char		**ft_split_free(char **ret, size_t n);
 
 char	**ft_split(char const *s, char c)
@@ -39,7 +37,7 @@ char	**ft_split(char const *s, char c)
 			i++;
 		if (i > start)
 		{
-			ret[j] = ft_substr_free(s, start, i - start);
+			ret[j] = ft_substr(s, start, i - start);
 			if (ret[j] == NULL)
 				return (ft_split_free(ret, j));
 			j++;
@@ -58,6 +56,8 @@ size_t	ft_split_count(char const *s, char c)
 	i = 0;
 	len = 0;
 	count = 0;
+	if (s == NULL)
+		return (0);
 	while (s[i] != '\0')
 	{
 		if (s[i] == c)
@@ -73,36 +73,6 @@ size_t	ft_split_count(char const *s, char c)
 	if (len > 0)
 		count++;
 	return (count);
-}
-
-char	*ft_substr_free(char const *s, unsigned int start, size_t len)
-{
-	char	*substr;
-	size_t	i;
-	size_t	alloc_len;
-
-	i = 0;
-	if (s == NULL || len == 0 || start > ft_strlen(s))
-		return (ft_strdup(""));
-	else
-	{
-		if (len > ft_strlen(s))
-			alloc_len = ft_strlen(s) - start + 1;
-		else
-			alloc_len = len + 1;
-		substr = ft_calloc(alloc_len, sizeof(char));
-		if (substr == NULL)
-		{
-			free(substr);
-			return (NULL);
-		}
-		else
-		{
-			while (i < len && s[start] != '\0')
-				substr[i++] = s[start++];
-		}
-		return (substr);
-	}
 }
 
 char	**ft_split_free(char **ret, size_t n)
