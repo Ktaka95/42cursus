@@ -25,41 +25,107 @@ size_t	ft_strlen(const char	*s)
 /*
 #include <stdio.h>
 #include <string.h>
-#include <limits.h>
-#include <math.h>
+
+void	test1_normal_case(void);
+void	test2_huge_case(void);
+void	test3_too_long_case(void);
+void	test4_SEGV_case(void);
 
 int	main(void)
 {
-	size_t	ori = 0;
-	size_t	ft = 0;
-	char	*str = calloc(INT_MAX, sizeof(char));
-	int		i = 0;
-	size_t	pow_ten = 0;
-
-	printf("len:\tstrlen\t:\tft_strlen\n");
-	while (i < INT_MAX)
-	{
-		pow_ten = pow(10, i);
-		if (pow_ten > INT_MAX)
-			pow_ten = INT_MAX;
-		str = memset(str, 'a', pow_ten);
-		ori = strlen(str);
-		ft = strlen(str);
-		if (ori == ft)
-			printf("[%zu]:\t%zu\t:\t%zu\n", pow_ten, ori, ft);
-		else
-		{
-			printf("NG :(\n");
-			return(0);
-		}
-		if (pow_ten == INT_MAX)
-			break;
-		i++;
-	}
-	printf("OK :)\n");
-	//////以下セグフォ///////
-	// ori = strlen(NULL);
-	// ft = strlen(NULL);
+	test1_normal_case();
+	test2_huge_case();
+	test3_too_long_case();
+	test4_SEGV_case();
 	return (0);
+}
+
+void	test1_normal_case(void)
+{
+	char	*str = "Hello, 42 world!";
+
+	printf("///test1_normal_case///\n");
+	printf("str: %s\n", str);
+	if (strlen(str) == ft_strlen(str))
+	{
+		printf("len: %zu\n", strlen(str));
+		printf("OK :)\n");
+	}
+	else
+	{
+		printf("NG :(\n");
+		exit (0);
+	}
+	return ;
+}
+
+void	test2_huge_case(void)
+{
+	size_t	count = INT_MAX;
+	char	*str = calloc(count, sizeof(char));
+	int		c = 'A';
+
+	memset(str, c, count);
+	printf("\n///test2_huge_case///\n");
+	printf("strlen: %zu\n", strlen(str));
+	if (strlen(str) == ft_strlen(str))
+	{
+		printf("len: %zu\n", strlen(str));
+		printf("OK :)\n");
+	}
+	else
+	{
+		printf("NG :(\n");
+		exit (0);
+	}
+	return ;
+}
+
+void	test3_too_long_case(void)
+{
+	size_t	count = SIZE_MAX;
+	char	*str = calloc(count, sizeof(char));
+	int		c = 'A';
+
+
+	printf("\n///test3_too_long_case///\n");
+	if (str == NULL)
+	{
+		printf("str too long!\n");
+		return ;
+	}
+	memset(str, c, count);
+	printf("strlen: %zu\n", strlen(str));
+	if (strlen(str) == ft_strlen(str))
+	{
+		printf("len: %zu\n", strlen(str));
+		printf("OK :)\n");
+	}
+	else
+	{
+		printf("NG :(\n");
+		exit (0);
+	}
+	return ;
+}
+
+void	test4_SEGV_case(void)
+{
+	char	*str = NULL;
+
+	printf("\n///test4_SEGV_case///\n");
+	printf("str: %s\n", str);
+	printf("***This case SEGV***\n");
+	if (strlen(str) == ft_strlen(str))
+	{
+		printf("len: %zu\n", strlen(str));
+		printf("OK :)\n");
+	}
+	else
+	{
+		printf("NG :(\n");
+		exit (0);
+	}
+	return ;
 }
 */
