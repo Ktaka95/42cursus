@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static size_t	ft_start_trim_count(char *s1, char const *set);
 
@@ -65,62 +64,102 @@ size_t	ft_end_trim_count(char *s1, char const *set)
 	return (count);
 }
 
-// #include <stdio.h>
+/*
+#include <stdio.h>
+#include <string.h>
 
-// int main(void)
-// {
-// // 	// char	s1[] = "ABCDECFCFGF";
-// // 	// char	*s2 = NULL;
-// // 	// size_t	i;
-// // 	// size_t	i = 0;
-// // 	// size_t	j = 0;
-// // 	// size_t	k = 0;
-// // 	// size_t	l = 0;
+void	test1_normal_case(void);
+void	test2_no_trim_case(void);
+void	test3_s1_null_case(void);
+void	test4_set_null_case(void);
+void	test5_s1_too_long_case(void);
 
-// // 	// s2 = ft_strtrim(s1, "CF");
-// // 	// i = 0;
-// // 	// while (s2[i] != '\0')
-// // 	// {
-// // 	// 	if (s2[i] != '\0')
-// // 	// 		printf("%zu: [%c]\n", i, s2[i]);
-// // 	// 	else if (s2[i] == '\0')
-// // 	// 		printf("%zu: ['\\0']\n", i);
-// // 	// 	i++;
-// // 	// }
-// // 	// if (s2[i] != '\0')
-// // 	// 	printf("%zu: [%c]\n", i, s2[i]);
-// // 	// else if (s2[i] == '\0')
-// // 	// 	printf("%zu: ['\\0']\n", i);
-// // 	// char	*s1 = "   \t  \n\n \t\t  \n\n\nHello \t  Please\n Trim me !\n   \n \n \t\t\n  ";
-// // 	// char	*s2 = "Hello \t  Please\n Trim me !";
-// 	char	*s1 = "";
-// 	char	*s2 = "123";
-// 	char	*ret;
-// 	size_t	start;
-// 	size_t	end;
+int	main(void)
+{
+	test1_normal_case();
+	test2_no_trim_case();
+	test3_s1_null_case();
+	test4_set_null_case();
+	test5_s1_too_long_case();
+	return (0);
+}
 
-// 	start = ft_start_trim_count(s1, s2);
-// 	end = ft_end_trim_count(s1, s2);
-// 	ret = ft_strtrim(s1, s2);
-// 	if (ret == NULL)
-// 		printf("null\n");
-// 	else
-// 		printf("%zu, %zu, %s\n", start, end, ret);
-// // 	printf("-----------------\n");
-// // 	// int	ret = 0;
-// // 	// ret = ft_strncmp(ret1, s2, 100);
-// // 	// printf("%d\n", ret);
-// // 	// i = ft_start_trim_count(s1, " \n\t");
-// // 	// j = ft_start_trim_count(s2, " \n\t");
-// // 	// while (*s1 != '\0')
-// // 	// 	s1++;
-// // 	// s1--;
-// // 	// while (*s2 != '\0')
-// // 	// 	s2++;
-// // 	// s2--;
-// // 	// k = ft_end_trim_count(s1, " \n\t");
-// // 	// l = ft_end_trim_count(s2, " \n\t");
-// // 	// printf("%zu, %zu, %zu, %zu\n", i, j, k, l);
+void	test1_normal_case(void)
+{
+	char	*s1 = "  	 Hello, 	 42	 	 world!  	 ";
+	char	*set = " \t";
+	char	*ret = NULL;
 
-// 	return (0);
-// }
+	printf("///test1_normal_case///\n");
+	printf("--before trim--\n");
+	printf("s1: %s\nset: %s\n", s1, set);
+	ret = ft_strtrim(s1, set);
+	printf("--after trim--\n");
+	printf("%s\n", ret);
+	return ;
+}
+
+void	test2_no_trim_case(void)
+{
+	char	*s1 = "Hello, 	 42	 	 world!";
+	char	*set = " \t";
+	char	*ret = NULL;
+
+	printf("\n///test2_no_trim_case///\n");
+	printf("--before trim--\n");
+	printf("s1: %s\nset: %s\n", s1, set);
+	ret = ft_strtrim(s1, set);
+	printf("--after trim--\n");
+	printf("%s\n", ret);
+	return ;
+}
+
+void	test3_s1_null_case(void)
+{
+	char	*s1 = NULL;
+	char	*set = "abcdefg\0";
+	char	*ret = NULL;
+
+	printf("\n///test3_s1_null_case///\n");
+	printf("--before trim--\n");
+	printf("s1: %s\nset: %s\n", s1, set);
+	ret = ft_strtrim(s1, set);
+	printf("--after trim--\n");
+	printf("%s\n", ret);
+	return ;
+}
+
+void	test4_set_null_case(void)
+{
+	char	*s1 = "Hello, 42 world!";
+	char	*set = NULL;
+	char	*ret = NULL;
+
+	printf("\n///test4_set_null_case///\n");
+	printf("--before trim--\n");
+	printf("s1: %s\nset: %s\n", s1, set);
+	ret = ft_strtrim(s1, set);
+	printf("--after trim--\n");
+	printf("%s\n", ret);
+	return ;
+}
+
+void	test5_s1_too_long_case(void)
+{
+	char	*s1;
+	char	*set = "a";
+	char	*ret = NULL;
+	size_t	count = INT_MAX;
+	int		c = 'a';
+
+	printf("\n///test5_s1_too_long_case///\n");
+	s1 = calloc(count, sizeof(char));
+	memset(s1, c, count);
+	printf("--before trim--\n");
+	printf("s1: %zu\nset: %s\n", strlen(s1), set);
+	ret = ft_strtrim(s1, set);
+	printf("--after trim--\n");
+	printf("%zu\n", strlen(ret));
+	return ;
+}
+*/
