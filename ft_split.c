@@ -70,7 +70,6 @@ size_t	ft_split_count(char const *s, char c)
 
 /*
 #include <stdio.h>
-
 void	test1_normal_case(void);
 void	test2_nosplit_case(void);
 void	test3_c_0_case(void);
@@ -83,7 +82,6 @@ void	test9_s_empty_c_null_case(void);
 void	test10_s_null_case(void);
 void	test11_s_null_c_0_case(void);
 void	test12_only_0_case(void);
-
 int	main(void)
 {
 	test1_normal_case();
@@ -98,10 +96,8 @@ int	main(void)
 	test10_s_null_case();
 	test11_s_null_c_0_case();
 	test12_only_0_case();
-	while (1);
 	return (0);
 }
-
 void	test1_normal_case(void)
 {
 	char	**ret = NULL;
@@ -120,7 +116,6 @@ void	test1_normal_case(void)
 	}
 	return ;
 }
-
 void	test2_nosplit_case(void)
 {
 	char	**ret = NULL;
@@ -139,7 +134,6 @@ void	test2_nosplit_case(void)
 	}
 	return ;
 }
-
 void	test3_c_0_case(void)
 {
 	char	**ret = NULL;
@@ -158,7 +152,6 @@ void	test3_c_0_case(void)
 	}
 	return ;
 }
-
 void	test4_s_include_0_case(void)
 {
 	char	**ret = NULL;
@@ -177,7 +170,6 @@ void	test4_s_include_0_case(void)
 	}
 	return ;
 }
-
 void	test5_s_include_0_c_0_case(void)
 {
 	char	**ret = NULL;
@@ -196,7 +188,6 @@ void	test5_s_include_0_c_0_case(void)
 	}
 	return ;
 }
-
 void	test6_s_start_0_case(void)
 {
 	char	**ret = NULL;
@@ -215,7 +206,6 @@ void	test6_s_start_0_case(void)
 	}
 	return ;
 }
-
 void	test7_s_start_0_c_0_case(void)
 {
 	char	**ret = NULL;
@@ -252,7 +242,6 @@ void	test8_s_empty_case(void)
 	}
 	return ;
 }
-
 void	test9_s_empty_c_null_case(void)
 {
 	char	**ret = NULL;
@@ -271,7 +260,6 @@ void	test9_s_empty_c_null_case(void)
 	}
 	return ;
 }
-
 void	test10_s_null_case(void)
 {
 	char	**ret = NULL;
@@ -289,7 +277,6 @@ void	test10_s_null_case(void)
 	}
 	return ;
 }
-
 void	test11_s_null_c_0_case(void)
 {
 	char	**ret = NULL;
@@ -308,7 +295,6 @@ void	test11_s_null_c_0_case(void)
 	}
 	return ;
 }
-
 void	test12_only_0_case(void)
 {
 	char	**ret = NULL;
