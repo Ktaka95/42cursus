@@ -40,287 +40,197 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 
 /*
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
-void	test1_normal_case(void);
-void	test2_dstsize_lt_len_case(void);
-void	test3_dst_include_0_case(void);
-void	test4_src_include_0_case(void);
-void	test5_dst_null_dstsize_0_case(void);
-void	test6_dstsize_0_case(void);
-void	test7_src_null_case(void);
-void	test8_dst_null_dstsize_not_0_case(void);
-void	test9_dst_gt_dstsize_case(void);
-void	test10_dst_overlap_src_case(void);
+static void	strlcat_dst_null_case(char *s1, char *s2);
 
-int	main(void)
+static void	strlcat_dstsize_lt_dstplus1(char *s1, char *s2);
+
+static void	strlcat_dstsize_lt_dstplussrcplus1(char *s1, char *s2);
+
+static void	strlcat_dstsize_ge_dstplussrcplus1(char *s1, char *s2);
+
+static void	strlcat_middle_null(char *s1, char *s2);
+
+int main(void)
 {
-	test1_normal_case();
-	test2_dstsize_lt_len_case();
-	test3_dst_include_0_case();
-	test4_src_include_0_case();
-	test5_dst_null_dstsize_0_case();
-	test6_dstsize_0_case();
-	test7_src_null_case();
-	test8_dst_null_dstsize_not_0_case();
-	test9_dst_gt_dstsize_case();
-	test10_dst_overlap_src_case();
-	return (0);
+	char	*dst_null = NULL;
+	char	dst_abcdefgh[30] = "abcdefgh";
+	char	dst_abcdefgh2[30] = "abcdefgh";
+	char	dst_abcdefgh3[30] = "abcdefgh";
+	char	dst_middle_null[30] = "abcd\0efg";
+	char	src_abcde[] = "ABCDE";
+	char	src_middle_null[] = "AB\0CDE";
+
+	strlcat_dst_null_case(dst_null, src_abcde);
+	strlcat_dstsize_lt_dstplus1(dst_abcdefgh, src_abcde);
+	strlcat_dstsize_lt_dstplussrcplus1(dst_abcdefgh2, src_abcde);
+	strlcat_dstsize_ge_dstplussrcplus1(dst_abcdefgh3, src_abcde);
+	strlcat_middle_null(dst_middle_null, src_middle_null);
+	return 0;
 }
 
-void	test1_normal_case(void)
+void	strlcat_dst_null_case(char *s1, char *s2)
 {
-	char	ori_dst[30] = "Hello, \0";
-	char	ft_dst[30] = "Hello, \0";
-	char	*src = "42 world!";
-	size_t	dstsize = strlen(ori_dst) + strlen(src) + 1;
+	int		or_ret = 0;
+	int		ft_ret = 0;
+	int		dstsize = 0;
 
-	printf("///test1_normal_case///\n");
-	printf("--before strlcat--\n");
-	printf("dst: %s\nsrc: %s\ndstsize: %zu\n", ori_dst, src, dstsize);
-	if (strlcat(ori_dst, src, dstsize) == ft_strlcat(ft_dst, src, dstsize))
-	{
-		printf("--after strlcat--\n");
-		printf("ret: %zu\ndst: %s\n", strlcat(ori_dst, src, dstsize), ori_dst);
-		printf("OK :)\n");
-	}
+	printf("\n/////dst_null_case/////\n");
+	printf("<before_strlcat>\n");
+	printf("dst:\t\t%s\n", s1);
+	printf("src:\t\t%s\ndstsize:\t%d\n", s2, dstsize);
+	or_ret = strlcat(s1, s2, dstsize);
+	ft_ret = ft_strlcat(s1, s2, dstsize);
+	printf("<after_strlcat>\n");
+	printf("dst:\t\t%s\n", s1);
+	printf("///return///\nor_ret: %d\nft_ret: %d\n", or_ret, ft_ret);
+	if (ft_ret == or_ret)
+		printf("\nOK :)\n\n");
 	else
-	{
-		printf("NG :(\n");
-		exit (0);
-	}
-	return ;
+		printf("\nNG :(\n\n");
 }
 
-void	test2_dstsize_lt_len_case(void)
+void	strlcat_dstsize_lt_dstplus1(char *s1, char *s2)
 {
-	char	ori_dst[30] = "Hello, \0";
-	char	ft_dst[30] = "Hello, \0";
-	char	*src = "42 world!";
-	size_t	dstsize = 10;
-
-	printf("\n///test2_dstsize_lt_len_case///\n");
-	printf("--before strlcat--\n");
-	printf("dst: %s\nsrc: %s\ndstsize: %zu\n", ori_dst, src, dstsize);
-	if (strlcat(ori_dst, src, dstsize) == ft_strlcat(ft_dst, src, dstsize))
-	{
-		printf("--after strlcat--\n");
-		printf("ret: %zu\ndst: %s\n", strlcat(ori_dst, src, dstsize), ori_dst);
-		printf("OK :)\n");
-	}
-	else
-	{
-		printf("NG :(\n");
-		exit (0);
-	}
-	return ;
-}
-
-void	test3_dst_include_0_case(void)
-{
-	char	ori_dst[30] = "Hello, \0 42 world!";
-	char	ft_dst[30] = "Hello, \0 42 world!";
-	char	*src = "42 world!";
-	size_t	dstsize = dstsize = strlen(ori_dst) + strlen(src) + 1;
-
-	printf("\n///test3_dst_include_0_case///\n");
-	printf("--before strlcat--\n");
-	printf("dst: %s\nsrc: %s\ndstsize: %zu\n", ori_dst, src, dstsize);
-	if (strlcat(ori_dst, src, dstsize) == ft_strlcat(ft_dst, src, dstsize))
-	{
-		printf("--after strlcat--\n");
-		printf("ret: %zu\ndst: %s\n", strlcat(ori_dst, src, dstsize), ori_dst);
-		printf("OK :)\n");
-	}
-	else
-	{
-		printf("NG :(\n");
-		exit (0);
-	}
-	return ;
-}
-
-void	test4_src_include_0_case(void)
-{
-	char	ori_dst[30] = "Hello, \0";
-	char	ft_dst[30] = "Hello, \0";
-	char	*src = "42 \0 world!";
-	size_t	dstsize = dstsize = strlen(ori_dst) + strlen(src) + 1;
-
-	printf("\n///test4_src_include_0_case///\n");
-	printf("--before strlcat--\n");
-	printf("dst: %s\nsrc: %s\ndstsize: %zu\n", ori_dst, src, dstsize);
-	if (strlcat(ori_dst, src, dstsize) == ft_strlcat(ft_dst, src, dstsize))
-	{
-		printf("--after strlcat--\n");
-		printf("ret: %zu\ndst: %s\n", strlcat(ori_dst, src, dstsize), ori_dst);
-		printf("OK :)\n");
-	}
-	else
-	{
-		printf("NG :(\n");
-		exit (0);
-	}
-	return ;
-}
-
-void	test5_dst_null_dstsize_0_case(void)
-{
-	char	*ori_dst = NULL;
+	int		or_ret = 0;
+	int		ft_ret = 0;
+	size_t	dstsize = 0;
+	char	*or_dst = NULL;
 	char	*ft_dst = NULL;
-	char	*src = "Hello, 42 world!";
+
+	printf("\n/////dstsize_lt_dstplus1/////\n");
+	while (dstsize < strlen(s1) + 1)
+	{
+		printf("<before_strlcat>\n");
+		or_dst = strdup(s1);
+		ft_dst = strdup(s1);
+		printf("or_dst:\t\t%s\n", or_dst);
+		printf("ft_dst:\t\t%s\n", ft_dst);
+		printf("src:\t\t%s\ndstsize:\t%zu\n", s2, dstsize);
+		or_ret = strlcat(or_dst, s2, dstsize);
+		ft_ret = ft_strlcat(ft_dst, s2, dstsize);
+		printf("<after_strlcat>\n");
+		printf("or_dst:\t\t%s\n", or_dst);
+		printf("ft_dst:\t\t%s\n", ft_dst);
+		if (strcmp(or_dst, ft_dst) == 0)
+		printf("or_dst == ft_dst :)\n");
+		else
+		printf("or_dst != ft_dst :(\n");
+		printf("///return///\nor_ret: %d\nft_ret: %d\n", or_ret, ft_ret);
+		if (ft_ret == or_ret)
+			printf("\nOK :)\n\n");
+		else
+			printf("\nNG :(\n\n");
+		dstsize++;
+	}
+}
+
+void	strlcat_dstsize_lt_dstplussrcplus1(char *s1, char *s2)
+{
+	int		or_ret = 0;
+	int		ft_ret = 0;
+	size_t	dstsize = strlen(s1) + 1;
+	char	*or_dst = NULL;
+	char	*ft_dst = NULL;
+
+	printf("\n/////dstsize_lt_dstplussrcplus1/////\n");
+	while (dstsize < strlen(s1) + strlen(s2) + 1)
+	{
+		printf("<before_strlcat>\n");
+		or_dst = strdup(s1);
+		ft_dst = strdup(s1);
+		printf("or_dst:\t\t%s\n", or_dst);
+		printf("ft_dst:\t\t%s\n", ft_dst);
+		printf("src:\t\t%s\ndstsize:\t%zu\n", s2, dstsize);
+		or_ret = strlcat(or_dst, s2, dstsize);
+		ft_ret = ft_strlcat(ft_dst, s2, dstsize);
+		printf("<after_strlcat>\n");
+		printf("or_dst:\t\t%s\n", or_dst);
+		printf("ft_dst:\t\t%s\n", ft_dst);
+		if (strcmp(or_dst, ft_dst) == 0)
+			printf("or_dst == ft_dst :)\n");
+		else
+			printf("or_dst != ft_dst :(\n");
+		printf("///return///\nor_ret: %d\nft_ret: %d\n", or_ret, ft_ret);
+		if (ft_ret == or_ret)
+			printf("\nOK :)\n\n");
+		else
+			printf("\nNG :(\n\n");
+		dstsize++;
+	}
+}
+
+void	strlcat_dstsize_ge_dstplussrcplus1(char *s1, char *s2)
+{
+	int		or_ret = 0;
+	int		ft_ret = 0;
+	size_t	dstsize = strlen(s1) + strlen(s2) + 1;
+	int		i = 0;
+	char	*or_dst = NULL;
+	char	*ft_dst = NULL;
+
+	printf("\n/////dstsize_ge_dstplussrcplus1/////\n");
+	while (i < 3)
+	{
+		printf("<before_strlcat>\n");
+		or_dst = strdup(s1);
+		ft_dst = strdup(s1);
+		printf("or_dst:\t\t%s\n", or_dst);
+		printf("ft_dst:\t\t%s\n", ft_dst);
+		printf("src:\t\t%s\ndstsize:\t%zu\n", s2, dstsize);
+		or_ret = strlcat(or_dst, s2, dstsize);
+		ft_ret = ft_strlcat(ft_dst, s2, dstsize);
+		printf("<after_strlcat>\n");
+		printf("or_dst:\t\t%s\n", or_dst);
+		printf("ft_dst:\t\t%s\n", ft_dst);
+		if (strcmp(or_dst, ft_dst) == 0)
+			printf("or_dst == ft_dst :)\n");
+		else
+			printf("or_dst != ft_dst :(\n");
+		printf("///return///\nor_ret: %d\nft_ret: %d\n", or_ret, ft_ret);
+		if (ft_ret == or_ret)
+			printf("\nOK :)\n\n");
+		else
+			printf("\nNG :(\n\n");
+		dstsize++;
+		i++;
+	}
+}
+
+void	strlcat_middle_null(char *s1, char *s2)
+{
+	int		or_ret = 0;
+	int		ft_ret = 0;
 	size_t	dstsize = 0;
+	char	*or_dst = NULL;
+	char	*ft_dst = NULL;
 
-	printf("\n///test5_dst_null_dstsize_0_case///\n");
-	printf("--before strlcat--\n");
-	printf("dst: %s\nsrc: %s\ndstsize: %zu\n", ori_dst, src, dstsize);
-	if (strlcat(ori_dst, src, dstsize) == ft_strlcat(ft_dst, src, dstsize))
+	printf("\n/////middle_null/////\n");
+	while (dstsize < strlen(s1) + strlen(s2) + 4)
 	{
-		printf("--after strlcat--\n");
-		printf("ret: %zu\ndst: %s\n", strlcat(ori_dst, src, dstsize), ori_dst);
-		printf("OK :)\n");
+		printf("<before_strlcat>\n");
+		or_dst = strdup(s1);
+		ft_dst = strdup(s1);
+		printf("or_dst:\t\tabcd\\0efg\n");
+		printf("ft_dst:\t\tabcd\\0efg\n");
+		printf("src:\t\tAB\\0CDE\ndstsize:\t%zu\n", dstsize);
+		or_ret = strlcat(or_dst, s2, dstsize);
+		ft_ret = ft_strlcat(ft_dst, s2, dstsize);
+		printf("<after_strlcat>\n");
+		printf("or_dst:\t\t%s\n", or_dst);
+		printf("ft_dst:\t\t%s\n", ft_dst);
+		if (strcmp(or_dst, ft_dst) == 0)
+			printf("or_dst == ft_dst :)\n");
+		else
+			printf("or_dst != ft_dst :(\n");
+		printf("///return///\nor_ret: %d\nft_ret: %d\n", or_ret, ft_ret);
+		if (ft_ret == or_ret)
+			printf("\nOK :)\n\n");
+		else
+			printf("\nNG :(\n\n");
+		dstsize++;
 	}
-	else
-	{
-		printf("NG :(\n");
-		exit (0);
-	}
-	return ;
-}
-
-void	test6_dstsize_0_case(void)
-{
-	char	ori_dst[30] = "Hello, \0";
-	char	ft_dst[30] = "Hello, \0";
-	char	*src = "42 world!";
-	size_t	dstsize = 0;
-
-	printf("\n///test6_dstsize_0_case///\n");
-	printf("--before strlcat--\n");
-	printf("dst: %s\nsrc: %s\ndstsize: %zu\n", ori_dst, src, dstsize);
-	if (strlcat(ori_dst, src, dstsize) == ft_strlcat(ft_dst, src, dstsize))
-	{
-		printf("--after strlcat--\n");
-		printf("ret: %zu\ndst: %s\n", strlcat(ori_dst, src, dstsize), ori_dst);
-		printf("OK :)\n");
-	}
-	else
-	{
-		printf("NG :(\n");
-		exit (0);
-	}
-	return ;
-}
-
-void	test7_src_null_case(void)
-{
-	char	ori_dst[30] = "Hello, 42 world!\0";
-	// char	ft_dst[30] = "Hello, 42 world!";
-	char	*src = NULL;
-	size_t	dstsize = 0;
-
-	printf("\n///test7_src_null_case///\n");
-	printf("--before strlcat--\n");
-	printf("dst: %s\nsrc: %s\ndstsize: %zu\n", ori_dst, src, dstsize);
-	printf("src null is SEGV\n");
-	// strlcat(ori_dst, src, dstsize);
-	// ft_strlcat(ft_dst, src, dstsize);
-	// if (strlcat(ori_dst, src, dstsize) == ft_strlcat(ft_dst, src, dstsize))
-	// {
-	// 	printf("--after strlcat--\n");
-	// 	printf("ret: %zu\ndst: %s\n", strlcat(ori_dst, src, dstsize), ori_dst);
-	// 	printf("OK :)\n");
-	// }
-	// else
-	// {
-	// 	printf("NG :(\n");
-	// 	exit (0);
-	// }
-	return ;
-}
-
-void	test8_dst_null_dstsize_not_0_case(void)
-{
-	char	*ori_dst = NULL;
-	// char	*ft_dst = NULL;
-	char	*src = NULL;
-	size_t	dstsize = 1;
-
-	printf("\n///test8_dst_null_dstsize_not_0_case///\n");
-	printf("--before strlcat--\n");
-	printf("dst: %s\nsrc: %s\ndstsize: %zu\n", ori_dst, src, dstsize);
-	printf("dst null && dstsize not 0 is SEGV\n");
-	// strlcat(ori_dst, src, dstsize);
-	// ft_strlcat(ft_dst, src, dstsize);
-	// if (strlcat(ori_dst, src, dstsize) == ft_strlcat(ft_dst, src, dstsize))
-	// {
-	// 	printf("--after strlcat--\n");
-	// 	printf("ret: %zu\ndst: %s\n", strlcat(ori_dst, src, dstsize), ori_dst);
-	// 	printf("OK :)\n");
-	// }
-	// else
-	// {
-	// 	printf("NG :(\n");
-	// 	exit (0);
-	// }
-	return ;
-}
-
-void	test9_dst_gt_dstsize_case(void)
-{
-	char	ori_dst[30] = "Hello, \0";
-	char	ft_dst[30] = "Hello, \0";
-	char	*src = "42 world!";
-	size_t	dstsize = 3;
-
-	printf("\n///test9_dst_gt_dstsize_case///\n");
-	printf("--before strlcat--\n");
-	printf("dst: %s\nsrc: %s\ndstsize: %zu\n", ori_dst, src, dstsize);
-	printf("dst null && dstsize not 0 is SEGV\n");
-	strlcat(ori_dst, src, dstsize);
-	ft_strlcat(ft_dst, src, dstsize);
-	if (strlcat(ori_dst, src, dstsize) == ft_strlcat(ft_dst, src, dstsize))
-	{
-		printf("--after strlcat--\n");
-		printf("ret: %zu\ndst: %s\n", strlcat(ori_dst, src, dstsize), ori_dst);
-		printf("OK :)\n");
-	}
-	else
-	{
-		printf("NG :(\n");
-		exit (0);
-	}
-	return ;
-}
-
-void	test10_dst_overlap_src_case(void)
-{
-	char	ori_dst[30] = "Hello, 42 world!\0";
-	char	ft_dst[30] = "Hello, 42 world!\0";
-	char	*ori_src;
-	char	*ft_src;
-	size_t	dstsize = strlen(ori_dst) * 2;
-
-	ori_src = &ori_dst[7];
-	ft_src = &ft_dst[7];
-
-	printf("\n///test10_dst_overlap_src_case///\n");
-	printf("--before strlcat--\n");
-	printf("dst: %s\nsrc: %s\ndstsize: %zu\n", ori_dst, ori_src, dstsize);
-	printf("dst null && dstsize not 0 is SEGV\n");
-	// strlcat(ori_dst, ori_src, dstsize);
-	// ft_strlcat(ft_dst, ft_src, dstsize);
-	if (strlcat(ori_dst, ori_src, dstsize) == ft_strlcat(ft_dst, ft_src, dstsize))
-	{
-		printf("--after strlcat--\n");
-		printf("ret: %zu\ndst: %s\n", strlcat(ori_dst, ori_src, dstsize), ori_dst);
-		printf("OK :)\n");
-	}
-	else
-	{
-		printf("NG :(\n");
-		exit (0);
-	}
-	return ;
 }
 */

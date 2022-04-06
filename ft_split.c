@@ -98,6 +98,7 @@ int	main(void)
 	test10_s_null_case();
 	test11_s_null_c_0_case();
 	test12_only_0_case();
+	while (1);
 	return (0);
 }
 
