@@ -14,8 +14,6 @@
 
 static size_t	ft_split_count(char const *s, char c);
 
-static char		**ft_split_free(char **ret, size_t n);
-
 char	**ft_split(char const *s, char c)
 {
 	char			**ret;
@@ -23,7 +21,9 @@ char	**ft_split(char const *s, char c)
 	size_t			j;
 	unsigned int	start;
 
-	ret = (char **)malloc(sizeof(char *) * (ft_split_count(s, c) + 1));
+	if (s == NULL)
+		return (NULL);
+	ret = ft_calloc((ft_split_count(s, c) + 1), sizeof(char *));
 	if (ret == NULL)
 		return (NULL);
 	i = 0;
@@ -36,12 +36,7 @@ char	**ft_split(char const *s, char c)
 		while (s[i] != c && s[i] != '\0')
 			i++;
 		if (i > start)
-		{
-			ret[j] = ft_substr(s, start, i - start);
-			if (ret[j] == NULL)
-				return (ft_split_free(ret, j));
-			j++;
-		}
+			ret[j++] = ft_substr(s, start, i - start);
 	}
 	ret[j] = NULL;
 	return (ret);
@@ -71,20 +66,6 @@ size_t	ft_split_count(char const *s, char c)
 	if (len > 0)
 		count++;
 	return (count);
-}
-
-char	**ft_split_free(char **ret, size_t n)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n)
-	{
-		free(ret[i]);
-		i++;
-	}
-	free(ret);
-	return (NULL);
 }
 
 /*
@@ -118,7 +99,7 @@ int	main(void)
 void	test1_normal_case(void)
 {
 	char	**ret = NULL;
-	char	*str = " Hello, 42 world ! ";
+	char	*str = "   Hello,   42    world  !   ";
 	char	c = ' ';
 	size_t	i = 0;
 	printf("///test1_normal_case///\n");
