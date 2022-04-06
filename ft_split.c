@@ -41,7 +41,7 @@ char	**ft_split(char const *s, char c)
 		{
 			ret[j] = ft_substr(s, start, i - start);
 			if (ret[j] == NULL)
-				return (ft_split_free, j);
+				return (ft_split_free(ret, j));
 			j++;
 		}
 	}
