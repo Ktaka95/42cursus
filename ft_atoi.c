@@ -12,38 +12,34 @@
 
 #include "libft.h"
 
-static int		ft_isspace(int c);
-
-static int		plus_minus_judge(const char *str, int n);
-
-static int		int_changer(char chr);
+static int	ft_isspace(int c);
 
 int	ft_atoi(const char *str)
 {
-	size_t			i;
-	int				plus_or_minus;
-	size_t			num;
+	size_t	abs;
+	size_t	i;
+	int		sign;
 
+	if (str == NULL)
+		return (0);
+	abs = 0;
 	i = 0;
-	plus_or_minus = 1;
-	num = 0;
+	sign = 1;
 	while (ft_isspace(str[i]) == 1)
 		i++;
-	plus_or_minus = plus_minus_judge(str, i);
-	while (i < ft_strlen(str))
-	{
-		if (str[i] == '+' || str[i] == '-')
-		{
-			if ('0' <= str[i + 1] && str [i + 1] <= '9')
-				i++;
-		}
-		if ('0' <= str[i] && str[i] <= '9')
-			num = num * 10 + int_changer(str[i]);
-		else
-			break ;
+	if (str[i] == '-')
+		sign = -1;
+	if (str[i] == '-' || str[i] == '+')
 		i++;
+	while (ft_isdigit(str[i]) == 1)
+	{
+		abs = (abs * 10) + (str[i++] - '0');
+		if (abs >= LONG_MAX && sign == 1)
+			return (-1);
+		else if (abs >= (size_t) -(LONG_MIN) && sign == -1)
+			return (0);
 	}
-	return ((int)num * plus_or_minus);
+	return (abs * sign);
 }
 
 int	ft_isspace(int c)
@@ -52,30 +48,6 @@ int	ft_isspace(int c)
 		|| c == '\f' || c == '\r' || c == ' ')
 		return (1);
 	return (0);
-}
-
-int	int_changer(char chr)
-{
-	int	num_tmp;
-
-	num_tmp = chr - '0';
-	return (num_tmp);
-}
-
-int	plus_minus_judge(const char *str, int n)
-{
-	int	ret;
-
-	ret = 1;
-	if (str[n] == '+' || str[n] == '-')
-	{
-		if ('0' <= str[n + 1] && str [n + 1] <= '9')
-		{
-			if (str[n] == '-')
-				ret = -1;
-		}
-	}
-	return (ret);
 }
 
 /*
@@ -127,13 +99,14 @@ void	test2_space_case(void)
 		&& (atoi("     +  123") == ft_atoi("     +  123"))
 			&& (atoi("     -123") == ft_atoi("     -123"))
 				&& (atoi("     -  123") == ft_atoi("     -  123"))
-					&& (atoi("\t\v\f\r\n \f-06050") == ft_atoi("\t\v\f\r\n \f-06050")))
+					&& (atoi("\t\v\f\r\n \f-006050") ==
+						ft_atoi("\t\v\f\r\n \f-006050")))
 	{
-		printf("%s => %d\n", "     +123",	ft_atoi("     +123"));
-		printf("%s => %d\n", "     +  123",	ft_atoi("     +  123"));
-		printf("%s => %d\n", "     -123",	ft_atoi("     -123"));
-		printf("%s => %d\n", "     -  123",	ft_atoi("     -  123"));
-		printf("%s => %d\n", "\t\v\f\r\n \f-06050",	ft_atoi("\t\v\f\r\n \f-06050"));
+		printf("%s => %d\n", "     +123", ft_atoi("     +123"));
+		printf("%s => %d\n", "     +  123", ft_atoi("     +  123"));
+		printf("%s => %d\n", "     -123", ft_atoi("     -123"));
+		printf("%s => %d\n", "     -  123", ft_atoi("     -  123"));
+		printf("%s => %d\n", "\t\v\f\r\n \f-006050", ft_atoi("\t\v\f\r\n \f-006050"));
 		printf("OK :)\n\n");
 	}
 	else
@@ -167,11 +140,15 @@ void	test4_paddidng_between_number(void)
 {
 	printf("///test4_paddidng_between_number///\n");
 	if ((atoi("3.14") == ft_atoi("3.14")) && (atoi("1 2 3") == ft_atoi("1 2 3"))
-		&& (atoi("1,2,3") == ft_atoi("1,2,3")))
+		&& (atoi("1,2,3") == ft_atoi("1,2,3"))
+			&& (atoi("+12+3") == ft_atoi("+12+3"))
+				&& (atoi("-1-2-3") == ft_atoi("-1-2-3")))
 	{
 		printf("%s => %d\n", "3.14",	ft_atoi("3.14"));
 		printf("%s => %d\n", "1 2 3",	ft_atoi("1 2 3"));
 		printf("%s => %d\n", "1,2,3",	ft_atoi("1,2,3"));
+		printf("%s => %d\n", "+12+3",	ft_atoi("+12+3"));
+		printf("%s => %d\n", "-1-2-3",	ft_atoi("-1-2-3"));
 		printf("OK :)\n\n");
 	}
 	else
@@ -199,18 +176,20 @@ void	test5_over_int_case(void)
 	char	long_min_plus_1[] = "-9223372036854775807";
 	char	long_min[] = "-9223372036854775808";
 
-	// char	long_max_plus_1[] = "9223372036854775808";
-	// char	long_min_minus_1[] = "-9223372036854775809";
-	// char	huge_plus[] = "9999999999999999999999999999";
-	// char	huge_minus[] = "-9999999999999999999999999999";
+	char	long_max_plus_1[] = "9223372036854775808";
+	char	long_min_minus_1[] = "-9223372036854775809";
+	char	huge_plus[] = "9999999999999999999999999999";
+	char	huge_minus[] = "-9999999999999999999999999999";
 
 	if ((atoi(int_max_minus_1) == ft_atoi(int_max_minus_1))
 		&& (atoi(int_max) == ft_atoi(int_max))
 			&& (atoi(int_max_plus_1) == ft_atoi(int_max_plus_1)))
 	{
-		printf("%s => %d\n", int_max_minus_1, ft_atoi(int_max_minus_1));
-		printf("%s => %d\n", int_max, ft_atoi(int_max));
-		printf("%s => %d\n", int_max_plus_1, ft_atoi(int_max_plus_1));
+		printf("%s (INT_MAX - 1) => %d\n",
+			int_max_minus_1, ft_atoi(int_max_minus_1));
+		printf("%s (INT_MAX) => %d\n", int_max, ft_atoi(int_max));
+		printf("%s (INT_MAX + 1) => %d\n",
+			int_max_plus_1, ft_atoi(int_max_plus_1));
 	}
 	else
 	{
@@ -221,9 +200,11 @@ void	test5_over_int_case(void)
 		&& (atoi(int_min) == ft_atoi(int_min))
 			&& (atoi(int_min_minus_1) == ft_atoi(int_min_minus_1)))
 	{
-		printf("%s => %d\n", int_min_plus_1, ft_atoi(int_min_plus_1));
-		printf("%s => %d\n", int_min, ft_atoi(int_min));
-		printf("%s => %d\n", int_min_minus_1, ft_atoi(int_min_minus_1));
+		printf("%s (INT_MIN + 1) => %d\n",
+			int_min_plus_1, ft_atoi(int_min_plus_1));
+		printf("%s (INT_MIN) => %d\n", int_min, ft_atoi(int_min));
+		printf("%s (INT_MIN - 1) => %d\n",
+			int_min_minus_1, ft_atoi(int_min_minus_1));
 	}
 	else
 	{
@@ -235,35 +216,41 @@ void	test5_over_int_case(void)
 			&& (atoi(long_min_plus_1) == ft_atoi(long_min_plus_1))
 				&& (atoi(long_min) == ft_atoi(long_min)))
 	{
-		printf("%s => %d\n", long_max_minus_1, ft_atoi(long_max_minus_1));
-		printf("%s => %d\n", long_max, ft_atoi(long_max));
-		printf("%s => %d\n", long_min_plus_1, ft_atoi(long_min_plus_1));
-		printf("%s => %d\n", long_min, ft_atoi(long_min));
+		printf("%s (LONG_MAX - 1) => %d\n",
+			long_max_minus_1, ft_atoi(long_max_minus_1));
+		printf("%s (LONG_MAX) => %d\n", long_max, ft_atoi(long_max));
+		printf("%s (LONG_MIN + 1) => %d\n",
+			long_min_plus_1, ft_atoi(long_min_plus_1));
+		printf("%s (LONG_MIN) => %d\n", long_min, ft_atoi(long_min));
 	}
 	else
 	{
 		printf("NG :(\n");
 		exit (0);
 	}
-	// if ((atoi(long_max_plus_1) == ft_atoi(long_max_plus_1))
-	// 	&& (atoi(long_min_minus_1) == ft_atoi(long_min_minus_1))
-	// 		&& (atoi(huge_plus) == ft_atoi(huge_plus))
-	// 			&& (atoi(huge_minus) == ft_atoi(huge_minus)))
-	// {
-	// 	printf("%s => %d\n", long_max_plus_1, atoi(long_max_plus_1));
-	// 	printf("%s => %d\n", long_max_plus_1, ft_atoi(long_max_plus_1));
-	// 	printf("%s => %d\n", long_min_minus_1, atoi(long_min_minus_1));
-	// 	printf("%s => %d\n", long_min_minus_1, ft_atoi(long_min_minus_1));
-	// 	printf("%s => %d\n", huge_plus, atoi(huge_plus));
-	// 	printf("%s => %d\n", huge_plus, ft_atoi(huge_plus));
-	// 	printf("%s => %d\n", huge_minus, atoi(huge_minus));
-	// 	printf("%s => %d\n", huge_minus, ft_atoi(huge_minus));
-	// }
-	// else
-	// {
-	// 	printf("NG :(\n");
-	// 	exit (0);
-	// }
+	if ((atoi(long_max_plus_1) == ft_atoi(long_max_plus_1))
+		&& (atoi(long_min_minus_1) == ft_atoi(long_min_minus_1))
+			&& (atoi(huge_plus) == ft_atoi(huge_plus))
+				&& (atoi(huge_minus) == ft_atoi(huge_minus)))
+	{
+		printf("%s (LONG_MAX + 1) => %d\n",
+			long_max_plus_1, atoi(long_max_plus_1));
+		printf("%s (LONG_MAX + 1) => %d\n",
+			long_max_plus_1, ft_atoi(long_max_plus_1));
+		printf("%s (LONG_MIN - 1) => %d\n",
+			long_min_minus_1, atoi(long_min_minus_1));
+		printf("%s (LONG_MIN - 1) => %d\n",
+			long_min_minus_1, ft_atoi(long_min_minus_1));
+		printf("%s => %d\n", huge_plus, atoi(huge_plus));
+		printf("%s => %d\n", huge_plus, ft_atoi(huge_plus));
+		printf("%s => %d\n", huge_minus, atoi(huge_minus));
+		printf("%s => %d\n", huge_minus, ft_atoi(huge_minus));
+	}
+	else
+	{
+		printf("NG :(\n");
+		exit (0);
+	}
 	return ;
 }
 */
