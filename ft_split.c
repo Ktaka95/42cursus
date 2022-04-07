@@ -104,6 +104,7 @@ int	allocate_count_and_free(char **str, size_t split_count)
 
 /*
 #include <stdio.h>
+
 void	test1_normal_case(void);
 void	test2_nosplit_case(void);
 void	test3_c_0_case(void);
@@ -116,6 +117,7 @@ void	test9_s_empty_c_null_case(void);
 void	test10_s_null_case(void);
 void	test11_s_null_c_0_case(void);
 void	test12_only_0_case(void);
+
 int	main(void)
 {
 	test1_normal_case();
@@ -132,6 +134,7 @@ int	main(void)
 	test12_only_0_case();
 	return (0);
 }
+
 void	test1_normal_case(void)
 {
 	char	**ret = NULL;
@@ -150,6 +153,7 @@ void	test1_normal_case(void)
 	}
 	return ;
 }
+
 void	test2_nosplit_case(void)
 {
 	char	**ret = NULL;
@@ -168,6 +172,7 @@ void	test2_nosplit_case(void)
 	}
 	return ;
 }
+
 void	test3_c_0_case(void)
 {
 	char	**ret = NULL;
@@ -186,6 +191,7 @@ void	test3_c_0_case(void)
 	}
 	return ;
 }
+
 void	test4_s_include_0_case(void)
 {
 	char	**ret = NULL;
@@ -204,6 +210,7 @@ void	test4_s_include_0_case(void)
 	}
 	return ;
 }
+
 void	test5_s_include_0_c_0_case(void)
 {
 	char	**ret = NULL;
@@ -222,6 +229,7 @@ void	test5_s_include_0_c_0_case(void)
 	}
 	return ;
 }
+
 void	test6_s_start_0_case(void)
 {
 	char	**ret = NULL;
@@ -233,13 +241,20 @@ void	test6_s_start_0_case(void)
 	printf("str: %s\nc: %c\n", str, c);
 	ret = ft_split(str, c);
 	printf("--after split--\n");
+	if (ret[0] == NULL)
+	{
+		printf("ret[0] == NULL\n");
+		return ;
+	}
 	while (ret[i] != NULL)
 	{
+		printf("ret[0] != NULL\n");
 		printf("%s\n", ret[i]);
 		i++;
 	}
 	return ;
 }
+
 void	test7_s_start_0_c_0_case(void)
 {
 	char	**ret = NULL;
@@ -251,13 +266,20 @@ void	test7_s_start_0_c_0_case(void)
 	printf("str: %s\nc: %c\n", str, c);
 	ret = ft_split(str, c);
 	printf("--after split--\n");
+	if (ret[0] == NULL)
+	{
+		printf("ret[0] == NULL\n");
+		return ;
+	}
 	while (ret[i] != NULL)
 	{
+		printf("ret[0] != NULL\n");
 		printf("%s\n", ret[i]);
 		i++;
 	}
 	return ;
 }
+
 void	test8_s_empty_case(void)
 {
 	char	**ret = NULL;
@@ -269,13 +291,20 @@ void	test8_s_empty_case(void)
 	printf("str: %s\nc: %c\n", str, c);
 	ret = ft_split(str, c);
 	printf("--after split--\n");
+	if (ret[0] == NULL)
+	{
+		printf("ret[0] == NULL\n");
+		return ;
+	}
 	while (ret[i] != NULL)
 	{
+		printf("ret[0] != NULL\n");
 		printf("%s\n", ret[i]);
 		i++;
 	}
 	return ;
 }
+
 void	test9_s_empty_c_null_case(void)
 {
 	char	**ret = NULL;
@@ -287,6 +316,11 @@ void	test9_s_empty_c_null_case(void)
 	printf("str: %s\nc: %c\n", str, c);
 	ret = ft_split(str, c);
 	printf("--after split--\n");
+	if (ret[0] == NULL)
+	{
+		printf("ret[0] == NULL\n");
+		return ;
+	}
 	while (ret[i] != NULL)
 	{
 		printf("%s\n", ret[i]);
@@ -294,6 +328,7 @@ void	test9_s_empty_c_null_case(void)
 	}
 	return ;
 }
+
 void	test10_s_null_case(void)
 {
 	char	**ret = NULL;
@@ -304,13 +339,20 @@ void	test10_s_null_case(void)
 	printf("--before split--\n");
 	printf("str: %s\nc: %c\n", str, c);
 	ret = ft_split(str, c);
+	if (ret[0] == NULL)
+	{
+		printf("ret[0] == NULL\n");
+		return ;
+	}
 	while (ret[i] != NULL)
 	{
+		printf("ret[0] != NULL\n");
 		printf("%s\n", ret[i]);
 		i++;
 	}
 	return ;
 }
+
 void	test11_s_null_c_0_case(void)
 {
 	char	**ret = NULL;
@@ -324,11 +366,13 @@ void	test11_s_null_c_0_case(void)
 	printf("--after split--\n");
 	while (ret[i] != NULL)
 	{
+		printf("ret[0] != NULL\n");
 		printf("%s\n", ret[i]);
 		i++;
 	}
 	return ;
 }
+
 void	test12_only_0_case(void)
 {
 	char	**ret = NULL;
@@ -340,8 +384,14 @@ void	test12_only_0_case(void)
 	printf("str: %s\nc: %c\n", str, c);
 	ret = ft_split(str, c);
 	printf("--after split--\n");
+	if (ret[0] == NULL)
+	{
+		printf("ret[0] == NULL\n");
+		return ;
+	}
 	while (ret[i] != NULL)
 	{
+		printf("ret[0] != NULL\n");
 		printf("%s\n", ret[i]);
 		i++;
 	}
