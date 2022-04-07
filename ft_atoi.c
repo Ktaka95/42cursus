@@ -20,8 +20,6 @@ int	ft_atoi(const char *str)
 	size_t	i;
 	int		sign;
 
-	if (str == NULL)
-		return (0);
 	abs = 0;
 	i = 0;
 	sign = 1;
@@ -59,6 +57,7 @@ void	test2_space_case(void);
 void	test3_not_number_case(void);
 void	test4_paddidng_between_number(void);
 void	test5_over_int_case(void);
+void	test6_null_case(void);
 
 int main(void)
 {
@@ -67,7 +66,7 @@ int main(void)
 	test3_not_number_case();
 	test4_paddidng_between_number();
 	test5_over_int_case();
-	printf("OK :)\n");
+	test6_null_case();
 	return 0;
 }
 
@@ -251,6 +250,15 @@ void	test5_over_int_case(void)
 		printf("NG :(\n");
 		exit (0);
 	}
+	return ;
+}
+
+void	test6_null_case(void)
+{
+	printf("\n///test6_null_case///\n");
+	printf("**str NULL case is SEGV**\n");
+	atoi(NULL);
+	ft_atoi(NULL);
 	return ;
 }
 */
