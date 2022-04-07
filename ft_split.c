@@ -14,7 +14,9 @@
 
 static size_t	ft_split_count(char const *s, char c);
 
-char	**ft_split(char const *s, char c)
+static int		allocate_count_and_free(char **str, size_t split_count);
+
+char			**ft_split(char const *s, char c)
 {
 	char			**ret;
 	size_t			i;
@@ -39,6 +41,8 @@ char	**ft_split(char const *s, char c)
 			ret[j++] = ft_substr(s, start, i - start);
 	}
 	ret[j] = NULL;
+	if (allocate_count_and_free(ret, ft_split_count(s, c)) != 0)
+		return (NULL);
 	return (ret);
 }
 
@@ -46,26 +50,56 @@ size_t	ft_split_count(char const *s, char c)
 {
 	size_t	i;
 	size_t	len;
-	size_t	count;
+	size_t	split_count;
 
 	i = 0;
 	len = 0;
-	count = 0;
+	split_count = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i] == c)
+		if (s[i] != c)
+			len++;
+		else
 		{
 			if (len > 0)
-				count++;
+				split_count++;
 			len = 0;
 		}
-		else
-			len++;
 		i++;
 	}
 	if (len > 0)
-		count++;
-	return (count);
+		split_count++;
+	return (split_count);
+}
+
+int	allocate_count_and_free(char **str, size_t split_count)
+{
+	size_t	i;
+	size_t	j;
+	size_t	count;
+	int		ret;
+
+	i = 0;
+	j = 0;
+	count = 0;
+	ret = 0;
+	while (i < split_count)
+	{
+		if (str[i] != NULL)
+			count++;
+		i++;
+	}
+	if (count != split_count)
+	{
+		ret = 1;
+		while (j < split_count + 1)
+		{
+			free(str[j]);
+			j++;
+		}
+		free(str);
+	}
+	return (ret);
 }
 
 /*
