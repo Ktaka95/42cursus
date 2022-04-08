@@ -25,17 +25,14 @@ int	ft_strncmp(const char	*s1, const char	*s2, size_t	n)
 	str2 = (unsigned char *) s2;
 	if (n == 0)
 		return (ret);
-	else
+	while (i < n && (i <= ft_strlen(s1) || i <= ft_strlen(s2)))
 	{
-		while (i < n && (i <= ft_strlen(s1) || i <= ft_strlen(s2)))
+		if (str1[i] == str2[i])
+			i++;
+		else
 		{
-			if (str1[i] == str2[i])
-				i++;
-			else
-			{
-				ret = str1[i] - str2[i];
-				break ;
-			}
+			ret = str1[i] - str2[i];
+			break ;
 		}
 	}
 	return (ret);
@@ -80,7 +77,10 @@ void	test1_normal_match_case(void)
 	printf("///test1_normal_match_case///\n");
 	printf("s1: %s\ns2: %s\nn: %zu\n", s1, s2, n);
 	if (strncmp(s1, s2, n) == ft_strncmp(s1, s2, n))
+	{
+		printf("diff: %d\n", strncmp(s1, s2, n));
 		printf("OK :)\n");
+	}
 	else
 	{
 		printf("NG :(\n");
@@ -98,7 +98,10 @@ void	test2_normal_wrong_case(void)
 	printf("\n///test2_normal_wrong_case///\n");
 	printf("s1: %s\ns2: %s\nn: %zu\n", s1, s2, n);
 	if (strncmp(s1, s2, n) == ft_strncmp(s1, s2, n))
+	{
+		printf("diff: %d\n", strncmp(s1, s2, n));
 		printf("OK :)\n");
+	}
 	else
 	{
 		printf("NG :(\n");
@@ -116,7 +119,10 @@ void	test3_n_gt_str_case(void)
 	printf("\n///test3_n_gt_str_case///\n");
 	printf("s1: %s\ns2: %s\nn: %zu\n", s1, s2, n);
 	if (strncmp(s1, s2, n) == ft_strncmp(s1, s2, n))
+	{
+		printf("diff: %d\n", strncmp(s1, s2, n));
 		printf("OK :)\n");
+	}
 	else
 	{
 		printf("NG :(\n");
@@ -134,7 +140,10 @@ void	test4_str_include_0_case(void)
 	printf("\n///test4_str_include_0_case///\n");
 	printf("s1: %s\ns2: %s\nn: %zu\n", s1, s2, n);
 	if (strncmp(s1, s2, n) == ft_strncmp(s1, s2, n))
+	{
+		printf("diff: %d\n", strncmp(s1, s2, n));
 		printf("OK :)\n");
+	}
 	else
 	{
 		printf("NG :(\n");
@@ -152,7 +161,10 @@ void	test5_str_include_0_case2(void)
 	printf("\n///test5_str_include_0_case2///\n");
 	printf("s1: %s\ns2: %s\nn: %zu\n", s1, s2, n);
 	if (strncmp(s1, s2, n) == ft_strncmp(s1, s2, n))
+	{
+		printf("diff: %d\n", strncmp(s1, s2, n));
 		printf("OK :)\n");
+	}
 	else
 	{
 		printf("NG :(\n");
@@ -170,7 +182,10 @@ void	test6_n_0_case(void)
 	printf("\n///test6_n_0_case///\n");
 	printf("s1: %s\ns2: %s\nn: %zu\n", s1, s2, n);
 	if (strncmp(s1, s2, n) == ft_strncmp(s1, s2, n))
+	{
+		printf("diff: %d\n", strncmp(s1, s2, n));
 		printf("OK :)\n");
+	}
 	else
 	{
 		printf("NG :(\n");
@@ -206,7 +221,10 @@ void	test8_str_null_n_0_case(void)
 	printf("\n///test8_str_null_case///\n");
 	printf("s1: %s\ns2: %s\nn: %zu\n", s1, s2, n);
 	if (strncmp(s1, s2, n) == ft_strncmp(s1, s2, n))
+	{
+		printf("diff: %d\n", strncmp(s1, s2, n));
 		printf("OK :)\n");
+	}
 	else
 	{
 		printf("NG :(\n");
