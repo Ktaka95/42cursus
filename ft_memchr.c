@@ -34,14 +34,14 @@ void	*ft_memchr(const void *s, int c, size_t n)
 #include <stdio.h>
 #include <string.h>
 
-void test1_normal_case(void);
-void test2_no_occur_case(void);
-void test3_occur_after_size_case(void);
-void test4_occur_several_times_case(void);
-void test5_occur_several_times_case2(void);
-void test6_size0_NULL_case(void);
-void test7_size0_normal_case(void);
-void test8_null_middle_case(void);
+void	test1_normal_case(void);
+void	test2_no_occur_case(void);
+void	test3_occur_after_size_case(void);
+void	test4_occur_several_times_case(void);
+void	test5_occur_several_times_case2(void);
+void	test6_NULL_size_0_case(void);
+void	test7_size0_normal_case(void);
+void	test8_null_middle_case(void);
 
 int	main(void)
 {
@@ -50,138 +50,194 @@ int	main(void)
 	test3_occur_after_size_case();
 	test4_occur_several_times_case();
 	test5_occur_several_times_case2();
-	test6_size0_NULL_case();
+	test6_NULL_size_0_case();
 	test7_size0_normal_case();
 	test8_null_middle_case();
 	printf("OK :)\n");
 	return (0);
 }
 
-void test1_normal_case(void)
+void	test1_normal_case(void)
 {
-	char	*s = "ABCDEFG";
-	char	*ft_s = "ABCDEFG";
+	char	*ori_s = "ABCDEFG";
+	char	*ft_s = strdup(ori_s);
+	size_t	n = strlen(ori_s);
+	int		c = 'C';
 
-	s = memchr(s, 'C', 8);
-	ft_s = ft_memchr(ft_s, 'C', 8);
 	printf("///test1_normal_case///\n");
-	if (strcmp(s, ft_s) != 0)
+	printf("--before memchr--\n");
+	printf("ori_s: %s\nft_s: %s\nc: %c\nn: %zu\n", ori_s, ft_s, (char)c, n);
+	ori_s = memchr(ori_s, c, n);
+	ft_s = ft_memchr(ft_s, c, n);
+	printf("--after memchr--\n");
+	if ((ori_s == NULL && ft_s == NULL) || (strcmp(ori_s, ft_s) == 0))
+		printf("s1: %s\ns2: %s\n", ori_s, ft_s);
+	else
 	{
 		printf("NG :(\n");
 		exit (0);
 	}
-	printf("original: ft: \n%s\t%s\n", s, ft_s);
+	return ;
 }
 
-void test2_no_occur_case(void)
+void	test2_no_occur_case(void)
 {
-	char	*s = "HIJKLMN";
-	char	*ft_s = "HIJKLMN";
+	char	*ori_s = "HIJKLMN";
+	char	*ft_s = strdup(ori_s);
+	size_t	n = strlen(ori_s);
+	int		c = 'C';
 
-	s = memchr(s, 'C', 8);
-	ft_s = ft_memchr(ft_s, 'C', 8);
-	printf("///test2_no_occur_case///\n");
-	if (s != ft_s)
+	printf("\n///test2_no_occur_case///\n");
+	printf("--before memchr--\n");
+	printf("ori_s: %s\nft_s: %s\nc: %c\nn: %zu\n", ori_s, ft_s, (char)c, n);
+	ori_s = memchr(ori_s, c, n);
+	ft_s = ft_memchr(ft_s, c, n);
+	printf("--after memchr--\n");
+	if ((ori_s == NULL && ft_s == NULL) || (strcmp(ori_s, ft_s) == 0))
+		printf("s1: %s\ns2: %s\n", ori_s, ft_s);
+	else
 	{
 		printf("NG :(\n");
 		exit (0);
 	}
-	printf("original: ft: \n%s\t%s\n", s, ft_s);
+	return ;
 }
 
-void test3_occur_after_size_case(void)
+void	test3_occur_after_size_case(void)
 {
-	char	*s = "OPQRSTUVC";
-	char	*ft_s = "OPQRSTUVC";
+	char	*ori_s = "OPQRSTUC";
+	char	*ft_s = strdup(ori_s);
+	size_t	n = strlen(ori_s) - 1;
+	int		c = 'C';
 
-	s = memchr(s, 'C', 8);
-	ft_s = ft_memchr(ft_s, 'C', 8);
-	printf("///test3_occur_after_size_case///\n");
-	if (s != ft_s)
+	printf("\n///test3_occur_after_size_case///\n");
+	printf("--before memchr--\n");
+	printf("ori_s: %s\nft_s: %s\nc: %c\nn: %zu\n", ori_s, ft_s, (char)c, n);
+	ori_s = memchr(ori_s, c, n);
+	ft_s = ft_memchr(ft_s, c, n);
+	printf("--after memchr--\n");
+	if ((ori_s == NULL && ft_s == NULL) || (strcmp(ori_s, ft_s) == 0))
+		printf("s1: %s\ns2: %s\n", ori_s, ft_s);
+	else
 	{
 		printf("NG :(\n");
 		exit (0);
 	}
-	printf("original: ft: \n%s\t%s\n", s, ft_s);
+	return ;
 }
 
-void test4_occur_several_times_case(void)
+void	test4_occur_several_times_case(void)
 {
-	char	*s = "CCCCCCC";
-	char	*ft_s = "CCCCCCC";
+	char	*ori_s = "CCCCCCC";
+	char	*ft_s = strdup(ori_s);
+	size_t	n = strlen(ori_s);
+	int		c = 'C';
 
-	s = memchr(s, 'C', 8);
-	ft_s = ft_memchr(ft_s, 'C', 8);
-	printf("///test4_occur_several_times_case///\n");
-	if (strcmp(s, ft_s) != 0)
+	printf("\n///test4_occur_several_times_case///\n");
+	printf("--before memchr--\n");
+	printf("ori_s: %s\nft_s: %s\nc: %c\nn: %zu\n", ori_s, ft_s, (char)c, n);
+	ori_s = memchr(ori_s, c, n);
+	ft_s = ft_memchr(ft_s, c, n);
+	printf("--after memchr--\n");
+	if ((ori_s == NULL && ft_s == NULL) || (strcmp(ori_s, ft_s) == 0))
+		printf("s1: %s\ns2: %s\n", ori_s, ft_s);
+	else
 	{
 		printf("NG :(\n");
 		exit (0);
 	}
-	printf("original: ft: \n%s\t%s\n", s, ft_s);
+	return ;
 }
 
-void test5_occur_several_times_case2(void)
+void	test5_occur_several_times_case2(void)
 {
-	char	*s = "ABCDCFC";
-	char	*ft_s = "ABCDCFC";
+	char	*ori_s = "ABCDCFC";
+	char	*ft_s = strdup(ori_s);
+	size_t	n = strlen(ori_s);
+	int		c = 'C';
 
-	s = memchr(s, 'C', 8);
-	ft_s = ft_memchr(ft_s, 'C', 8);
-	printf("///test5_occur_several_times_case2///\n");
-	if (strcmp(s, ft_s) != 0)
+	printf("\n///test5_occur_several_times_case2///\n");
+	printf("--before memchr--\n");
+	printf("ori_s: %s\nft_s: %s\nc: %c\nn: %zu\n", ori_s, ft_s, (char)c, n);
+	ori_s = memchr(ori_s, c, n);
+	ft_s = ft_memchr(ft_s, c, n);
+	printf("--after memchr--\n");
+	if ((ori_s == NULL && ft_s == NULL) || (strcmp(ori_s, ft_s) == 0))
+		printf("s1: %s\ns2: %s\n", ori_s, ft_s);
+	else
 	{
 		printf("NG :(\n");
 		exit (0);
 	}
-	printf("original: ft: \n%s\t%s\n", s, ft_s);
+	return ;
 }
 
-void test6_size0_NULL_case(void)
+void	test6_NULL_size_0_case(void)
 {
-	char	*s = NULL;
+	char	*ori_s = NULL;
 	char	*ft_s = NULL;
+	size_t	n = 0;
+	int		c = 'C';
 
-	s = memchr(s, 'C', 0);
-	ft_s = ft_memchr(ft_s, 'C', 0);
-	printf("///test6_size0_NULL_case///\n");
-	if (s != ft_s)
+	printf("\n///test6_NULL_size_0_case///\n");
+	printf("--before memchr--\n");
+	printf("ori_s: %s\nft_s: %s\nc: %c\nn: %zu\n", ori_s, ft_s, (char)c, n);
+	ori_s = memchr(ori_s, c, n);
+	ft_s = ft_memchr(ft_s, c, n);
+	printf("--after memchr--\n");
+	if ((ori_s == NULL && ft_s == NULL) || (strcmp(ori_s, ft_s) == 0))
+		printf("s1: %s\ns2: %s\n", ori_s, ft_s);
+	else
 	{
 		printf("NG :(\n");
 		exit (0);
 	}
-	printf("original: ft: \n%s\t%s\n", s, ft_s);
+	return ;
 }
 
-void test7_size0_normal_case(void)
+void	test7_size0_normal_case(void)
 {
-	char	*s = "ABCDEFG";
-	char	*ft_s = "ABCDEFG";
+	char	*ori_s = "ABCDEFG";
+	char	*ft_s = strdup(ori_s);
+	size_t	n = 0;
+	int		c = 'C';
 
-	s = memchr(s, 'C', 0);
-	ft_s = ft_memchr(ft_s, 'C', 0);
-	printf("///test7_size0_normal_case///\n");
-	if (s != ft_s)
+	printf("\n///test7_size0_normal_case///\n");
+	printf("--before memchr--\n");
+	printf("ori_s: %s\nft_s: %s\nc: %c\nn: %zu\n", ori_s, ft_s, (char)c, n);
+	ori_s = memchr(ori_s, c, n);
+	ft_s = ft_memchr(ft_s, c, n);
+	printf("--after memchr--\n");
+	if ((ori_s == NULL && ft_s == NULL) || (strcmp(ori_s, ft_s) == 0))
+		printf("s1: %s\ns2: %s\n", ori_s, ft_s);
+	else
 	{
 		printf("NG :(\n");
 		exit (0);
 	}
-	printf("original: ft: \n%s\t%s\n", s, ft_s);
+	return ;
 }
 
-void test8_null_middle_case(void)
+void	test8_null_middle_case(void)
 {
-	char	*s = "AB\0CDEFG";
+	char	*ori_s = "AB\0CDEFG";
 	char	*ft_s = "AB\0CDEFG";
+	size_t	n = 8;
+	int		c = 'C';
 
-	s = memchr(s, 'C', 8);
-	ft_s = ft_memchr(ft_s, 'C', 8);
-	printf("///test8_null_middle_case///\n");
-	if (s != ft_s)
+	printf("\n///test8_null_middle_case///\n");
+	printf("--before memchr--\n");
+	printf("ori_s: %s\nft_s: %s\nc: %c\nn: %zu\n", ori_s, ft_s, (char)c, n);
+	ori_s = memchr(ori_s, c, n);
+	ft_s = ft_memchr(ft_s, c, n);
+	printf("--after memchr--\n");
+	if ((ori_s == NULL && ft_s == NULL) || (strcmp(ori_s, ft_s) == 0))
+		printf("s1: %s\ns2: %s\n", ori_s, ft_s);
+	else
 	{
 		printf("NG :(\n");
 		exit (0);
 	}
-	printf("original: ft: \n%s\t%s\n", s, ft_s);
+	return ;
 }
 */

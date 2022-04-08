@@ -22,7 +22,7 @@ int	ft_isalpha(int c)
 	return (ret);
 }
 
-
+/*
 #include <stdio.h>
 #include <ctype.h>
 
@@ -49,4 +49,4 @@ int main(void)
 	printf("OK :)\n");
 	return (0);
 }
-
+*/
