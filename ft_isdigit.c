@@ -28,12 +28,12 @@ int	ft_isdigit(int c)
 
 int main(void)
 {
-	int	i = 0;
+	int	i = -256;
 	int	ori = 0;
 	int	ft = 0;
 
 	printf("ascii:\tisdigit\t:\tft_isdigit\n");
-	while (i < 128)
+	while (i < 257)
 	{
 		ori = isdigit(i);
 		ft = ft_isdigit(i);
