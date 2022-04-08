@@ -48,6 +48,15 @@ int	ft_isspace(int c)
 	return (0);
 }
 
+// #include <stdio.h>
+// #include <stdlib.h>
+
+// int	main(void)
+// {
+// 	printf("%d\n", atoi("63410682753376583680"));
+// 	printf("%d\n", ft_atoi("63410682753376583680"));
+// }
+
 /*
 #include <stdio.h>
 #include <stdlib.h>
