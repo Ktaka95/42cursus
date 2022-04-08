@@ -28,12 +28,12 @@ int	ft_isprint(int c)
 
 int main(void)
 {
-	int	i = 0;
+	int	i = -256;
 	int	ori = 0;
 	int	ft = 0;
 
 	printf("ascii:\tisprint\t:\tft_isprint\n");
-	while (i < 128)
+	while (i < 257)
 	{
 		ori = isprint(i);
 		ft = ft_isprint(i);
