@@ -43,12 +43,14 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
 char	test_toupper(unsigned int, char c);
 void	test1_normal_case(void);
-void	test2_over_uint_case(void);
+void	test2_uint_max_case(void);
+void	test3_over_uint_case(void);
 
 int main(void)
 {
 	test1_normal_case();
-	test2_over_uint_case();
+	test2_uint_max_case();
+	test3_over_uint_case();
 	return (0);
 }
 
@@ -83,7 +85,31 @@ void	test1_normal_case(void)
 	return ;
 }
 
-void	test2_over_uint_case(void)
+void	test2_uint_max_case(void)
+{
+	char	*s2_over_uint = NULL;
+	char	*s2_memset = NULL;
+	char	*s2_ret = NULL;
+	size_t	uint_max = UINT_MAX;
+
+	s2_over_uint = malloc((uint_max + 1) * (sizeof(char)));
+	if (s2_over_uint == NULL)
+	{
+		printf("could_not_malloc\n");
+		exit (0);
+	}
+	s2_memset = memset(s2_over_uint, 'a', uint_max);
+	s2_memset[uint_max] = '\0';
+	printf("\n///test2_uint_max_case///\n");
+	printf("before strmapi: \n%zu\n", strlen(s2_memset));
+	printf("after strmapi:\n");
+	s2_ret = ft_strmapi(s2_memset, test_toupper);
+	printf("[0]: %c\n", s2_ret[0]);
+	printf("[%zu]: %c\n", uint_max - 1, s2_ret[uint_max - 1]);
+	printf("len: %zu\n", strlen(s2_ret));
+}
+
+void	test3_over_uint_case(void)
 {
 	char	*s2_over_uint = NULL;
 	char	*s2_memset = NULL;
@@ -98,7 +124,7 @@ void	test2_over_uint_case(void)
 	}
 	s2_memset = memset(s2_over_uint, 'a', uint_max + 1);
 	s2_memset[uint_max + 1] = '\0';
-	printf("\n///test2_over_uint_case///\n");
+	printf("\n///test3_over_uint_case///\n");
 	printf("before strmapi: \n%zu\n", strlen(s2_memset));
 	printf("after strmapi:\n");
 	s2_ret = ft_strmapi(s2_memset, test_toupper);
