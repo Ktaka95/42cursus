@@ -14,16 +14,12 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	size_t	i;
+	size_t	put_len;
 
-	i = 0;
 	if (s == NULL)
 		return ;
-	while (s[i] != '\0')
-	{
-		ft_putchar_fd(s[i], fd);
-		i++;
-	}
+	put_len = ft_strlen(s);
+	write(fd, s, put_len);
 }
 
 /*
