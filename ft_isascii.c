@@ -28,12 +28,12 @@ int	ft_isascii(int c)
 
 int main(void)
 {
-	int	i = 0;
+	int	i = -256;
 	int	ori = 0;
 	int	ft = 0;
 
 	printf("ascii:\tisascii\t:\tft_isascii\n");
-	while (i < 128)
+	while (i < 257)
 	{
 		ori = isascii(i);
 		ft = ft_isascii(i);
