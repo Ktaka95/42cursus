@@ -35,6 +35,7 @@ void	ft_putnbr_fd(int n, int fd)
 		ft_putnbr_fd(tmp / 10, fd);
 		ft_putnbr_fd(tmp % 10, fd);
 	}
+	return ;
 }
 
 /*
