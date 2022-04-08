@@ -29,7 +29,7 @@ int	ft_isalnum(int c)
 
 int main(void)
 {
-	int	i = -257;
+	int	i = -256;
 	int	ori = 0;
 	int	ft = 0;
 

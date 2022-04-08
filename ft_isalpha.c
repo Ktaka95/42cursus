@@ -22,18 +22,18 @@ int	ft_isalpha(int c)
 	return (ret);
 }
 
-/*
+
 #include <stdio.h>
 #include <ctype.h>
 
 int main(void)
 {
-	int	i = 0;
+	int	i = -256;
 	int	ori = 0;
 	int	ft = 0;
 
 	printf("ascii:\tisalpha\t:\tft_isalpha\n");
-	while (i < 128)
+	while (i < 257)
 	{
 		ori = isalpha(i);
 		ft = ft_isalpha(i);
@@ -49,4 +49,4 @@ int main(void)
 	printf("OK :)\n");
 	return (0);
 }
-*/
+
