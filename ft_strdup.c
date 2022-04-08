@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
 char	*ft_strdup(const char	*s1)
 {
@@ -22,15 +21,12 @@ char	*ft_strdup(const char	*s1)
 	heap = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
 	if (heap == NULL)
 		return (NULL);
-	else
+	while (s1[i] != '\0')
 	{
-		while (s1[i] != '\0')
-		{
-			heap[i] = s1[i];
-			i++;
-		}
-		heap[i] = '\0';
+		heap[i] = s1[i];
+		i++;
 	}
+	heap[i] = '\0';
 	return (heap);
 }
 
