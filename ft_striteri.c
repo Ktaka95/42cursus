@@ -16,14 +16,12 @@ void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	unsigned int	n;
 	size_t			i;
-	size_t			s_len;
 
 	n = 0;
 	i = 0;
 	if (s == NULL || f == NULL)
 		return ;
-	s_len = ft_strlen(s);
-	if (s_len > UINT_MAX)
+	if (ft_strlen(s) > UINT_MAX)
 		return ;
 	while (s[i] != '\0')
 	{
