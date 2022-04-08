@@ -14,64 +14,88 @@
 
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	unsigned int	i;
-	char			*ret_s;
+	size_t	i;
+	char	*ret;
 
 	i = 0;
-	if (s == NULL)
+	if (s == NULL || f == NULL)
 		return (NULL);
-	ret_s = ft_calloc(ft_strlen(s) + 1, sizeof(char));
-	if (ret_s == NULL)
+	ret = malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (ret == NULL)
 		return (NULL);
-	else
+	while (s[i] != '\0')
 	{
-		while (s[i] != '\0')
-		{
-			ret_s[i] = f(i, s[i]);
-			i++;
-		}
-	}
-	return (ret_s);
-}
-
-/*
-#include <stdio.h>
-#include <string.h>
-
-char	test_toupper(unsigned int i, char c)
-{
-	i = 32;
-	if ('a' <= c && c <= 'z')
-		c -= i;
-	return (c);
-}
-
-int main(void)
-{
-	char	*s1_basic = "abcdefg";
-	char	*s1_null = NULL;
-	char	(* testtoupper)(unsigned int, char);
-	char	*s2_basic;
-	char	*s2_null;
-	size_t	i = 0;
-
-	testtoupper = test_toupper;
-	s2_basic = ft_strmapi(s1_basic, testtoupper);
-	printf("///test1_normal_case///\n");
-	printf("before strmapi: abcdefg\n");
-	printf("after strmapi:\n");
-	printf("index:\tchar\n");
-	while (s2_basic[i] != '\0')
-	{
-		printf("%zu:\t[%c]\n", i, s2_basic[i]);
+		ret[i] = f((unsigned int)i, s[i]);
 		i++;
 	}
-	if (s2_basic[i] == '\0')
-		printf("%zu:\t[\\'0']\n\n", i);
-	printf("///test2_null_case///\n");
-	printf("before strmapi: %s\n", s1_null);
-	s2_null = ft_strmapi(s1_null, testtoupper);
-	printf("after strmapi: %s\n", s2_null);
-	return (0);
+	ret[i] = '\0';
+	return (ret);
 }
-*/
+
+// #include <stdio.h>
+// #include <string.h>
+// #include <stdlib.h>
+
+// char	test_toupper(unsigned int, char c);
+
+// void	test1_normal_case(void);
+
+// void	test2_over_uint_case(void);
+
+// int main(void)
+// {
+// 	test1_normal_case();
+// 	test2_over_uint_case();
+// 	return (0);
+// }
+
+// char	test_toupper(unsigned int i, char c)
+// {
+// 	i = 32;
+// 	if ('a' <= c && c <= 'z')
+// 		c -= i;
+// 	return (c);
+// }
+
+// void	test1_normal_case(void)
+// {
+// 	char	*s1_basic = "XXXabcdefgXXX";
+// 	char	*s1_ret;
+// 	size_t	i = 0;
+
+// 	s1_ret = ft_strmapi(s1_basic, test_toupper);
+
+// 	printf("///test1_normal_case///\n");
+// 	printf("before strmapi:\n%s\n", s1_basic);
+// 	printf("after strmapi:\n");
+// 	printf("index:\tchar\n");
+// 	while (s1_ret[i] != '\0')
+// 	{
+// 		printf("%zu:\t[%c]\n", i, s1_ret[i]);
+// 		i++;
+// 	}
+// 	if (s1_ret[i] == '\0')
+// 		printf("%zu:\t[\\'0']\n", i);
+// 	return ;
+// }
+
+// void	test2_over_uint_case(void)
+// {
+// 	char	*s2_over_uint = NULL;
+// 	char	*s2_memset = NULL;
+// 	char	*s2_ret = NULL;
+
+// 	s2_over_uint = malloc((UINT_MAX + 2) * (sizeof(char)));
+// 	if (s2_over_uint == NULL)
+// 	{
+// 		printf("could_not_malloc\n");
+// 		exit (0);
+// 	}
+// 	s2_memset = memset(s2_over_uint, 'A', UINT_MAX + 1);
+// 	s2_memset[UINT_MAX + 1] = '\0';
+// 	printf("\n///test2_over_uint_case///\n");
+// 	printf("before strmapi: %zu\n", strlen(s2_memset));
+// 	printf("after strmapi:\n");
+// 	s2_ret = ft_strmapi(s2_memset, test_toupper);
+// 	printf("%zu\n", strlen(s2_ret));
+// }
