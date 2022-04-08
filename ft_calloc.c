@@ -22,11 +22,8 @@ void	*ft_calloc(size_t count, size_t size)
 	heap = malloc(count * size);
 	if (heap == NULL)
 		return (NULL);
-	else
-	{
-		ft_bzero(heap, count * size);
-		return (heap);
-	}
+	ft_bzero(heap, count * size);
+	return (heap);
 }
 
 /*

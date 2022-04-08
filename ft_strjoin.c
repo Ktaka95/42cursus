@@ -14,28 +14,23 @@
 
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	i;
-	size_t	j;
+	size_t	s1_len;
+	size_t	s2_len;
 	char	*joined_str;
 
-	i = 0;
-	j = 0;
-	if (s1 == NULL || s2 == NULL)
-		return (NULL);
-	joined_str = ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
+	if (s1 == NULL & s2 == NULL)
+		return (ft_strdup(""));
+	else if (s1 == NULL)
+		return (ft_strdup(s2));
+	else if (s2 == NULL)
+		return (ft_strdup(s1));
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	joined_str = malloc((s1_len + s2_len + 1) * sizeof(char));
 	if (joined_str == NULL)
 		return (NULL);
-	while (s1[i] != '\0')
-	{
-		joined_str[i] = s1[i];
-		i++;
-	}
-	while (s2[j] != '\0')
-	{
-		joined_str[i] = s2[j];
-		i++;
-		j++;
-	}
+	ft_strlcpy(joined_str, s1, s1_len + 1);
+	ft_strlcat(joined_str, s2, s1_len + s2_len + 1);
 	return (joined_str);
 }
 
@@ -162,16 +157,18 @@ void	test6_both_null_case(void)
 
 void	test7_str_toolong_case(void)
 {
-	size_t	len = LONG_MAX;
+	size_t	len = INT_MAX;
 	char	*s1 = NULL;
 	char	*s2 = NULL;
 	char	*ret = NULL;
 
 	printf("\n///test7_str_toolong_case///\n");
-	s1 = calloc(len, sizeof(char));
-	s2 = calloc(len, sizeof(char));
-	memset(s1, 'a', len);
-	memset(s2, 'b', len);
+	s1 = malloc(len * sizeof(char));
+	s2 = malloc(len * sizeof(char));
+	memset(s1, 'a', len - 1);
+	memset(s2, 'b', len - 1);
+	s1[len] = '\0';
+	s2[len] = '\0';
 	printf("---before_join---\n");
 	printf("s1: %zu\ns2: %zu\n", strlen(s1), strlen(s2));
 	ret = ft_strjoin(s1, s2);
