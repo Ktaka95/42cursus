@@ -346,6 +346,8 @@ void	test10_needle_null_case(void)
 	printf("needle null case is SEGV\n");
 	// ori_ret = strnstr(haystack, needle, len);
 	// ft_ret = ft_strnstr(haystack, needle, len);
+	// printf("%s\n", ori_ret);
+	// printf("%s\n", ft_ret);
 	// if ((ori_ret == NULL && ft_ret == NULL) || strcmp(ori_ret, ft_ret) == 0)
 	// {
 	// 	printf("--after strnstr--\n");
@@ -374,6 +376,8 @@ void	test11_haystack_null_len_not_0_case(void)
 	printf("haystack null && len != 0 case is SEGV\n");
 	// ori_ret = strnstr(haystack, needle, len);
 	// ft_ret = ft_strnstr(haystack, needle, len);
+	// printf("%s\n", ori_ret);
+	// printf("%s\n", ft_ret);
 	// if ((ori_ret == NULL && ft_ret == NULL) || strcmp(ori_ret, ft_ret) == 0)
 	// {
 	// 	printf("--after strnstr--\n");

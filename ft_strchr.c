@@ -17,21 +17,14 @@ char	*ft_strchr(const char *s, int c)
 	char	*str;
 
 	str = (char *)s;
-	if (c == 0)
+	while (*str != '\0')
 	{
-		while (*str != '\0')
-			str++;
+		if (*str == (char)c)
+			return (str);
+		str++;
+	}
+	if (c == '\0')
 		return (str);
-	}
-	else
-	{
-		while (*str != '\0')
-		{
-			if (*str == (char)c)
-				return (str);
-			str++;
-		}
-	}
 	return (NULL);
 }
 
@@ -42,16 +35,18 @@ char	*ft_strchr(const char *s, int c)
 void	test1_normal_case(void);
 void	test2_no_occur_case(void);
 void	test3_several_times_occur_case(void);
-void	test4_include_0_case(void);
-void	test5_str_null_case(void);
+void	test4_c_0_case(void);
+void	test5_include_0_case(void);
+void	test6_str_null_case(void);
 
 int main(void)
 {
 	test1_normal_case();
 	test2_no_occur_case();
 	test3_several_times_occur_case();
-	test4_include_0_case();
-	test5_str_null_case();
+	test4_c_0_case();
+	test5_include_0_case();
+	test6_str_null_case();
 	return (0);
 }
 
@@ -133,14 +128,40 @@ void	test3_several_times_occur_case(void)
 	return ;
 }
 
-void	test4_include_0_case(void)
+void	test4_c_0_case(void)
+{
+	char	*str = "Hello, 42 world!";
+	int		c = '\0';
+	char	*ori_ret = NULL;
+	char	*ft_ret = NULL;
+
+	printf("\n///test4_c_0_case///\n");
+	printf("---before strchr---\n");
+	printf("str:\t%s\nc:\t%c\n", str, (char)c);
+	ori_ret = strchr(str, c);
+	ft_ret = ft_strchr(str, c);
+	if (strcmp(ori_ret, ft_ret) == 0)
+	{
+		printf("---after strchr---\n");
+		printf("%s\n", ft_ret);
+		printf("OK :)\n");
+	}
+	else
+	{
+		printf("NG :(\n");
+		exit (0);
+	}
+	return ;
+}
+
+void	test5_include_0_case(void)
 {
 	char	*str = "Hello,\0 42 world!";
 	int		c = '4';
 	char	*ori_ret = NULL;
 	char	*ft_ret = NULL;
 
-	printf("\n///test4_include_0_case///\n");
+	printf("\n///test5_include_0_case///\n");
 	printf("---before strchr---\n");
 	printf("str:\t%s\nc:\t%c\n", str, (char)c);
 	ori_ret = strchr(str, c);
@@ -165,14 +186,14 @@ void	test4_include_0_case(void)
 	return ;
 }
 
-void	test5_str_null_case(void)
+void	test6_str_null_case(void)
 {
 	char	*str = NULL;
 	int		c = 'a';
 	char	*ori_ret = NULL;
 	char	*ft_ret = NULL;
 
-	printf("\n///test5_str_null_case///\n");
+	printf("\n///test6_str_null_case///\n");
 	printf("---before strchr---\n");
 	printf("str:\t%s\nc:\t%c\n", str, (char)c);
 	printf("***THIS CASE IS SEGV***\n");

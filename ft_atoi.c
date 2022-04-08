@@ -51,14 +51,12 @@ int	ft_isspace(int c)
 /*
 #include <stdio.h>
 #include <stdlib.h>
-
 void	test1_signed_case(void);
 void	test2_space_case(void);
 void	test3_not_number_case(void);
 void	test4_paddidng_between_number(void);
 void	test5_over_int_case(void);
 void	test6_null_case(void);
-
 int main(void)
 {
 	test1_signed_case();
@@ -69,7 +67,6 @@ int main(void)
 	test6_null_case();
 	return 0;
 }
-
 void	test1_signed_case(void)
 {
 	printf("///test1_signed_case///\n");
@@ -90,7 +87,6 @@ void	test1_signed_case(void)
 	}
 	return ;
 }
-
 void	test2_space_case(void)
 {
 	printf("///test2_space_case///\n");
@@ -115,7 +111,6 @@ void	test2_space_case(void)
 	}
 	return ;
 }
-
 void	test3_not_number_case(void)
 {
 	printf("///test3_not_number_case///\n");
@@ -134,7 +129,6 @@ void	test3_not_number_case(void)
 	}
 	return ;
 }
-
 void	test4_paddidng_between_number(void)
 {
 	printf("///test4_paddidng_between_number///\n");
@@ -157,29 +151,23 @@ void	test4_paddidng_between_number(void)
 	}
 	return ;
 }
-
 void	test5_over_int_case(void)
 {
 	printf("///test5_over_int_case///\n");
 	char	int_max_minus_1[] = "2147483646";
 	char	int_max[] = "2147483647";
 	char	int_max_plus_1[] = "2147483648";
-
 	char	int_min_plus_1[] = "-2147483647";
 	char	int_min[] = "-2147483648";
 	char	int_min_minus_1[] = "-2147483649";
-
 	char	long_max_minus_1[] = "9223372036854775806";
 	char	long_max[] = "9223372036854775807";
-
 	char	long_min_plus_1[] = "-9223372036854775807";
 	char	long_min[] = "-9223372036854775808";
-
 	char	long_max_plus_1[] = "9223372036854775808";
 	char	long_min_minus_1[] = "-9223372036854775809";
 	char	huge_plus[] = "9999999999999999999999999999";
 	char	huge_minus[] = "-9999999999999999999999999999";
-
 	if ((atoi(int_max_minus_1) == ft_atoi(int_max_minus_1))
 		&& (atoi(int_max) == ft_atoi(int_max))
 			&& (atoi(int_max_plus_1) == ft_atoi(int_max_plus_1)))
@@ -252,7 +240,6 @@ void	test5_over_int_case(void)
 	}
 	return ;
 }
-
 void	test6_null_case(void)
 {
 	printf("\n///test6_null_case///\n");
