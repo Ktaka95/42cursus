@@ -25,22 +25,20 @@ size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 	ret = ft_strlen(dst) + ft_strlen(src);
 	if (dstsize < ft_strlen(dst) + 1)
 		return (dstsize + ft_strlen(src));
-	else
+	while (j < dstsize - 1 && src[i] != '\0')
 	{
-		while (j < dstsize - 1 && src[i] != '\0')
-		{
-			dst[j] = src[i];
-			i++;
-			j++;
-		}
-		dst[j] = '\0';
+		dst[j] = src[i];
+		i++;
+		j++;
 	}
+	dst[j] = '\0';
 	return (ret);
 }
 
 /*
 #include <stdio.h>
 #include <string.h>
+
 void	test1_normal_case(void);
 void	test2_dstsize_lt_len_case(void);
 void	test3_dst_include_0_case(void);
@@ -51,6 +49,8 @@ void	test7_src_null_case(void);
 void	test8_dst_null_dstsize_not_0_case(void);
 void	test9_dst_gt_dstsize_case(void);
 void	test10_dst_overlap_src_case(void);
+void	test11_dst_overlap_src_case2(void);
+
 int	main(void)
 {
 	test1_normal_case();
@@ -63,21 +63,28 @@ int	main(void)
 	test8_dst_null_dstsize_not_0_case();
 	test9_dst_gt_dstsize_case();
 	test10_dst_overlap_src_case();
+	test11_dst_overlap_src_case2();
 	return (0);
 }
+
 void	test1_normal_case(void)
 {
 	char	ori_dst[30] = "Hello, \0";
 	char	ft_dst[30] = "Hello, \0";
 	char	*src = "42 world!";
 	size_t	dstsize = strlen(ori_dst) + strlen(src) + 1;
+	size_t	ori_ret;
+	size_t	ft_ret;
+
 	printf("///test1_normal_case///\n");
 	printf("--before strlcat--\n");
 	printf("dst: %s\nsrc: %s\ndstsize: %zu\n", ori_dst, src, dstsize);
-	if (strlcat(ori_dst, src, dstsize) == ft_strlcat(ft_dst, src, dstsize))
+	ori_ret = strlcat(ori_dst, src, dstsize);
+	ft_ret = ft_strlcat(ft_dst, src, dstsize);
+	if (ori_ret == ft_ret)
 	{
 		printf("--after strlcat--\n");
-		printf("ret: %zu\ndst: %s\n", strlcat(ori_dst, src, dstsize), ori_dst);
+		printf("ret: %zu\ndst: %s\n", ori_ret, ori_dst);
 		printf("OK :)\n");
 	}
 	else
@@ -87,19 +94,25 @@ void	test1_normal_case(void)
 	}
 	return ;
 }
+
 void	test2_dstsize_lt_len_case(void)
 {
 	char	ori_dst[30] = "Hello, \0";
 	char	ft_dst[30] = "Hello, \0";
 	char	*src = "42 world!";
 	size_t	dstsize = 10;
+	size_t	ori_ret;
+	size_t	ft_ret;
+
 	printf("\n///test2_dstsize_lt_len_case///\n");
 	printf("--before strlcat--\n");
 	printf("dst: %s\nsrc: %s\ndstsize: %zu\n", ori_dst, src, dstsize);
-	if (strlcat(ori_dst, src, dstsize) == ft_strlcat(ft_dst, src, dstsize))
+	ori_ret = strlcat(ori_dst, src, dstsize);
+	ft_ret = ft_strlcat(ft_dst, src, dstsize);
+	if (ori_ret == ft_ret)
 	{
 		printf("--after strlcat--\n");
-		printf("ret: %zu\ndst: %s\n", strlcat(ori_dst, src, dstsize), ori_dst);
+		printf("ret: %zu\ndst: %s\n", ori_ret, ori_dst);
 		printf("OK :)\n");
 	}
 	else
@@ -109,19 +122,25 @@ void	test2_dstsize_lt_len_case(void)
 	}
 	return ;
 }
+
 void	test3_dst_include_0_case(void)
 {
 	char	ori_dst[30] = "Hello, \0 42 world!";
 	char	ft_dst[30] = "Hello, \0 42 world!";
 	char	*src = "42 world!";
 	size_t	dstsize = dstsize = strlen(ori_dst) + strlen(src) + 1;
+	size_t	ori_ret;
+	size_t	ft_ret;
+
 	printf("\n///test3_dst_include_0_case///\n");
 	printf("--before strlcat--\n");
 	printf("dst: %s\nsrc: %s\ndstsize: %zu\n", ori_dst, src, dstsize);
-	if (strlcat(ori_dst, src, dstsize) == ft_strlcat(ft_dst, src, dstsize))
+	ori_ret = strlcat(ori_dst, src, dstsize);
+	ft_ret = ft_strlcat(ft_dst, src, dstsize);
+	if (ori_ret == ft_ret)
 	{
 		printf("--after strlcat--\n");
-		printf("ret: %zu\ndst: %s\n", strlcat(ori_dst, src, dstsize), ori_dst);
+		printf("ret: %zu\ndst: %s\n", ori_ret, ori_dst);
 		printf("OK :)\n");
 	}
 	else
@@ -131,19 +150,25 @@ void	test3_dst_include_0_case(void)
 	}
 	return ;
 }
+
 void	test4_src_include_0_case(void)
 {
 	char	ori_dst[30] = "Hello, \0";
 	char	ft_dst[30] = "Hello, \0";
 	char	*src = "42 \0 world!";
 	size_t	dstsize = dstsize = strlen(ori_dst) + strlen(src) + 1;
+	size_t	ori_ret;
+	size_t	ft_ret;
+
 	printf("\n///test4_src_include_0_case///\n");
 	printf("--before strlcat--\n");
 	printf("dst: %s\nsrc: %s\ndstsize: %zu\n", ori_dst, src, dstsize);
-	if (strlcat(ori_dst, src, dstsize) == ft_strlcat(ft_dst, src, dstsize))
+	ori_ret = strlcat(ori_dst, src, dstsize);
+	ft_ret = ft_strlcat(ft_dst, src, dstsize);
+	if (ori_ret == ft_ret)
 	{
 		printf("--after strlcat--\n");
-		printf("ret: %zu\ndst: %s\n", strlcat(ori_dst, src, dstsize), ori_dst);
+		printf("ret: %zu\ndst: %s\n", ori_ret, ori_dst);
 		printf("OK :)\n");
 	}
 	else
@@ -153,19 +178,25 @@ void	test4_src_include_0_case(void)
 	}
 	return ;
 }
+
 void	test5_dst_null_dstsize_0_case(void)
 {
 	char	*ori_dst = NULL;
 	char	*ft_dst = NULL;
 	char	*src = "Hello, 42 world!";
 	size_t	dstsize = 0;
+	size_t	ori_ret;
+	size_t	ft_ret;
+
 	printf("\n///test5_dst_null_dstsize_0_case///\n");
 	printf("--before strlcat--\n");
 	printf("dst: %s\nsrc: %s\ndstsize: %zu\n", ori_dst, src, dstsize);
-	if (strlcat(ori_dst, src, dstsize) == ft_strlcat(ft_dst, src, dstsize))
+	ori_ret = strlcat(ori_dst, src, dstsize);
+	ft_ret = ft_strlcat(ft_dst, src, dstsize);
+	if (ori_ret == ft_ret)
 	{
 		printf("--after strlcat--\n");
-		printf("ret: %zu\ndst: %s\n", strlcat(ori_dst, src, dstsize), ori_dst);
+		printf("ret: %zu\ndst: %s\n", ori_ret, ori_dst);
 		printf("OK :)\n");
 	}
 	else
@@ -175,19 +206,25 @@ void	test5_dst_null_dstsize_0_case(void)
 	}
 	return ;
 }
+
 void	test6_dstsize_0_case(void)
 {
 	char	ori_dst[30] = "Hello, \0";
 	char	ft_dst[30] = "Hello, \0";
 	char	*src = "42 world!";
 	size_t	dstsize = 0;
+	size_t	ori_ret;
+	size_t	ft_ret;
+
 	printf("\n///test6_dstsize_0_case///\n");
 	printf("--before strlcat--\n");
 	printf("dst: %s\nsrc: %s\ndstsize: %zu\n", ori_dst, src, dstsize);
-	if (strlcat(ori_dst, src, dstsize) == ft_strlcat(ft_dst, src, dstsize))
+	ori_ret = strlcat(ori_dst, src, dstsize);
+	ft_ret = ft_strlcat(ft_dst, src, dstsize);
+	if (ori_ret == ft_ret)
 	{
 		printf("--after strlcat--\n");
-		printf("ret: %zu\ndst: %s\n", strlcat(ori_dst, src, dstsize), ori_dst);
+		printf("ret: %zu\ndst: %s\n", ori_ret, ori_dst);
 		printf("OK :)\n");
 	}
 	else
@@ -197,6 +234,7 @@ void	test6_dstsize_0_case(void)
 	}
 	return ;
 }
+
 void	test7_src_null_case(void)
 {
 	char	ori_dst[30] = "Hello, 42 world!\0";
@@ -222,11 +260,12 @@ void	test7_src_null_case(void)
 	// }
 	return ;
 }
+
 void	test8_dst_null_dstsize_not_0_case(void)
 {
 	char	*ori_dst = NULL;
 	// char	*ft_dst = NULL;
-	char	*src = NULL;
+	char	*src = "Hello, 42 world!";
 	size_t	dstsize = 1;
 	printf("\n///test8_dst_null_dstsize_not_0_case///\n");
 	printf("--before strlcat--\n");
@@ -247,22 +286,25 @@ void	test8_dst_null_dstsize_not_0_case(void)
 	// }
 	return ;
 }
+
 void	test9_dst_gt_dstsize_case(void)
 {
 	char	ori_dst[30] = "Hello, \0";
 	char	ft_dst[30] = "Hello, \0";
 	char	*src = "42 world!";
 	size_t	dstsize = 3;
+	size_t	ori_ret;
+	size_t	ft_ret;
+
 	printf("\n///test9_dst_gt_dstsize_case///\n");
 	printf("--before strlcat--\n");
 	printf("dst: %s\nsrc: %s\ndstsize: %zu\n", ori_dst, src, dstsize);
-	printf("dst null && dstsize not 0 is SEGV\n");
-	strlcat(ori_dst, src, dstsize);
-	ft_strlcat(ft_dst, src, dstsize);
-	if (strlcat(ori_dst, src, dstsize) == ft_strlcat(ft_dst, src, dstsize))
+	ori_ret = strlcat(ori_dst, src, dstsize);
+	ft_ret = ft_strlcat(ft_dst, src, dstsize);
+	if (ori_ret == ft_ret)
 	{
 		printf("--after strlcat--\n");
-		printf("ret: %zu\ndst: %s\n", strlcat(ori_dst, src, dstsize), ori_dst);
+		printf("ret: %zu\ndst: %s\n", ori_ret, ori_dst);
 		printf("OK :)\n");
 	}
 	else
@@ -272,6 +314,7 @@ void	test9_dst_gt_dstsize_case(void)
 	}
 	return ;
 }
+
 void	test10_dst_overlap_src_case(void)
 {
 	char	ori_dst[30] = "Hello, 42 world!\0";
@@ -279,25 +322,58 @@ void	test10_dst_overlap_src_case(void)
 	char	*ori_src;
 	char	*ft_src;
 	size_t	dstsize = strlen(ori_dst) * 2;
+	// size_t	ori_ret;
+	size_t	ft_ret;
+
 	ori_src = &ori_dst[7];
 	ft_src = &ft_dst[7];
 	printf("\n///test10_dst_overlap_src_case///\n");
 	printf("--before strlcat--\n");
 	printf("dst: %s\nsrc: %s\ndstsize: %zu\n", ori_dst, ori_src, dstsize);
-	printf("dst null && dstsize not 0 is SEGV\n");
-	// strlcat(ori_dst, ori_src, dstsize);
-	// ft_strlcat(ft_dst, ft_src, dstsize);
-	if (strlcat(ori_dst, ori_src, dstsize) == ft_strlcat(ft_dst, ft_src, dstsize))
-	{
-		printf("--after strlcat--\n");
-		printf("ret: %zu\ndst: %s\n", strlcat(ori_dst, ori_src, dstsize), ori_dst);
-		printf("OK :)\n");
-	}
-	else
-	{
-		printf("NG :(\n");
-		exit (0);
-	}
+	printf("dst src overlap is abort\n");
+	// ori_ret = strlcat(ori_dst, ori_src, dstsize);
+	ft_ret = ft_strlcat(ft_dst, ft_src, dstsize);
+	// if (ori_ret == ft_ret)
+	// {
+	// 	printf("--after strlcat--\n");
+	// 	printf("ret: %zu\ndst: %s\n", ori_ret, ori_dst);
+	// 	printf("OK :)\n");
+	// }
+	// else
+	// {
+	// 	printf("NG :(\n");
+	// 	exit (0);
+	// }
+	return ;
+}
+
+void	test11_dst_overlap_src_case2(void)
+{
+	char	ori_src[30] = "Hello, 42 world!\0";
+	char	ft_src[30] = "Hello, 42 world!\0";
+	char	*ori_dst = &ori_src[7];
+	char	*ft_dst = &ft_src[7];
+	size_t	dstsize = strlen(ori_src) * 2;
+	// size_t	ori_ret;
+	size_t	ft_ret;
+
+	printf("\n///test11_dst_overlap_src_case2///\n");
+	printf("--before strlcat--\n");
+	printf("dst: %s\nsrc: %s\ndstsize: %zu\n", ori_dst, ori_src, dstsize);
+	printf("dst src overlap is abort\n");
+	// ori_ret = strlcat(ori_dst, ori_src, dstsize);
+	ft_ret = ft_strlcat(ft_dst, ft_src, dstsize);
+	// if (ori_ret == ft_ret)
+	// {
+	// 	printf("--after strlcat--\n");
+	// 	printf("ret: %zu\ndst: %s\n", ori_ret, ori_dst);
+	// 	printf("OK :)\n");
+	// }
+	// else
+	// {
+	// 	printf("NG :(\n");
+	// 	exit (0);
+	// }
 	return ;
 }
 */
