@@ -21,7 +21,7 @@ char	*ft_itoa(int n)
 	unsigned int	num;
 
 	digit_count = digit_check(n);
-	ret = malloc((digit_count + 1) * sizeof(char));
+	ret = (char *)malloc((digit_count + 1) * sizeof(char));
 	if (ret == NULL)
 		return (NULL);
 	ret[digit_count--] = '\0';

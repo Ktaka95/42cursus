@@ -26,7 +26,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 		return (ft_strdup(s1));
 	s1_len = ft_strlen(s1);
 	s2_len = ft_strlen(s2);
-	joined_str = malloc((s1_len + s2_len + 1) * sizeof(char));
+	joined_str = (char *)malloc((s1_len + s2_len + 1) * sizeof(char));
 	if (joined_str == NULL)
 		return (NULL);
 	ft_strlcpy(joined_str, s1, s1_len + 1);

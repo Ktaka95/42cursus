@@ -22,7 +22,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 		return (NULL);
 	if (ft_strlen(s) > UINT_MAX)
 		return (NULL);
-	ret = malloc((ft_strlen(s) + 1) * sizeof(char));
+	ret = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
 	if (ret == NULL)
 		return (NULL);
 	while (s[i] != '\0')
