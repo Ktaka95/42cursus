@@ -14,12 +14,7 @@
 
 int	ft_isdigit(int c)
 {
-	int	ret;
-
-	ret = 0;
-	if ('0' <= c && c <= '9')
-		ret = 1;
-	return (ret);
+	return ('0' <= c && c <= '9');
 }
 
 /*

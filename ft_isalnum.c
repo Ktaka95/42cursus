@@ -14,13 +14,7 @@
 
 int	ft_isalnum(int c)
 {
-	int	ret;
-
-	ret = 0;
-	if (('0' <= c && c <= '9') || ('A' <= c && c <= 'Z')
-		|| ('a' <= c && c <= 'z'))
-		ret = 1;
-	return (ret);
+	return (ft_isalpha(c) || ft_isdigit(c));
 }
 
 /*

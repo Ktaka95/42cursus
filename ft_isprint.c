@@ -14,12 +14,7 @@
 
 int	ft_isprint(int c)
 {
-	int	ret;
-
-	ret = 0;
-	if (32 <= c && c <= 126)
-		ret = 1;
-	return (ret);
+	return ((' ' <= c && c <= '~'));
 }
 
 /*
