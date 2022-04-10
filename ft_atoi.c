@@ -36,21 +36,21 @@ int	ft_atoi(const char *str)
 
 int	ft_isspace(int c)
 {
-	if (c == '\t' || c == '\n' || c == '\v'
-		|| c == '\f' || c == '\r' || c == ' ')
-		return (1);
-	return (0);
+	return ((c == '\t' || c == '\n' || c == '\v' || \
+c == '\f' || c == '\r' || c == ' '));
 }
 
 /*
 #include <stdio.h>
 #include <stdlib.h>
+
 void	test1_signed_case(void);
 void	test2_space_case(void);
 void	test3_not_number_case(void);
 void	test4_paddidng_between_number(void);
 void	test5_over_int_case(void);
 void	test6_null_case(void);
+
 int main(void)
 {
 	test1_signed_case();
@@ -61,6 +61,7 @@ int main(void)
 	test6_null_case();
 	return 0;
 }
+
 void	test1_signed_case(void)
 {
 	printf("///test1_signed_case///\n");
@@ -81,6 +82,7 @@ void	test1_signed_case(void)
 	}
 	return ;
 }
+
 void	test2_space_case(void)
 {
 	printf("///test2_space_case///\n");
@@ -105,6 +107,7 @@ void	test2_space_case(void)
 	}
 	return ;
 }
+
 void	test3_not_number_case(void)
 {
 	printf("///test3_not_number_case///\n");
@@ -123,6 +126,7 @@ void	test3_not_number_case(void)
 	}
 	return ;
 }
+
 void	test4_paddidng_between_number(void)
 {
 	printf("///test4_paddidng_between_number///\n");
@@ -145,6 +149,7 @@ void	test4_paddidng_between_number(void)
 	}
 	return ;
 }
+
 void	test5_over_int_case(void)
 {
 	printf("///test5_over_int_case///\n");
@@ -236,6 +241,7 @@ void	test5_over_int_case(void)
 	printf("OK :)\n");
 	return ;
 }
+
 void	test6_null_case(void)
 {
 	printf("\n///test6_null_case///\n");
