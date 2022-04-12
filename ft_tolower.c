@@ -19,25 +19,35 @@ int	ft_tolower(int c)
 	return (c);
 }
 
-/*
-#include <stdio.h>
-#include <ctype.h>
+/* #include <stdio.h> */
+/* #include <ctype.h> */
+/* #include <stdlib.h> */
 
-int	main(void)
-{
-	int	c = -128;
+/* int	main(void) */
+/* { */
+/* 	int	c = 64; */
+/* 	int	i = -10000; */
 
-	while (c < 257)
-	{
-		if (tolower(c) != ft_tolower(c))
-		{
-			printf("NG :(\n");
-			exit (0);
-		}
-		else
-			printf("ascii %d: %c => %c\tOK\n", c, (char)c, (char)(ft_tolower(c)));
-		c++;
-	}
-	printf("OK :)\n");
-}
-*/
+/* 	while (c < 92) */
+/* 	{ */
+/* 		if (tolower(c) != ft_tolower(c)) */
+/* 		{ */
+/* 			printf("NG :(\n"); */
+/* 			exit (0); */
+/* 		} */
+/* 		else */
+/* 			printf("ascii %d: %c => %c\tOK\n", \ */
+/* 					c, (char)c, (char)(ft_tolower(c))); */
+/* 		c++; */
+/* 	} */
+/* 	while (i <= 10000) */
+/* 	{ */
+/* 		if (tolower(i) != ft_tolower(i)) */
+/* 		{ */
+/* 			printf("NG :(\n"); */
+/* 			exit (0); */
+/* 		} */
+/* 		i++; */
+/* 	} */
+/* 	printf("OK :)\n"); */
+/* } */
