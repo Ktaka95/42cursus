@@ -19,36 +19,38 @@ int	ft_toupper(int c)
 	return (c);
 }
 
-/* #include <stdio.h> */
-/* #include <ctype.h> */
-/* #include <stdlib.h> */
+/*
+#include <stdio.h>
+#include <ctype.h>
+#include <stdlib.h>
 
-/* int	main(void) */
-/* { */
-/* 	int	c = 96; */
-/* 	int	i = -10000; */
+int	main(void)
+{
+	int	c = 96;
+	int	i = -10000;
 
-/* 	while (c < 124) */
-/* 	{ */
-/* 		if (toupper(c) != ft_toupper(c)) */
-/* 		{ */
-/* 			printf("NG :(\n"); */
-/* 			exit (0); */
-/* 		} */
-/* 		else */
-/* 			printf("ascii %d: %c => %c\tOK\n", \ */
-/* 					c, (char)c, (char)(ft_toupper(c))); */
-/* 		c++; */
-/* 	} */
-/* 	printf("OK :)\n"); */
-/* 	while (i <= 10000) */
-/* 	{ */
-/* 		if (toupper(i) != ft_toupper(i)) */
-/* 		{ */
-/* 			printf("NG :(\n"); */
-/* 			exit (0); */
-/* 		} */
-/* 		i++; */
-/* 	} */
-/* 	return (0); */
-/* } */
+	while (c < 124)
+	{
+		if (toupper(c) != ft_toupper(c))
+		{
+			printf("NG :(\n");
+			exit (0);
+		}
+		else
+			printf("ascii %d: %c => %c\tOK\n", \
+					c, (char)c, (char)(ft_toupper(c)));
+		c++;
+	}
+	printf("OK :)\n");
+	while (i <= 10000)
+	{
+		if (toupper(i) != ft_toupper(i))
+		{
+			printf("NG :(\n");
+			exit (0);
+		}
+		i++;
+	}
+	return (0);
+}
+*/
