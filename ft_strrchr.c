@@ -87,7 +87,7 @@ char	*ft_strrchr(const char *s, int c)
 /* 	if (ori_ret == NULL && ft_ret == NULL) */
 /* 	{ */
 /* 		printf("---after strrchr---\n"); */
-/* 		printf("No occurance\n"); */
+/* 		printf("No occurrence\n"); */
 /* 		printf("OK :)\n"); */
 /* 	} */
 /* 	else */
