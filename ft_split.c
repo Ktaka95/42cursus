@@ -14,9 +14,9 @@
 
 static size_t	ft_split_count(char const *s, char c);
 
-static int		allocate_count_and_free(char **str, size_t split_count);
+static char		**allocate_count_and_free(char **str, size_t split_count);
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char			**ret;
 	size_t			i;
@@ -38,17 +38,10 @@ char			**ft_split(char const *s, char c)
 		while (s[i] != c && s[i] != '\0')
 			i++;
 		if (i > start)
-		{
-			ret[j] = ft_substr(s, start, i - start);
-			if (j == 2)
-				ret[j] = NULL;
-			j++;
-		}
+			ret[j++] = ft_substr(s, start, i - start);
 	}
 	ret[j] = NULL;
-	if (allocate_count_and_free(ret, ft_split_count(s, c)) != 0)
-		return (NULL);
-	return (ret);
+	return (allocate_count_and_free(ret, ft_split_count(s, c)));
 }
 
 size_t	ft_split_count(char const *s, char c)
@@ -77,55 +70,32 @@ size_t	ft_split_count(char const *s, char c)
 	return (split_count);
 }
 
-int	allocate_count_and_free(char **str, size_t split_count)
+char	**allocate_count_and_free(char **str, size_t split_count)
 {
 	size_t	i;
 	size_t	j;
 	size_t	count;
-	int		ret;
 
 	i = 0;
 	j = 0;
 	count = 0;
-	ret = 0;
-	while (i < split_count)
+	while (str[i] != NULL)
 	{
-		if (str[i] != NULL)
-			count++;
 		i++;
+		count++;
 	}
 	if (count != split_count)
 	{
-		ret = 1;
 		while (j < split_count + 1)
 		{
 			free(str[j]);
 			j++;
 		}
 		free(str);
+		return (NULL);
 	}
-	return (ret);
+	return (str);
 }
-
-/* #include <stdio.h> */
-
-/* int	main(void) */
-/* { */
-/* 	char	*str = "Hello , 42 world !"; */
-/* 	char	c = ' '; */
-/* 	char	**ret = NULL; */
-
-/* 	ret = ft_split(str, c); */
-/* 	printf("%p\n", ret); */
-/* 	/1* printf("%s\n", ret[0]); *1/ */
-/* 	/1* printf("%s\n", ret[1]); *1/ */
-/* 	/1* printf("free\n"); *1/ */
-/* 	/1* printf("%s\n", ret[2]); *1/ */
-/* 	/1* printf("%s\n", ret[3]); *1/ */
-/* 	/1* printf("%s\n", ret[4]); *1/ */
-/* 	while (1); */
-/* 	return (0); */
-/* } */
 
 /*
 #include <stdio.h>
