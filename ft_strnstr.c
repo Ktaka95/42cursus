@@ -16,11 +16,15 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	needle_len;
 	size_t	i;
+	size_t	clash_flag;
 	int		diff;
 
 	needle_len = ft_strlen(needle);
 	i = 0;
-	while (i + needle_len <= len)
+	clash_flag = 0;
+	if (len != 0 && haystack == NULL)
+		clash_flag = ft_strlen(haystack);
+	while (clash_flag == 0 && i + needle_len <= len)
 	{
 		diff = ft_strncmp(haystack + i, needle, needle_len);
 		if (diff == 0)
@@ -341,7 +345,7 @@ char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 /* 	char	*haystack = NULL; */
 /* 	char	*needle = "Hello, 42 world!"; */
 /* 	size_t	len = 3; */
-/* 	// char	*ori_ret = NULL; */
+/* 	// char	*ori_ret = NULL; *1/ */
 /* 	// char	*ft_ret = NULL; */
 
 /* 	printf("\n///test11_haystack_null_len_not_0_case///\n"); */
