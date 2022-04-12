@@ -107,25 +107,25 @@ int	allocate_count_and_free(char **str, size_t split_count)
 	return (ret);
 }
 
-#include <stdio.h>
+/* #include <stdio.h> */
 
-int	main(void)
-{
-	char	*str = "Hello , 42 world !";
-	char	c = ' ';
-	char	**ret = NULL;
+/* int	main(void) */
+/* { */
+/* 	char	*str = "Hello , 42 world !"; */
+/* 	char	c = ' '; */
+/* 	char	**ret = NULL; */
 
-	ret = ft_split(str, c);
-	printf("%p\n", ret);
-	/* printf("%s\n", ret[0]); */
-	/* printf("%s\n", ret[1]); */
-	/* printf("free\n"); */
-	/* printf("%s\n", ret[2]); */
-	/* printf("%s\n", ret[3]); */
-	/* printf("%s\n", ret[4]); */
-	while (1);
-	return (0);
-}
+/* 	ret = ft_split(str, c); */
+/* 	printf("%p\n", ret); */
+/* 	/1* printf("%s\n", ret[0]); *1/ */
+/* 	/1* printf("%s\n", ret[1]); *1/ */
+/* 	/1* printf("free\n"); *1/ */
+/* 	/1* printf("%s\n", ret[2]); *1/ */
+/* 	/1* printf("%s\n", ret[3]); *1/ */
+/* 	/1* printf("%s\n", ret[4]); *1/ */
+/* 	while (1); */
+/* 	return (0); */
+/* } */
 
 /*
 #include <stdio.h>
