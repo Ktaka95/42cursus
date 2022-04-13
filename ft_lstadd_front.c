@@ -6,7 +6,7 @@
 /*   By: ktakada <ktakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 16:38:10 by ktakada           #+#    #+#             */
-/*   Updated: 2022/04/13 16:56:26 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/13 16:57:32 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	size_t	i;
 
 	i = 0;
-	while (t_list[i] != NULL)
+	while (list[i] != NULL)
 		i++;
-	t_list[i + 1] = NULL;
+	list[i + 1] = NULL;
 	while (i > 0)
 	{
-		t_list[i] t_list[i - 1];
+		list[i] list[i - 1];
 		i--;
 	}
-	t_list[i] = new;
+	list[i] = new;
 	return ;
 }
