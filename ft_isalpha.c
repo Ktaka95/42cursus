@@ -17,6 +17,7 @@ int	ft_isalpha(int c)
 	return (('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z'));
 }
 
+/*
 #include <stdio.h>
 #include <ctype.h>
 
@@ -54,3 +55,4 @@ int main(void)
 	printf("OK :)\n");
 	return (0);
 }
+*/

@@ -23,23 +23,34 @@ int	ft_isdigit(int c)
 
 int main(void)
 {
-	int	i = -256;
+	int	i = 47;
+	int	c = -10000;
 	int	ori = 0;
 	int	ft = 0;
-
 	printf("ascii:\tisdigit\t:\tft_isdigit\n");
-	while (i < 257)
+	while (i <= 58)
 	{
 		ori = isdigit(i);
 		ft = ft_isdigit(i);
 		if (ori == ft)
-			printf("[%d]:\t%d\t:\t%d\n", i, ori, ft);
+			printf("[%c]:\t%d\t:\t%d\n", i, ori, ft);
 		else
 		{
 			printf("NG :(\n");
 			return(0);
 		}
 		i++;
+	}
+	while (c <= 10000)
+	{
+		ori = isdigit(c);
+		ft = ft_isdigit(c);
+		if (ori != ft)
+		{
+			printf("NG :(\n");
+			return(0);
+		}
+		c++;
 	}
 	printf("OK :)\n");
 	return (0);
