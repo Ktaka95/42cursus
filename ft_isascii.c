@@ -17,20 +17,19 @@ int	ft_isascii(int c)
 	return (0 <= c && c <= 127);
 }
 
-/*
 #include <stdio.h>
 #include <ctype.h>
 
 int main(void)
 {
-	int	i = -256;
+	int	i = -1;
+	int	c = -10000;
 	int	ori = 0;
 	int	ft = 0;
-
 	printf("ascii:\tisascii\t:\tft_isascii\n");
-	while (i < 257)
+	while (i <= 128)
 	{
-		ori = isascii(i);
+		ori =isascii(i);
 		ft = ft_isascii(i);
 		if (ori == ft)
 			printf("[%d]:\t%d\t:\t%d\n", i, ori, ft);
@@ -41,7 +40,17 @@ int main(void)
 		}
 		i++;
 	}
+	while (c <= 10000)
+	{
+		ori = isascii(c);
+		ft = ft_isascii(c);
+		if (ori != ft)
+		{
+			printf("NG :(\n");
+			return(0);
+		}
+		c++;
+	}
 	printf("OK :)\n");
 	return (0);
 }
-*/

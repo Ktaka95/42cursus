@@ -17,23 +17,22 @@ int	ft_isalpha(int c)
 	return (('A' <= c && c <= 'Z') || ('a' <= c && c <= 'z'));
 }
 
-/*
 #include <stdio.h>
 #include <ctype.h>
 
 int main(void)
 {
-	int	i = -256;
+	int	i = 64;
+	int	c = -10000;
 	int	ori = 0;
 	int	ft = 0;
-
 	printf("ascii:\tisalpha\t:\tft_isalpha\n");
-	while (i < 257)
+	while (i <= 123)
 	{
 		ori = isalpha(i);
 		ft = ft_isalpha(i);
 		if (ori == ft)
-			printf("[%d]:\t%d\t:\t%d\n", i, ori, ft);
+			printf("[%c]:\t%d\t:\t%d\n", i, ori, ft);
 		else
 		{
 			printf("NG :(\n");
@@ -41,7 +40,17 @@ int main(void)
 		}
 		i++;
 	}
+	while (c <= 10000)
+	{
+		ori = isalpha(c);
+		ft = ft_isalpha(c);
+		if (ori != ft)
+		{
+			printf("NG :(\n");
+			return(0);
+		}
+		c++;
+	}
 	printf("OK :)\n");
 	return (0);
 }
-*/
