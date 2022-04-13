@@ -6,7 +6,7 @@
 /*   By: ktakada <ktakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 16:54:00 by ktakada           #+#    #+#             */
-/*   Updated: 2022/04/13 16:55:47 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/13 23:20:24 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,13 @@
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	size_t	i;
+	t_list	*last;
 
-	i = 0;
-	while (lst[i] != NULL)
-		i++;
-	lst[i] = new;
-	lst[i + 1] = NULL;
+	if (lst == NULL || new == NULL)
+		return ;
+	if (*lst == NULL)
+		*lst = new;
+	last = ft_lstlast(*lst);
+	last->next = new;
+	return ;
 }
