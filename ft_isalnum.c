@@ -23,23 +23,35 @@ int	ft_isalnum(int c)
 
 int main(void)
 {
-	int	i = -256;
+	int	i = 47;
+	int	c = -10000;
 	int	ori = 0;
 	int	ft = 0;
 
 	printf("ascii:\tisalnum\t:\tft_isalnum\n");
-	while (i < 257)
+	while (i <= 123)
 	{
 		ori = isalnum(i);
 		ft = ft_isalnum(i);
 		if (ori == ft)
-			printf("[%d]:\t%d\t:\t%d\n", i, ori, ft);
+			printf("[%c]:\t%d\t:\t%d\n", i, ori, ft);
 		else
 		{
 			printf("NG :(\n");
 			return(0);
 		}
 		i++;
+	}
+	while (c <= 10000)
+	{
+		ori = isalnum(c);
+		ft = ft_isalnum(c);
+		if (ori != ft)
+		{
+			printf("NG :(\n");
+			return(0);
+		}
+		c++;
 	}
 	printf("OK :)\n");
 	return (0);
