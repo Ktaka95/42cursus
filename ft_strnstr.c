@@ -12,45 +12,23 @@
 
 #include "libft.h"
 
-static char	*ft_strnstr_body(char *h, char *n, size_t len);
-
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
-	char	*h;
-	char	*n;
-
-	h = (char *)haystack;
-	n = (char *)needle;
-	if (ft_strlen(needle) == 0 || (len == 0 && haystack == NULL))
-		return (h);
-	else if (ft_strlen(needle) > ft_strlen(haystack) || len < ft_strlen(needle))
-		return (NULL);
-	return (ft_strnstr_body(h, n, len));
-}
-
-char	*ft_strnstr_body(char *h, char *n, size_t len)
-{
+	size_t	needle_len;
 	size_t	i;
-	size_t	j;
-	size_t	k;
+	int		diff;
 
+	needle_len = ft_strlen(needle);
 	i = 0;
-	while (i + ft_strlen(n) - 1 < len)
+	if (needle_len == 0)
+		return ((char *)haystack);
+	if (len == 0 || ft_strlen(haystack) < needle_len)
+		return (NULL);
+	while (i + needle_len <= len)
 	{
-		j = i;
-		k = 0;
-		while (k < ft_strlen(n))
-		{
-			if (h[j] == n[k])
-			{
-				j++;
-				k++;
-			}
-			else
-				break ;
-		}
-		if (k == ft_strlen(n))
-			return (h + i);
+		diff = ft_strncmp(haystack + i, needle, needle_len);
+		if (diff == 0)
+			return ((char *)haystack + i);
 		i++;
 	}
 	return (NULL);
@@ -59,33 +37,35 @@ char	*ft_strnstr_body(char *h, char *n, size_t len)
 /*
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 void	test1_normal_case(void);
-void	test2_no_occurance_case(void);
+void	test2_no_occurrence_case(void);
 void	test3_occur_over_len_case(void);
 void	test4_haystack_empty_case(void);
 void	test5_needle_empty_case(void);
-void	test6_needle_empty_len_0_case(void);
+void	test6_needle_empty_len_not_0_case(void);
 void	test7_needle_gt_haystack_case(void);
 void	test8_needle_gt_len_case(void);
 void	test9_haystack_null_case(void);
 void	test10_needle_null_case(void);
 void	test11_haystack_null_len_not_0_case(void);
-void	test12_len_0_case(void);
+void	test12_len_gt_haystack(void);
 
 int	main(void)
 {
 	test1_normal_case();
-	test2_no_occurance_case();
+	test2_no_occurrence_case();
 	test3_occur_over_len_case();
 	test4_haystack_empty_case();
 	test5_needle_empty_case();
-	test6_needle_empty_len_0_case();
+	test6_needle_empty_len_not_0_case();
 	test7_needle_gt_haystack_case();
 	test8_needle_gt_len_case();
 	test9_haystack_null_case();
 	test10_needle_null_case();
 	test11_haystack_null_len_not_0_case();
+	test12_len_gt_haystack();
 	return (0);
 }
 
@@ -99,7 +79,8 @@ void	test1_normal_case(void)
 
 	printf("///test1_normal_case///\n");
 	printf("--before strnstr--\n");
-	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", haystack, needle, len);
+	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", \
+			haystack, needle, len);
 	ori_ret = strnstr(haystack, needle, len);
 	ft_ret = ft_strnstr(haystack, needle, len);
 	if ((ori_ret == NULL && ft_ret == NULL) || strcmp(ori_ret, ft_ret) == 0)
@@ -116,7 +97,7 @@ void	test1_normal_case(void)
 	return ;
 }
 
-void	test2_no_occurance_case(void)
+void	test2_no_occurrence_case(void)
 {
 	char	*haystack = "Hello, 42 world!";
 	char	*needle = "43";
@@ -124,9 +105,10 @@ void	test2_no_occurance_case(void)
 	char	*ori_ret = NULL;
 	char	*ft_ret = NULL;
 
-	printf("\n///test2_no_occurance_case///\n");
+	printf("\n///test2_no_occurrence_case///\n");
 	printf("--before strnstr--\n");
-	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", haystack, needle, len);
+	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", \
+			haystack, needle, len);
 	ori_ret = strnstr(haystack, needle, len);
 	ft_ret = ft_strnstr(haystack, needle, len);
 	if ((ori_ret == NULL && ft_ret == NULL) || strcmp(ori_ret, ft_ret) == 0)
@@ -153,7 +135,8 @@ void	test3_occur_over_len_case(void)
 
 	printf("\n///test3_occur_over_len_case///\n");
 	printf("--before strnstr--\n");
-	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", haystack, needle, len);
+	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", \
+			haystack, needle, len);
 	ori_ret = strnstr(haystack, needle, len);
 	ft_ret = ft_strnstr(haystack, needle, len);
 	if ((ori_ret == NULL && ft_ret == NULL) || strcmp(ori_ret, ft_ret) == 0)
@@ -180,7 +163,8 @@ void	test4_haystack_empty_case(void)
 
 	printf("\n///test4_haystack_empty_case///\n");
 	printf("--before strnstr--\n");
-	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", haystack, needle, len);
+	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", \
+			haystack, needle, len);
 	ori_ret = strnstr(haystack, needle, len);
 	ft_ret = ft_strnstr(haystack, needle, len);
 	if ((ori_ret == NULL && ft_ret == NULL) || strcmp(ori_ret, ft_ret) == 0)
@@ -207,7 +191,8 @@ void	test5_needle_empty_case(void)
 
 	printf("\n///test5_needle_empty_case///\n");
 	printf("--before strnstr--\n");
-	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", haystack, needle, len);
+	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", \
+			haystack, needle, len);
 	ori_ret = strnstr(haystack, needle, len);
 	ft_ret = ft_strnstr(haystack, needle, len);
 	if ((ori_ret == NULL && ft_ret == NULL) || strcmp(ori_ret, ft_ret) == 0)
@@ -224,17 +209,18 @@ void	test5_needle_empty_case(void)
 	return ;
 }
 
-void	test6_needle_empty_len_0_case(void)
+void	test6_needle_empty_len_not_0_case(void)
 {
 	char	*haystack = "Hello, 42 world!";
 	char	*needle = "";
-	size_t	len = 0;
+	size_t	len = 10;
 	char	*ori_ret = NULL;
 	char	*ft_ret = NULL;
 
-	printf("\n///test6_needle_empty_len_0_case///\n");
+	printf("\n///test6_needle_empty_len_not_0_case///\n");
 	printf("--before strnstr--\n");
-	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", haystack, needle, len);
+	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", \
+			haystack, needle, len);
 	ori_ret = strnstr(haystack, needle, len);
 	ft_ret = ft_strnstr(haystack, needle, len);
 	if ((ori_ret == NULL && ft_ret == NULL) || strcmp(ori_ret, ft_ret) == 0)
@@ -261,7 +247,8 @@ void	test7_needle_gt_haystack_case(void)
 
 	printf("\n///test7_needle_gt_haystack_case///\n");
 	printf("--before strnstr--\n");
-	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", haystack, needle, len);
+	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", \
+			haystack, needle, len);
 	ori_ret = strnstr(haystack, needle, len);
 	ft_ret = ft_strnstr(haystack, needle, len);
 	if ((ori_ret == NULL && ft_ret == NULL) || strcmp(ori_ret, ft_ret) == 0)
@@ -288,7 +275,8 @@ void	test8_needle_gt_len_case(void)
 
 	printf("\n///test8_needle_gt_len_case///\n");
 	printf("--before strnstr--\n");
-	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", haystack, needle, len);
+	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", \
+			haystack, needle, len);
 	ori_ret = strnstr(haystack, needle, len);
 	ft_ret = ft_strnstr(haystack, needle, len);
 	if ((ori_ret == NULL && ft_ret == NULL) || strcmp(ori_ret, ft_ret) == 0)
@@ -315,7 +303,8 @@ void	test9_haystack_null_case(void)
 
 	printf("\n///test9_haystack_null_case///\n");
 	printf("--before strnstr--\n");
-	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", haystack, needle, len);
+	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", \
+			haystack, needle, len);
 	ori_ret = strnstr(haystack, needle, len);
 	ft_ret = ft_strnstr(haystack, needle, len);
 	if ((ori_ret == NULL && ft_ret == NULL) || strcmp(ori_ret, ft_ret) == 0)
@@ -342,23 +331,13 @@ void	test10_needle_null_case(void)
 
 	printf("\n///test10_needle_null_case///\n");
 	printf("--before strnstr--\n");
-	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", haystack, needle, len);
+	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", \
+			haystack, needle, len);
 	printf("needle null case is SEGV\n");
 	// ori_ret = strnstr(haystack, needle, len);
 	// ft_ret = ft_strnstr(haystack, needle, len);
 	// printf("%s\n", ori_ret);
 	// printf("%s\n", ft_ret);
-	// if ((ori_ret == NULL && ft_ret == NULL) || strcmp(ori_ret, ft_ret) == 0)
-	// {
-	// 	printf("--after strnstr--\n");
-	// 	printf("str: %s\n", ori_ret);
-	// 	printf("OK :)\n");
-	// }
-	// else
-	// {
-	// 	printf("NG :(\n");
-	// 	exit (0);
-	// }
 	return ;
 }
 
@@ -378,17 +357,33 @@ void	test11_haystack_null_len_not_0_case(void)
 	// ft_ret = ft_strnstr(haystack, needle, len);
 	// printf("%s\n", ori_ret);
 	// printf("%s\n", ft_ret);
-	// if ((ori_ret == NULL && ft_ret == NULL) || strcmp(ori_ret, ft_ret) == 0)
-	// {
-	// 	printf("--after strnstr--\n");
-	// 	printf("str: %s\n", ori_ret);
-	// 	printf("OK :)\n");
-	// }
-	// else
-	// {
-	// 	printf("NG :(\n");
-	// 	exit (0);
-	// }
 	return ;
+}
+
+void	test12_len_gt_haystack(void)
+{
+   char	*haystack = "Hello, 42 world!";
+   char	*needle = "42";
+   size_t	len = SIZE_MAX;
+   char	*ori_ret = NULL;
+   char	*ft_ret = NULL;
+
+	printf("\n///test12_len_gt_haystack///\n");
+	printf("--before strnstr--\n");
+	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", \
+			haystack, needle, len);
+	ori_ret = strnstr(haystack, needle, len);
+	ft_ret = ft_strnstr(haystack, needle, len);
+	if ((ori_ret == NULL && ft_ret == NULL) || strcmp(ori_ret, ft_ret) == 0)
+	{
+		printf("--after strnstr--\n");
+		printf("str: %s\n", ori_ret);
+		printf("OK :)\n");
+	}
+	else
+	{
+		printf("NG :(\n");
+		exit (0);
+	}
 }
 */

@@ -23,13 +23,13 @@ int	ft_atoi(const char *str)
 	abs = 0;
 	i = 0;
 	sign = 1;
-	while (ft_isspace(str[i]) == 1)
+	while (ft_isspace(str[i]))
 		i++;
 	if (str[i] == '-')
 		sign = -1;
 	if (str[i] == '-' || str[i] == '+')
 		i++;
-	while (ft_isdigit(str[i]) == 1)
+	while (ft_isdigit(str[i]))
 		abs = (abs * 10) + (str[i++] - '0');
 	return (abs * sign);
 }
@@ -47,7 +47,7 @@ c == '\f' || c == '\r' || c == ' '));
 void	test1_signed_case(void);
 void	test2_space_case(void);
 void	test3_not_number_case(void);
-void	test4_paddidng_between_number(void);
+void	test4_padding_between_number(void);
 void	test5_over_int_case(void);
 void	test6_null_case(void);
 
@@ -56,7 +56,7 @@ int main(void)
 	test1_signed_case();
 	test2_space_case();
 	test3_not_number_case();
-	test4_paddidng_between_number();
+	test4_padding_between_number();
 	test5_over_int_case();
 	test6_null_case();
 	return 0;
@@ -65,9 +65,10 @@ int main(void)
 void	test1_signed_case(void)
 {
 	printf("///test1_signed_case///\n");
-	if ((atoi("+123") == ft_atoi("+123")) && (atoi("-123") == ft_atoi("-123"))
-			&& (atoi("-+123") == ft_atoi("-+123"))
-				&& (atoi("+-123") == ft_atoi("+-123")))
+	if ((atoi("+123") == ft_atoi("+123"))
+			&& (atoi("-123") == ft_atoi("-123"))
+				&& (atoi("-+123") == ft_atoi("-+123"))
+					&& (atoi("+-123") == ft_atoi("+-123")))
 	{
 		printf("%s => %d\n", "+123",	ft_atoi("+123"));
 		printf("%s => %d\n", "-123",	ft_atoi("-123"));
@@ -97,7 +98,8 @@ void	test2_space_case(void)
 		printf("%s => %d\n", "     +  123", ft_atoi("     +  123"));
 		printf("%s => %d\n", "     -123", ft_atoi("     -123"));
 		printf("%s => %d\n", "     -  123", ft_atoi("     -  123"));
-		printf("%s => %d\n", "\t\v\f\r\n \f-006050", ft_atoi("\t\v\f\r\n \f-006050"));
+		printf("%s => %d\n", "\t\v\f\r\n \f-006050", \
+					ft_atoi("\t\v\f\r\n \f-006050"));
 		printf("OK :)\n\n");
 	}
 	else
@@ -127,13 +129,14 @@ void	test3_not_number_case(void)
 	return ;
 }
 
-void	test4_paddidng_between_number(void)
+void	test4_padding_between_number(void)
 {
-	printf("///test4_paddidng_between_number///\n");
-	if ((atoi("3.14") == ft_atoi("3.14")) && (atoi("1 2 3") == ft_atoi("1 2 3"))
-		&& (atoi("1,2,3") == ft_atoi("1,2,3"))
-			&& (atoi("+12+3") == ft_atoi("+12+3"))
-				&& (atoi("-1-2-3") == ft_atoi("-1-2-3")))
+	printf("///test4_padding_between_number///\n");
+	if ((atoi("3.14") == ft_atoi("3.14"))
+		&& (atoi("1 2 3") == ft_atoi("1 2 3"))
+			&& (atoi("1,2,3") == ft_atoi("1,2,3"))
+				&& (atoi("+12+3") == ft_atoi("+12+3"))
+					&& (atoi("-1-2-3") == ft_atoi("-1-2-3")))
 	{
 		printf("%s => %d\n", "3.14",	ft_atoi("3.14"));
 		printf("%s => %d\n", "1 2 3",	ft_atoi("1 2 3"));

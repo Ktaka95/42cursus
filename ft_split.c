@@ -14,9 +14,9 @@
 
 static size_t	ft_split_count(char const *s, char c);
 
-static int		allocate_count_and_free(char **str, size_t split_count);
+static char		**allocate_count_and_free(char **str, size_t split_count);
 
-char			**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
 	char			**ret;
 	size_t			i;
@@ -41,9 +41,7 @@ char			**ft_split(char const *s, char c)
 			ret[j++] = ft_substr(s, start, i - start);
 	}
 	ret[j] = NULL;
-	if (allocate_count_and_free(ret, ft_split_count(s, c)) != 0)
-		return (NULL);
-	return (ret);
+	return (allocate_count_and_free(ret, ft_split_count(s, c)));
 }
 
 size_t	ft_split_count(char const *s, char c)
@@ -72,34 +70,31 @@ size_t	ft_split_count(char const *s, char c)
 	return (split_count);
 }
 
-int	allocate_count_and_free(char **str, size_t split_count)
+char	**allocate_count_and_free(char **str, size_t split_count)
 {
 	size_t	i;
 	size_t	j;
 	size_t	count;
-	int		ret;
 
 	i = 0;
 	j = 0;
 	count = 0;
-	ret = 0;
-	while (i < split_count)
+	while (str[i] != NULL)
 	{
-		if (str[i] != NULL)
-			count++;
 		i++;
+		count++;
 	}
 	if (count != split_count)
 	{
-		ret = 1;
 		while (j < split_count + 1)
 		{
 			free(str[j]);
 			j++;
 		}
 		free(str);
+		return (NULL);
 	}
-	return (ret);
+	return (str);
 }
 
 /*

@@ -31,6 +31,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 /*
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 void	test1_normal_case(void);
 void	test2_no_occur_case(void);

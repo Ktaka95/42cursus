@@ -33,6 +33,7 @@ int	ft_strncmp(const char	*s1, const char	*s2, size_t	n)
 /*
 #include <stdio.h>
 #include <string.h>
+#include <stdlib.h>
 
 void	test1_normal_match_case(void);
 void	test2_normal_wrong_case(void);

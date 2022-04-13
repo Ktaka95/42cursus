@@ -31,6 +31,7 @@ char	*ft_strchr(const char *s, int c)
 /*
 #include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 void	test1_normal_case(void);
 void	test2_no_occur_case(void);
@@ -91,7 +92,7 @@ void	test2_no_occur_case(void)
 	if (ori_ret == NULL && ft_ret == NULL)
 	{
 		printf("---after strchr---\n");
-		printf("No occurance\n");
+		printf("No occurrence\n");
 		printf("OK :)\n");
 	}
 	else
