@@ -38,12 +38,9 @@ size_t	ft_start_trim_count(char *s1, char const *set)
 
 	i = 0;
 	count = 0;
-	while (s1[i] != '\0')
+	while (ft_strchr(set, s1[i]))
 	{
-		if (ft_strchr(set, s1[i]) != NULL)
-			count++;
-		else
-			break ;
+		count++;
 		i++;
 	}
 	return (count);
@@ -56,7 +53,7 @@ size_t	ft_end_trim_count(char *s1, char const *set)
 
 	i = ft_strlen(s1) - 1;
 	count = 0;
-	while (ft_strchr(set, s1[i]) != NULL)
+	while (ft_strchr(set, s1[i]))
 	{
 		i--;
 		count++;
