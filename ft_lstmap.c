@@ -6,13 +6,10 @@
 /*   By: ktakada <ktakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 17:14:51 by ktakada           #+#    #+#             */
-/*   Updated: 2022/04/13 17:18:16 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/13 17:29:43 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
-{
-	return (lst);
-}
+/* t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *)) */
