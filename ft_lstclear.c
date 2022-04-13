@@ -6,7 +6,7 @@
 /*   By: ktakada <ktakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 17:08:52 by ktakada           #+#    #+#             */
-/*   Updated: 2022/04/13 17:12:17 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/13 17:24:58 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	i = 0;
 	while (lst[i] != NULL)
 	{
-		lst[i]->content = del(lst[i]);
-		free(lst[i].next);
+		del(lst[i]);
+		free(lst[i]->next);
 		i++;
 	}
 	free(lst);
