@@ -6,7 +6,7 @@
 /*   By: ktakada <ktakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 17:04:08 by ktakada           #+#    #+#             */
-/*   Updated: 2022/04/13 23:29:49 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/14 13:34:13 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
 	if (lst == NULL)
 		return ;
-	del(lst->content);
+	if (del != NULL)
+		del(lst->content);
 	free(lst);
 	return ;
 }
