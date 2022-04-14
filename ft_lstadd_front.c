@@ -6,7 +6,7 @@
 /*   By: ktakada <ktakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 16:38:10 by ktakada           #+#    #+#             */
-/*   Updated: 2022/04/14 20:42:33 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/14 22:59:45 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	test1_normal_case(void)
 	char	*str0 = "Hello";
 	char	*str1 = "42";
 	char	*str2 = "world!";
-	char	*new_str = "Welcome";
+	char	*new_str = "Goodbye";
 	int		i = 0;
 	t_list	*lst0 = ft_lstnew((void *)str0);
 	t_list	*lst1 = ft_lstnew((void *)str1);
@@ -51,7 +51,6 @@ void	test1_normal_case(void)
 	lst0->next = lst1;
 	lst1->next = lst2;
 	lst2->next = NULL;
-	printf("check before lstadd\n");
 
 	printf("///test1_normal_case///\n");
 	printf("--before lstadd_front--\n");
@@ -59,19 +58,23 @@ void	test1_normal_case(void)
 	{
 		printf("lst[%d]-content:\t%s\n", i, (char *)lst->content);
 		printf("lst[%d]-now:\t%p\n", i, lst);
-		printf("lst[%d]-next:\t%p\n", i, lst->next);
+		printf("lst[%d]-next:\t%p\n\n", i, lst->next);
 		lst = lst->next;
 		i++;
 	}
+	printf("\nlst_want_to_add\n");
+	printf("content:\t%s\n", (char *)lst_new->content);
+	printf("now:\t%p\n", lst_new);
+	printf("next:\t%p\n", lst_new->next);
 	ft_lstadd_front(&lst0, lst_new);
-	lst = lst_new;
+	lst = lst0;
 	i = 0;
 	printf("\n--after lstadd_front--\n");
 	while (lst != NULL)
 	{
 		printf("lst[%d]-content:\t%s\n", i, (char *)lst->content);
 		printf("lst[%d]-now:\t%p\n", i, lst);
-		printf("lst[%d]-next:\t%p\n", i, lst->next);
+		printf("lst[%d]-next:\t%p\n\n", i, lst->next);
 		lst = lst->next;
 		i++;
 	}
@@ -83,7 +86,7 @@ void	test2_lst_null_case(void)
 	char	*str0 = "Hello";
 	char	*str1 = "42";
 	char	*str2 = "world!";
-	char	*new_str = "Welcome";
+	char	*new_str = "Goodbye";
 	int		i = 0;
 	t_list	*lst0 = ft_lstnew((void *)str0);
 	t_list	*lst1 = ft_lstnew((void *)str1);
@@ -94,7 +97,6 @@ void	test2_lst_null_case(void)
 	lst0->next = lst1;
 	lst1->next = lst2;
 	lst2->next = NULL;
-	printf("check before lstadd\n");
 
 	printf("\n///test2_lst_null_case///\n");
 	printf("--before lstadd_front--\n");
@@ -102,19 +104,23 @@ void	test2_lst_null_case(void)
 	{
 		printf("lst[%d]-content:\t%s\n", i, (char *)lst->content);
 		printf("lst[%d]-now:\t%p\n", i, lst);
-		printf("lst[%d]-next:\t%p\n", i, lst->next);
+		printf("lst[%d]-next:\t%p\n\n", i, lst->next);
 		lst = lst->next;
 		i++;
 	}
+	printf("\nlst_want_to_add\n");
+	printf("content:\t%s\n", (char *)lst_new->content);
+	printf("now:\t%p\n", lst_new);
+	printf("next:\t%p\n", lst_new->next);
 	ft_lstadd_front(NULL, lst_new);
-	lst = lst_new;
+	lst = lst0;
 	i = 0;
 	printf("\n--after lstadd_front--\n");
 	while (lst != NULL)
 	{
 		printf("lst[%d]-content:\t%s\n", i, (char *)lst->content);
 		printf("lst[%d]-now:\t%p\n", i, lst);
-		printf("lst[%d]-next:\t%p\n", i, lst->next);
+		printf("lst[%d]-next:\t%p\n\n", i, lst->next);
 		lst = lst->next;
 		i++;
 	}
@@ -136,7 +142,6 @@ void	test3_new_null_case(void)
 	lst0->next = lst1;
 	lst1->next = lst2;
 	lst2->next = NULL;
-	printf("check before lstadd\n");
 
 	printf("\n///test3_new_null_case///\n");
 	printf("--before lstadd_front--\n");
@@ -144,12 +149,14 @@ void	test3_new_null_case(void)
 	{
 		printf("lst[%d]-content:\t%s\n", i, (char *)lst->content);
 		printf("lst[%d]-now:\t%p\n", i, lst);
-		printf("lst[%d]-next:\t%p\n", i, lst->next);
+		printf("lst[%d]-next:\t%p\n\n", i, lst->next);
 		lst = lst->next;
 		i++;
 	}
+	printf("\nlst_want_to_add\n");
+	printf("%s\n", (char *)lst_new);
 	ft_lstadd_front(&lst0, lst_new);
-	lst = lst_new;
+	lst = lst0;
 	i = 0;
 	printf("\n--after lstadd_front--\n");
 	while (lst != NULL)
