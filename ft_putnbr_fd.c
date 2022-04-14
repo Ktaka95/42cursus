@@ -6,7 +6,7 @@
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 00:44:44 by ktaka             #+#    #+#             */
-/*   Updated: 2022/01/28 00:44:47 by ktaka            ###   ########.fr       */
+/*   Updated: 2022/04/15 03:01:11 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,62 +38,31 @@ void	ft_putnbr_fd(int n, int fd)
 	return ;
 }
 
-/*
 #include <stdio.h>
-#include <unistd.h>
-
-void	test1_INT_MIN_to_0_case(void);
-void	test2_1_to_INT_MAX_case(void);
+#include <string.h>
 
 int	main(void)
 {
-	test1_INT_MIN_to_0_case();
-	sleep(5);
-	test2_1_to_INT_MAX_case();
+	int	test1 = 100;
+	int	test2 = -100;
+	int	test3 = INT_MAX;
+	int	test4 = INT_MIN;
+	int	test5 = 0;
+
+	printf("///test1///\n");
+	ft_putnbr_fd(test1, 1);
+	printf(":\t %d", test1);
+	printf("\n\n///test2///\n");
+	ft_putnbr_fd(test2, 1);
+	printf(":\t %d", test2);
+	printf("\n\n///test3///\n");
+	ft_putnbr_fd(test3, 1);
+	printf(":\t %d", test3);
+	printf("\n\n///test4///\n");
+	ft_putnbr_fd(test4, 1);
+	printf(":\t %d", test4);
+	printf("\n\n///test5///\n");
+	ft_putnbr_fd(test5, 1);
+	printf(":\t %d\n", test5);
 	return (0);
 }
-
-void	test1_INT_MIN_to_0_case(void)
-{
-	int	n = INT_MIN;
-	int	fd = 1;
-
-	printf("///test1_INT_MIN_to_0///\n");
-	sleep(2);
-	while (n <= 0)
-	{
-		while (fd < 3)
-		{
-			ft_putnbr_fd(n, fd);
-			printf("\n");
-			fd++;
-		}
-		fd = 1;
-		if (n == 0)
-			break ;
-		n += 8192;
-	}
-}
-
-void	test2_1_to_INT_MAX_case(void)
-{
-	int	n = 1;
-	int	fd = 1;
-
-	printf("\n///test2_1_to_INT_MAX///\n");
-	sleep(2);
-	while (n <= INT_MAX)
-	{
-		while (fd < 3)
-		{
-			ft_putnbr_fd(n, fd);
-			printf("\n");
-			fd++;
-		}
-		fd = 1;
-		if (n == INT_MAX)
-			break ;
-		n += 11627;
-	}
-}
-*/
