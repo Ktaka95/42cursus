@@ -6,7 +6,7 @@
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 01:46:32 by ktaka             #+#    #+#             */
-/*   Updated: 2022/04/14 09:41:29 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/15 00:52:32 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,66 +61,66 @@ size_t	count_digit(int n)
 	return (count);
 }
 
-// #include <stdio.h>
-// #include <limits.h>
+#include <stdio.h>
+#include <string.h>
 
-// void	test1_INT_MIN_to_0_case(void);
-// void	test2_1_to_INT_MAX_case(void);
+int	main(void)
+{
+	int	test1 = 100;
+	int	test2 = -100;
+	int	test3 = INT_MAX;
+	int	test4 = INT_MIN;
+	int	test5 = 0;
 
-// int main(void)
-// {
-// 	test1_INT_MIN_to_0_case();
-// 	sleep(5);
-// 	test2_1_to_INT_MAX_case();
-// 	return (0);
-// }
-
-// void	test1_INT_MIN_to_0_case(void)
-// {
-// 	int	n = INT_MIN;
-// 	char	*num = NULL;
-// 	int		check;
-
-// 	printf("///test1_INT_MIN_to_0///\n");
-// 	sleep(2);
-// 	while (n <= 0)
-// 	{
-// 		num = ft_itoa(n);
-// 		check = atoi(num);
-// 		if (check == n)
-// 			printf("%d: OK\n", n);
-// 		else
-// 		{
-// 			printf("NG :(\n");
-// 			exit (0);
-// 		}
-// 		if (n == 0)
-// 			break ;
-// 		n += 8192;
-// 	}
-// }
-
-// void	test2_1_to_INT_MAX_case(void)
-// {
-// 	int		n = 1;
-// 	char	*num = NULL;
-// 	int		check;
-
-// 	printf("\n///test2_1_to_INT_MAX_case///\n");
-// 	sleep(2);
-// 	while (n <= INT_MAX)
-// 	{
-// 		num = ft_itoa(n);
-// 		check = atoi(num);
-// 		if (check == n)
-// 			printf("%d: OK\n", n);
-// 		else
-// 		{
-// 			printf("NG :(\n");
-// 			exit (0);
-// 		}
-// 		if (n == INT_MAX)
-// 			break ;
-// 		n += 11627;
-// 	}
-// }
+	if (test1 == atoi(ft_itoa(test1)))
+	{
+		printf("///test1///\n%d:\t%s\n", test1, ft_itoa(100));
+		printf("OK :)\n");
+	}
+	else
+	{
+		printf("NG :(\n");
+		return (0);
+	}
+	if (test2 == atoi(ft_itoa(test2)))
+	{
+		printf("\n///test2///\n%d:\t%s\n", test2, ft_itoa(-100));
+		printf("OK :)\n");
+	}
+	else
+	{
+		printf("NG :(\n");
+		return (0);
+	}
+	if (test3 == atoi(ft_itoa(test3)))
+	{
+		printf("\n///test3///\n%d:\t%s\n", test3, ft_itoa(INT_MAX));
+		printf("OK :)\n");
+	}
+	else
+	{
+		printf("NG :(\n");
+		return (0);
+	}
+	if (test4 == atoi(ft_itoa(test4)))
+	{
+		printf("\n///test4///\n%d:\t%s\n", test4, ft_itoa(INT_MIN));
+		printf("OK :)\n");
+	}
+	else
+	{
+		printf("NG :(\n");
+		return (0);
+	}
+	if (test5 == atoi(ft_itoa(test5)))
+	{
+		printf("\n///test5///\n%d:\t%s\n", test5, ft_itoa(0));
+		printf("OK :)\n");
+	}
+	else
+	{
+		printf("NG :(\n");
+		return (0);
+	}
+	return (0);
+}
