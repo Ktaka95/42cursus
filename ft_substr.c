@@ -6,7 +6,7 @@
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 16:11:33 by ktaka             #+#    #+#             */
-/*   Updated: 2022/01/28 16:11:34 by ktaka            ###   ########.fr       */
+/*   Updated: 2022/04/14 09:48:35 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	substr = (char *)malloc((len + 1) * sizeof(char));
 	if (substr == NULL)
 		return (NULL);
-	while (i < len && s[start] != '\0')
+	while (i < len && s[start + i] != '\0')
 	{
-		substr[i] = s[start];
+		substr[i] = s[start + i];
 		i++;
-		start++;
 	}
 	substr[i] = '\0';
 	return (substr);
