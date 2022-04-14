@@ -6,7 +6,7 @@
 /*   By: ktakada <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/14 17:23:29 by ktakada           #+#    #+#             */
-/*   Updated: 2021/10/14 17:23:32 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/14 23:37:47 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_atoi(const char *str)
 		i++;
 	while (ft_isdigit(str[i]))
 		abs = (abs * 10) + (str[i++] - '0');
-	return (abs * sign);
+	return ((int)abs * sign);
 }
 
 int	ft_isspace(int c)
