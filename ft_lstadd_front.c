@@ -6,7 +6,7 @@
 /*   By: ktakada <ktakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 16:38:10 by ktakada           #+#    #+#             */
-/*   Updated: 2022/04/14 22:59:45 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/14 23:04:36 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,7 +163,7 @@ void	test3_new_null_case(void)
 	{
 		printf("lst[%d]-content:\t%s\n", i, (char *)lst->content);
 		printf("lst[%d]-now:\t%p\n", i, lst);
-		printf("lst[%d]-next:\t%p\n", i, lst->next);
+		printf("lst[%d]-next:\t%p\n\n", i, lst->next);
 		lst = lst->next;
 		i++;
 	}
