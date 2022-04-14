@@ -6,7 +6,7 @@
 /*   By: ktakada <ktakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 16:54:00 by ktakada           #+#    #+#             */
-/*   Updated: 2022/04/14 22:55:31 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/14 22:56:12 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	return ;
 }
 
+/*
 #include <stdio.h>
 
 void	test1_normal_case(void);
@@ -175,3 +176,4 @@ void	test3_new_null_case(void)
 	}
 	return ;
 }
+*/
