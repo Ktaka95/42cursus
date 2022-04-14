@@ -6,7 +6,7 @@
 /*   By: ktakada <ktakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 16:54:00 by ktakada           #+#    #+#             */
-/*   Updated: 2022/04/14 23:05:53 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/14 23:14:17 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ void	test1_normal_case(void)
 		lst = lst->next;
 		i++;
 	}
-	printf("\nlst_want_to_add\n");
+	printf("lst_want_to_add\n");
 	printf("content:\t%s\n", (char *)lst_new->content);
 	printf("now:\t%p\n", lst_new);
 	printf("next:\t%p\n", lst_new->next);
@@ -115,7 +115,7 @@ void	test2_lst_null_case(void)
 		lst = lst->next;
 		i++;
 	}
-	printf("\nlst_want_to_add\n");
+	printf("lst_want_to_add\n");
 	printf("content:\t%s\n", (char *)lst_new->content);
 	printf("now:\t%p\n", lst_new);
 	printf("next:\t%p\n", lst_new->next);
@@ -160,7 +160,7 @@ void	test3_new_null_case(void)
 		lst = lst->next;
 		i++;
 	}
-	printf("\nlst_want_to_add\n");
+	printf("lst_want_to_add\n");
 	printf("%s\n", (char *)lst_new);
 	ft_lstadd_back(&lst0, lst_new);
 	lst = lst0;
