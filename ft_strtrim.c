@@ -6,7 +6,7 @@
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 16:11:57 by ktaka             #+#    #+#             */
-/*   Updated: 2022/01/28 16:11:58 by ktaka            ###   ########.fr       */
+/*   Updated: 2022/04/15 00:35:29 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ size_t	ft_start_trim_count(char *s1, char const *set)
 
 	i = 0;
 	count = 0;
-	while (ft_strchr(set, s1[i]))
+	while (ft_strchr(set, s1[i]) != NULL)
 	{
 		count++;
 		i++;
@@ -53,7 +53,7 @@ size_t	ft_end_trim_count(char *s1, char const *set)
 
 	i = ft_strlen(s1) - 1;
 	count = 0;
-	while (ft_strchr(set, s1[i]))
+	while (ft_strchr(set, s1[i]) != NULL)
 	{
 		i--;
 		count++;
@@ -150,7 +150,7 @@ void	test5_s1_too_long_case(void)
 	int		c = 'a';
 
 	printf("\n///test5_s1_too_long_case///\n");
-	s1 = calloc(count, sizeof(char));
+	s1 = malloc(count * sizeof(char));
 	memset(s1, c, count);
 	printf("--before trim--\n");
 	printf("s1: %zu\nset: %s\n", strlen(s1), set);
