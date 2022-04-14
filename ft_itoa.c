@@ -6,7 +6,7 @@
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 01:46:32 by ktaka             #+#    #+#             */
-/*   Updated: 2022/04/15 00:52:32 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/15 01:04:05 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ size_t	count_digit(int n)
 	return (count);
 }
 
+/*
 #include <stdio.h>
 #include <string.h>
 
@@ -124,3 +125,4 @@ int	main(void)
 	}
 	return (0);
 }
+*/
