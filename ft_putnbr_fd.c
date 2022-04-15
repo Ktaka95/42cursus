@@ -6,7 +6,7 @@
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 00:44:44 by ktaka             #+#    #+#             */
-/*   Updated: 2022/04/15 03:01:11 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/15 14:17:19 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	ft_putnbr_fd(int n, int fd)
 	return ;
 }
 
+/*
 #include <stdio.h>
 #include <string.h>
 
@@ -66,3 +67,4 @@ int	main(void)
 	printf(":\t %d\n", test5);
 	return (0);
 }
+*/
