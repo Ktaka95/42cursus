@@ -6,7 +6,7 @@
 /*   By: ktakada <ktakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 17:14:51 by ktakada           #+#    #+#             */
-/*   Updated: 2022/04/14 13:27:20 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/18 14:38:46 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,13 @@ t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 	}
 
 	return (lst);
+}
+
+#include <stdio.h>
+
+void	test1_normal_case(void);
+
+int	main(void)
+{
+
 }
