@@ -6,7 +6,7 @@
 #    By: ktaka <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 16:40:07 by ktaka             #+#    #+#              #
-#    Updated: 2022/04/13 17:21:23 by ktakada          ###   ########.fr        #
+#    Updated: 2022/04/19 23:17:37 by ktakada          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,16 +65,17 @@ OBJS = $(SRCS:.c=.o)
 
 B_OBJS = $(B_SRCS:.c=.o)
 
+ifeq ($(MAKECMDGOALS), bonus)
+	OBJS += $(B_OBJS)
+endif
+
 $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
-
-bonus: $(OBJS) $(B_OBJS)
-	ar rc $(NAME) $^
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
-all: $(NAME) bonus
+all: $(NAME)
 
 clean:
 	rm -f $(OBJS) $(B_OBJS)
@@ -83,5 +84,7 @@ fclean: clean
 	rm -f $(NAME)
 
 re: fclean all
+
+bonus: all
 
 .PHONY:	all clean fclean re bonus
