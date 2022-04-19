@@ -6,7 +6,7 @@
 /*   By: ktakada <ktakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 17:14:51 by ktakada           #+#    #+#             */
-/*   Updated: 2022/04/18 14:38:46 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/19 15:18:40 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,36 +14,31 @@
 
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	int		lst_size;
 	t_list	*new_lst;
-	int		i;
+	t_list	*new_each_node;
 
+	new_lst = NULL;
 	if (lst == NULL || f == NULL)
 		return (NULL);
-	lst_size = ft_lstsize(lst);
-	new_lst = (t_list *)malloc((lst_size + 1) * sizeof(t_list));
-	if (new_lst == NULL)
-		return (NULL);
-	i = 0;
-	while (i < lst_size)
+	while (lst != NULL)
 	{
-		new_lst = ft_lstnew(f(lst->content));
-		if (new_lst == NULL)
+		new_each_node = ft_lstnew((*f)(lst->content));
+		if (new_each_node == NULL)
 		{
 			ft_lstclear(&new_lst, del);
 			return (NULL);
 		}
-
+		ft_lstadd_back(&new_lst, new_each_node);
+		lst = lst->next;
 	}
-
-	return (lst);
+	return (new_lst);
 }
 
-#include <stdio.h>
+/* #include <stdio.h> */
 
-void	test1_normal_case(void);
+/* void	test1_normal_case(void); */
 
-int	main(void)
-{
+/* int	main(void) */
+/* { */
 
-}
+/* } */
