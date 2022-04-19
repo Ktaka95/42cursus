@@ -6,7 +6,7 @@
 /*   By: ktakada <ktakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/13 17:14:51 by ktakada           #+#    #+#             */
-/*   Updated: 2022/04/19 16:16:11 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/19 16:22:57 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void  *test_func2(void *content)
 {
 	char  *new_content;
 
-	new_content = strchr((char *)content, 'c');
+	new_content = strchr((char *)content, 'o');
 	return (new_content);
 }
 
