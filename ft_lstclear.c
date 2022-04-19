@@ -6,7 +6,7 @@
 /*   By: ktakada <ktakada@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/18 13:37:20 by ktakada           #+#    #+#             */
-/*   Updated: 2022/04/18 13:37:21 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/19 22:38:05 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,9 @@ int	main(void)
 	test4_del_null_case();
 }
 
-
 void	test1_normal_case(void)
 {
-	t_list	**lst = NULL;
+	t_list	*start = NULL;
 	t_list	*lst0 = ft_lstnew(strdup("Hello,"));
 	t_list	*lst1 = ft_lstnew(strdup("42"));
 	t_list	*lst2 = ft_lstnew(strdup("world"));
@@ -57,37 +56,28 @@ void	test1_normal_case(void)
 	lst0->next = lst1;
 	lst1->next = lst2;
 	lst2->next = NULL;
-	lst = &lst0;
+	start = lst0;
 	printf("///test1_normal_case///\n");
 	printf("--before lstclear--\n");
-	printf("lst:\t%p\n", lst);
-	while (*lst != NULL)
+	while (start != NULL)
 	{
-		printf("lst[%d]-now:\t%p\n", i, *lst);
-		printf("lst[%d]-content:\t%s\n", i, (char *)(*lst)->content);
-		printf("lst[%d]-next:\t%p\n", i, (*lst)->next);
-		*lst = (*lst)->next;
+		printf("lst[%d]-now:\t%p\n", i, start);
+		printf("lst[%d]-content:\t%s\n", i, (char *)start->content);
+		printf("lst[%d]-next:\t%p\n", i, start->next);
+		start = start->next;
 		i++;
 	}
 	printf("\n--after lstclear--\n");
-	lst = &lst0;
-	i = 0;
-	ft_lstclear(lst, free);
-	while (*lst != NULL)
-	{
-		printf("lst[%d]-now:\t%p\n", i, *lst);
-		printf("lst[%d]-content:\t%s\n", i, (char *)(*lst)->content);
-		printf("lst[%d]-next:\t%p\n", i, (*lst)->next);
-		*lst = (*lst)->next;
-		i++;
-	}
-	printf("lst:\t%p\n", *lst);
+	ft_lstclear(&lst0, free);
+	printf("lst[0]:\t%p\n", lst0);
+	printf("lst[1]:\t%p\n", lst1);
+	printf("lst[2]:\t%p\n", lst2);
 	return ;
 }
 
 void	test2_normal_case2(void)
 {
-	t_list	**lst = NULL;
+	t_list	*start = NULL;
 	t_list	*lst0 = ft_lstnew(strdup("Hello,"));
 	t_list	*lst1 = ft_lstnew(strdup("42"));
 	t_list	*lst2 = ft_lstnew(strdup("world"));
@@ -96,57 +86,29 @@ void	test2_normal_case2(void)
 	lst0->next = lst1;
 	lst1->next = lst2;
 	lst2->next = NULL;
-	lst = &lst0;
+	start = lst0;
 	printf("\n///test2_normal_case2///\n");
 	printf("--before lstclear--\n");
-	printf("lst:\t%p\n", lst);
-	while (*lst != NULL)
+	while (start != NULL)
 	{
-		printf("lst[%d]-now:\t%p\n", i, *lst);
-		printf("lst[%d]-content:\t%s\n", i, (char *)(*lst)->content);
-		printf("lst[%d]-next:\t%p\n", i, (*lst)->next);
-		*lst = (*lst)->next;
+		printf("lst[%d]-now:\t%p\n", i, start);
+		printf("lst[%d]-content:\t%s\n", i, (char *)start->content);
+		printf("lst[%d]-next:\t%p\n", i, start->next);
+		start = start->next;
 		i++;
 	}
 	printf("\n--after lstclear--\n");
-	lst = &lst2;
-	i = 0;
-	ft_lstclear(lst, free);
-	lst = &lst0;
-	// while (lst != NULL)
-	// {
-	// 	printf("lst[%d]-now:\t%p\n", i, *lst);
-	// 	printf("lst[%d]-content:\t%s\n", i, (char *)(*lst)->content);
-	// 	printf("lst[%d]-next:\t%p\n", i, (*lst)->next);
-	// 	*lst = (*lst)->next;
-	// 	i++;
-	// }
-	printf("lst:\t%p\n", *lst);
+	ft_lstclear(&lst2, free);
+	printf("lst[0]:\t%p\n", lst0);
+	printf("lst[1]:\t%p\n", lst1);
+	printf("lst[2]:\t%p\n", lst2);
 	return ;
 }
 
 void	test3_lst_null_case(void)
 {
 	t_list	**lst = NULL;
-	t_list	*lst0 = ft_lstnew(strdup("Hello,"));
-	t_list	*lst1 = ft_lstnew(strdup("42"));
-	t_list	*lst2 = ft_lstnew(strdup("world"));
-
-	lst0->next = lst1;
-	lst1->next = lst2;
-	lst2->next = NULL;
-	printf("\n///test3_lst_null_case///\n");
-	printf("--before lstclear--\n");
-	printf("lst:\t%p\n", lst);
-	printf("\n--after lstclear--\n");
-	ft_lstclear(lst, free);
-	printf("lst:\t%p\n", lst);
-	return ;
-}
-
-void	test4_del_null_case(void)
-{
-	t_list	**lst = NULL;
+	t_list	*start = NULL;
 	t_list	*lst0 = ft_lstnew(strdup("Hello,"));
 	t_list	*lst1 = ft_lstnew(strdup("42"));
 	t_list	*lst2 = ft_lstnew(strdup("world"));
@@ -155,31 +117,71 @@ void	test4_del_null_case(void)
 	lst0->next = lst1;
 	lst1->next = lst2;
 	lst2->next = NULL;
-	lst = &lst0;
-	printf("\n///test4_del_null_case///\n");
+	start = lst0;
+	printf("\n///test3_lst_null_case///\n");
 	printf("--before lstclear--\n");
 	printf("lst:\t%p\n", lst);
-	while (*lst != NULL)
+	while (start != NULL)
 	{
-		printf("lst[%d]-now:\t%p\n", i, *lst);
-		printf("lst[%d]-content:\t%s\n", i, (char *)(*lst)->content);
-		printf("lst[%d]-next:\t%p\n", i, (*lst)->next);
-		*lst = (*lst)->next;
+		printf("lst[%d]-now:\t%p\n", i, start);
+		printf("lst[%d]-content:\t%s\n", i, (char *)start->content);
+		printf("lst[%d]-next:\t%p\n", i, start->next);
+		start = start->next;
 		i++;
 	}
 	printf("\n--after lstclear--\n");
-	lst = &lst0;
+	ft_lstclear(lst, free);
 	i = 0;
-	ft_lstclear(lst, NULL);
-	while (*lst != NULL)
+	start = lst0;
+	printf("lst:\t%p\n", lst);
+	while (start != NULL)
 	{
-		printf("lst[%d]-now:\t%p\n", i, *lst);
-		printf("lst[%d]-content:\t%s\n", i, (char *)(*lst)->content);
-		printf("lst[%d]-next:\t%p\n", i, (*lst)->next);
-		*lst = (*lst)->next;
+		printf("lst[%d]-now:\t%p\n", i, start);
+		printf("lst[%d]-content:\t%s\n", i, (char *)start->content);
+		printf("lst[%d]-next:\t%p\n", i, start->next);
+		start = start->next;
 		i++;
 	}
-	printf("lst:\t%p\n", *lst);
+	return ;
+}
+
+void	test4_del_null_case(void)
+{
+	t_list	**lst = NULL;
+	t_list	*start = NULL;
+	t_list	*lst0 = ft_lstnew(strdup("Hello,"));
+	t_list	*lst1 = ft_lstnew(strdup("42"));
+	t_list	*lst2 = ft_lstnew(strdup("world"));
+	int		i = 0;
+
+	lst0->next = lst1;
+	lst1->next = lst2;
+	lst2->next = NULL;
+	start = lst0;
+	printf("\n///test4_del_null_case///\n");
+	printf("--before lstclear--\n");
+	printf("lst:\t%p\n", lst);
+	while (start != NULL)
+	{
+		printf("lst[%d]-now:\t%p\n", i, start);
+		printf("lst[%d]-content:\t%s\n", i, (char *)start->content);
+		printf("lst[%d]-next:\t%p\n", i, start->next);
+		start = start->next;
+		i++;
+	}
+	printf("\n--after lstclear--\n");
+	ft_lstclear(lst, NULL);
+	i = 0;
+	start = lst0;
+	printf("lst:\t%p\n", lst);
+	while (start != NULL)
+	{
+		printf("lst[%d]-now:\t%p\n", i, start);
+		printf("lst[%d]-content:\t%s\n", i, (char *)start->content);
+		printf("lst[%d]-next:\t%p\n", i, start->next);
+		start = start->next;
+		i++;
+	}
 	return ;
 }
 */
