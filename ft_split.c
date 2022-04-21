@@ -6,7 +6,7 @@
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 16:12:05 by ktaka             #+#    #+#             */
-/*   Updated: 2022/01/28 16:12:06 by ktaka            ###   ########.fr       */
+/*   Updated: 2022/04/22 02:26:20 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,8 +110,7 @@ void	test7_s_start_0_c_0_case(void);
 void	test8_s_empty_case(void);
 void	test9_s_empty_c_null_case(void);
 void	test10_s_null_case(void);
-void	test11_s_null_c_0_case(void);
-void	test12_only_0_case(void);
+void	test11_only_0_case(void);
 
 int	main(void)
 {
@@ -125,8 +124,7 @@ int	main(void)
 	test8_s_empty_case();
 	test9_s_empty_c_null_case();
 	test10_s_null_case();
-	test11_s_null_c_0_case();
-	test12_only_0_case();
+	test11_only_0_case();
 	return (0);
 }
 
@@ -191,7 +189,7 @@ void	test4_s_include_0_case(void)
 {
 	char	**ret = NULL;
 	char	*str = " Hello, \0 42 world ! ";
-	char	c = ' ';
+	char	c = 'l';
 	size_t	i = 0;
 	printf("\n///test4_s_include_0_case///\n");
 	printf("--before split--\n");
@@ -327,54 +325,23 @@ void	test9_s_empty_c_null_case(void)
 void	test10_s_null_case(void)
 {
 	char	**ret = NULL;
-	char	*str = "NULL";
+	char	*str = NULL;
 	char	c = 'A';
-	size_t	i = 0;
 	printf("\n///test10_s_null_case///\n");
 	printf("--before split--\n");
 	printf("str: %s\nc: %c\n", str, c);
 	ret = ft_split(str, c);
-	if (ret[0] == NULL)
-	{
-		printf("ret[0] == NULL\n");
-		return ;
-	}
-	while (ret[i] != NULL)
-	{
-		printf("ret[0] != NULL\n");
-		printf("%s\n", ret[i]);
-		i++;
-	}
+	printf("ret: %p\n", ret);
 	return ;
 }
 
-void	test11_s_null_c_0_case(void)
-{
-	char	**ret = NULL;
-	char	*str = "NULL";
-	char	c = '\0';
-	size_t	i = 0;
-	printf("\n///test11_s_null_c_0_case///\n");
-	printf("--before split--\n");
-	printf("str: %s\nc: %c\n", str, c);
-	ret = ft_split(str, c);
-	printf("--after split--\n");
-	while (ret[i] != NULL)
-	{
-		printf("ret[0] != NULL\n");
-		printf("%s\n", ret[i]);
-		i++;
-	}
-	return ;
-}
-
-void	test12_only_0_case(void)
+void	test11_only_0_case(void)
 {
 	char	**ret = NULL;
 	char	*str = "\0\0\0\0\0\0\0\0\0\0";
 	char	c = '\0';
 	size_t	i = 0;
-	printf("\n///test12_only_0_case///\n");
+	printf("\n///test11_only_0_case///\n");
 	printf("--before split--\n");
 	printf("str: %s\nc: %c\n", str, c);
 	ret = ft_split(str, c);
