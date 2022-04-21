@@ -6,7 +6,7 @@
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 16:09:54 by ktaka             #+#    #+#             */
-/*   Updated: 2022/04/21 12:12:53 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/21 12:14:07 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	*ft_memchr(const void *s, int c, size_t n)
 	chr = (unsigned char)c;
 	while (i < n)
 	{
-		if (str[i] == chr) 
+		if (str[i] == chr)
 			return (str + i);
 		i++;
 	}
