@@ -6,7 +6,7 @@
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 00:44:44 by ktaka             #+#    #+#             */
-/*   Updated: 2022/04/15 14:17:19 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/21 12:39:27 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ void	ft_putnbr_fd(int n, int fd)
 		tmp = tmp * -1;
 		ft_putchar_fd('-', fd);
 	}
-	if (tmp == 0)
-		ft_putchar_fd('0', fd);
-	else if (tmp < 10)
+	if (tmp <= 9)
 	{
 		c = tmp + '0';
 		ft_putchar_fd(c, fd);
