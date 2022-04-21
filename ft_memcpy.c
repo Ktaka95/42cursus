@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 21:14:38 by ktaka             #+#    #+#             */
-/*   Updated: 2022/01/10 21:14:39 by ktaka            ###   ########.fr       */
+/*   Updated: 2022/04/21 12:15:43 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 	size_t			i;
 
 	i = 0;
-	if (dst == NULL && src == NULL)
-		return (NULL);
+	if (dst == src)
+		return (dst);
 	else if (n == 0)
 		return (dst);
 	d = (unsigned char *)dst;
