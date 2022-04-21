@@ -6,7 +6,7 @@
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 16:25:57 by ktaka             #+#    #+#             */
-/*   Updated: 2022/01/05 16:25:58 by ktaka            ###   ########.fr       */
+/*   Updated: 2022/04/21 12:24:45 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 	ret = ft_strlen(src);
 	if (dstsize == 0)
 		return (ret);
-	while (i < dstsize - 1 && src[i] != '\0')
+	while (i + 1 < dstsize && src[i] != '\0')
 	{
 		dst[i] = src[i];
 		i++;
