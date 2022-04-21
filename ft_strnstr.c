@@ -6,7 +6,7 @@
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 17:15:40 by ktaka             #+#    #+#             */
-/*   Updated: 2022/01/06 17:15:41 by ktaka            ###   ########.fr       */
+/*   Updated: 2022/04/21 12:29:40 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ void	test1_normal_case(void);
 void	test2_no_occurrence_case(void);
 void	test3_occur_over_len_case(void);
 void	test4_haystack_empty_case(void);
-void	test5_needle_empty_case(void);
+void	test5_needle_empty_len_0_case(void);
 void	test6_needle_empty_len_not_0_case(void);
 void	test7_needle_gt_haystack_case(void);
 void	test8_needle_gt_len_case(void);
@@ -58,7 +58,7 @@ int	main(void)
 	test2_no_occurrence_case();
 	test3_occur_over_len_case();
 	test4_haystack_empty_case();
-	test5_needle_empty_case();
+	test5_needle_empty_len_0_case();
 	test6_needle_empty_len_not_0_case();
 	test7_needle_gt_haystack_case();
 	test8_needle_gt_len_case();
@@ -181,15 +181,15 @@ void	test4_haystack_empty_case(void)
 	return ;
 }
 
-void	test5_needle_empty_case(void)
+void	test5_needle_empty_len_0_case(void)
 {
 	char	*haystack = "Hello, 42 world!";
 	char	*needle = "";
-	size_t	len = strlen(haystack);
+	size_t	len = 0;
 	char	*ori_ret = NULL;
 	char	*ft_ret = NULL;
 
-	printf("\n///test5_needle_empty_case///\n");
+	printf("\n///test5_needle_empty_len_0_case///\n");
 	printf("--before strnstr--\n");
 	printf("haystack:\t%s\nneedle:\t\t%s\nlen\t\t%zu\n", \
 			haystack, needle, len);
@@ -213,7 +213,7 @@ void	test6_needle_empty_len_not_0_case(void)
 {
 	char	*haystack = "Hello, 42 world!";
 	char	*needle = "";
-	size_t	len = 10;
+	size_t	len = strlen(haystack);
 	char	*ori_ret = NULL;
 	char	*ft_ret = NULL;
 
