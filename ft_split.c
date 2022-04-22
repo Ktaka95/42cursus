@@ -6,7 +6,7 @@
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 16:12:05 by ktaka             #+#    #+#             */
-/*   Updated: 2022/04/22 02:26:20 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/22 15:43:02 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ int	main(void)
 	test9_s_empty_c_null_case();
 	test10_s_null_case();
 	test11_only_0_case();
+	system("leaks -q a.out");
 	return (0);
 }
 
@@ -142,8 +143,10 @@ void	test1_normal_case(void)
 	while (ret[i] != NULL)
 	{
 		printf("%s\n", ret[i]);
+		free(ret[i]);
 		i++;
 	}
+	free(ret);
 	return ;
 }
 
@@ -161,8 +164,10 @@ void	test2_nosplit_case(void)
 	while (ret[i] != NULL)
 	{
 		printf("%s\n", ret[i]);
+		free(ret[i]);
 		i++;
 	}
+	free(ret);
 	return ;
 }
 
@@ -180,8 +185,10 @@ void	test3_c_0_case(void)
 	while (ret[i] != NULL)
 	{
 		printf("%s\n", ret[i]);
+		free(ret[i]);
 		i++;
 	}
+	free(ret);
 	return ;
 }
 
@@ -199,8 +206,10 @@ void	test4_s_include_0_case(void)
 	while (ret[i] != NULL)
 	{
 		printf("%s\n", ret[i]);
+		free(ret[i]);
 		i++;
 	}
+	free(ret);
 	return ;
 }
 
@@ -218,8 +227,10 @@ void	test5_s_include_0_c_0_case(void)
 	while (ret[i] != NULL)
 	{
 		printf("%s\n", ret[i]);
+		free(ret[i]);
 		i++;
 	}
+	free(ret);
 	return ;
 }
 
@@ -237,6 +248,7 @@ void	test6_s_start_0_case(void)
 	if (ret[0] == NULL)
 	{
 		printf("ret[0] == NULL\n");
+		free(ret);
 		return ;
 	}
 	while (ret[i] != NULL)
@@ -262,6 +274,7 @@ void	test7_s_start_0_c_0_case(void)
 	if (ret[0] == NULL)
 	{
 		printf("ret[0] == NULL\n");
+		free(ret);
 		return ;
 	}
 	while (ret[i] != NULL)
@@ -287,6 +300,7 @@ void	test8_s_empty_case(void)
 	if (ret[0] == NULL)
 	{
 		printf("ret[0] == NULL\n");
+		free(ret);
 		return ;
 	}
 	while (ret[i] != NULL)
@@ -312,6 +326,7 @@ void	test9_s_empty_c_null_case(void)
 	if (ret[0] == NULL)
 	{
 		printf("ret[0] == NULL\n");
+		free(ret);
 		return ;
 	}
 	while (ret[i] != NULL)
@@ -332,6 +347,7 @@ void	test10_s_null_case(void)
 	printf("str: %s\nc: %c\n", str, c);
 	ret = ft_split(str, c);
 	printf("ret: %p\n", ret);
+	free(ret);
 	return ;
 }
 
@@ -349,6 +365,7 @@ void	test11_only_0_case(void)
 	if (ret[0] == NULL)
 	{
 		printf("ret[0] == NULL\n");
+		free(ret);
 		return ;
 	}
 	while (ret[i] != NULL)
