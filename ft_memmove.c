@@ -6,7 +6,7 @@
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 17:52:42 by ktaka             #+#    #+#             */
-/*   Updated: 2022/04/22 14:01:41 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/22 14:32:24 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,8 @@ void	test6_dst_include_0_case(void);
 void	test7_src_include_0_case(void);
 void	test8_dst_overlap_case(void);
 void	test9_dst_overlap_case2(void);
-void	test10_segv_case(void);
+void	test10_dst_eq_src_case(void);
+void	test11_segv_case(void);
 
 int main(void)
 {
@@ -61,7 +62,8 @@ int main(void)
 	test7_src_include_0_case();
 	test8_dst_overlap_case();
 	test9_dst_overlap_case2();
-	test10_segv_case();
+	test10_dst_eq_src_case();
+	test11_segv_case();
 	return 0;
 }
 
@@ -279,13 +281,37 @@ after ft_memmove =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
 	return ;
 }
 
-void	test10_segv_case(void)
+void	test10_dst_eq_src_case(void)
+{
+	char	ori_dst[] = "ABCDEFG";
+	char	ft_dst[] = "ABCDEFG";
+	char	*ori_ret;
+	char	*ft_ret;
+	size_t	size = strlen(ori_dst);
+
+	printf("///test10_dst_eq_src_case///\n\
+dst: %s\nsrc: %s\nsize: %zu\n", ori_dst, ori_dst, size);
+	printf("before memmove: dst =>\t%s\n", ori_dst);
+	ori_ret = memmove(ori_dst, ori_dst, size);
+	ft_ret = ft_memmove(ft_dst, ft_dst, size);
+	if (strcmp(ori_ret, ft_ret) == 0)
+		printf("after ori_memmove =>\t%s\n\
+after ft_memmove =>\t%s\nOK :)\n\n",ori_dst, ft_dst);
+	else
+	{
+		printf("NG :(\n");
+		exit (0);
+	}
+	return ;
+}
+
+void	test11_segv_case(void)
 {
 	char	dst[] = "abcdefgh";
 	char	src[] = "ABCDEFG";
 	size_t	size = 10;
 
-	printf("///test10_following_case_segv///\n");
+	printf("///test11_following_case_segv///\n");
 	ft_memmove(NULL, src, size);
 	ft_memmove(dst, NULL, size);
 	ft_memmove(dst, src, size); //size > dst_size
