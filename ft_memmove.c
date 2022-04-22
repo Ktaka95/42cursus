@@ -6,7 +6,7 @@
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/11 17:52:42 by ktaka             #+#    #+#             */
-/*   Updated: 2022/04/21 12:16:55 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/22 14:01:41 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	unsigned char	*d;
 	unsigned char	*s;
 
-	if (dst == src)
-		return (NULL);
-	else if (len == 0)
+	if (dst == src || len == 0)
 		return (dst);
 	d = (unsigned char *)dst;
 	s = (unsigned char *)src;
