@@ -6,7 +6,7 @@
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/10 23:36:35 by ktaka             #+#    #+#             */
-/*   Updated: 2021/11/10 23:36:39 by ktaka            ###   ########.fr       */
+/*   Updated: 2022/04/22 14:39:43 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,14 @@ void	*ft_memset(void *b, int c, size_t len)
 {
 	size_t			i;
 	unsigned char	*str;
+	unsigned char	chr;
 
 	i = 0;
 	str = (unsigned char *)b;
+	chr = (unsigned char)c;
 	while (i < len)
 	{
-		str[i] = (unsigned char)c;
+		str[i] = chr;
 		i++;
 	}
 	return (b);
