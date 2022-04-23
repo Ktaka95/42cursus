@@ -6,7 +6,7 @@
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/06 15:59:03 by ktaka             #+#    #+#             */
-/*   Updated: 2022/01/06 15:59:04 by ktaka            ###   ########.fr       */
+/*   Updated: 2022/04/23 12:03:21 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,15 @@
 char	*ft_strrchr(const char *s, int c)
 {
 	char	*str;
+	char	chr;
 	size_t	i;
 
 	str = (char *)s;
+	chr = (char)c;
 	i = ft_strlen(str);
-	while (i > 0 && str[i] != (char)c)
+	while (i > 0 && str[i] != chr)
 		i--;
-	if (str[i] == (char)c)
+	if (str[i] == chr)
 		return (str + i);
 	return (NULL);
 }
