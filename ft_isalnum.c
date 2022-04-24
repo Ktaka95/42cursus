@@ -6,7 +6,7 @@
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/05 15:26:53 by ktaka             #+#    #+#             */
-/*   Updated: 2022/02/16 00:46:40 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/24 18:33:21 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 int	ft_isalnum(int c)
 {
-	return (ft_isalpha(c) || ft_isdigit(c));
+	if (ft_isalpha(c) || ft_isdigit(c))
+		return (1);
+	return (0);
 }
 
 /*
