@@ -6,7 +6,7 @@
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/28 16:11:33 by ktaka             #+#    #+#             */
-/*   Updated: 2022/04/14 09:48:35 by ktakada          ###   ########.fr       */
+/*   Updated: 2022/04/24 18:37:46 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	i = 0;
 	if (s == NULL || len == 0 || start > ft_strlen(s))
 		return (ft_strdup(""));
-	if (len > ft_strlen(s) - start + 1)
-		len = ft_strlen(s) - start + 1;
+	if (len > ft_strlen(s) - start)
+		len = ft_strlen(s) - start;
 	substr = (char *)malloc((len + 1) * sizeof(char));
 	if (substr == NULL)
 		return (NULL);
