@@ -6,7 +6,7 @@
 /*   By: ktaka <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/27 23:45:00 by ktaka             #+#    #+#             */
-/*   Updated: 2022/01/27 23:45:11 by ktaka            ###   ########.fr       */
+/*   Updated: 2022/04/24 22:31:30 by ktakada          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_putstr_fd(char *s, int fd)
 {
 	size_t	put_len;
 
-	if (s == NULL)
+	if (s == NULL || ft_strlen(s) > INT_MAX)
 		return ;
 	put_len = ft_strlen(s);
 	write(fd, s, put_len);
