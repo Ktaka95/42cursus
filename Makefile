@@ -6,17 +6,21 @@
 #    By: ktaka <marvin@42.fr>                       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/01/10 16:40:07 by ktaka             #+#    #+#              #
-#    Updated: 2022/04/19 23:17:37 by ktakada          ###   ########.fr        #
+#    Updated: 2022/05/25 22:08:59 by ktakada          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = cc
+NAME := libft.a
 
-CFLAGS = -Wall -Wextra -Werror
+CC := cc
 
-NAME = libft.a
+CFLAGS := -Wall -Wextra -Werror
 
-SRCS = ft_isalpha.c \
+INCLUDESDIR := ./includes
+
+SRCSDIR := ./src/
+
+SRCS := ft_isalpha.c \
 		ft_isdigit.c \
 		ft_isalnum.c \
 		ft_isascii.c \
@@ -51,7 +55,7 @@ SRCS = ft_isalpha.c \
 		ft_putendl_fd.c \
 		ft_putnbr_fd.c \
 
-B_SRCS = ft_lstnew.c \
+B_SRCS := ft_lstnew.c \
 		ft_lstadd_front.c \
 		ft_lstsize.c \
 		ft_lstlast.c \
@@ -61,9 +65,13 @@ B_SRCS = ft_lstnew.c \
 		ft_lstiter.c \
 		ft_lstmap.c \
 
-OBJS = $(SRCS:.c=.o)
+SRCS := $(addprefix $(SRCSDIR), $(SRCS))
 
-B_OBJS = $(B_SRCS:.c=.o)
+B_SRCS := $(addprefix $(SRCSDIR), $(B_SRCS))
+
+OBJS := $(SRCS:.c=.o)
+
+B_OBJS := $(B_SRCS:.c=.o)
 
 ifeq ($(MAKECMDGOALS), bonus)
 	OBJS += $(B_OBJS)
@@ -73,7 +81,7 @@ $(NAME): $(OBJS)
 	ar rc $(NAME) $(OBJS)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -I $(INCLUDESDIR) -c $< -o $@
 
 all: $(NAME)
 
