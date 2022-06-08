@@ -4,5 +4,5 @@ Re-implementing Standard C Library functions.
 ## Usage
 ```
 git clone https://github.com/ktakada42/libft.git
-make -c libft
+make -C libft
 ```
